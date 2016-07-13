@@ -39,11 +39,11 @@ Description of data files.
 ## Sentence predictions (used only for qualitative comparisons, not training/cv)
 | 	   Filename		| ~Size | 			Description				|
 |:-----------------:|:-----:|:----------------------------------|
-| train_sents.h5	| -		| Text file (7200 lines) where each line is the ground truth sentence prediction for each image in the training set (generated from train_feats_a): what the neuralTalk model would predict on the images. |
-| train_sents_a.h5	| -		| Text file (7200 lines) where each line is the predicted sentence for image vectors predicted by model_a (generated from train_preds_a).	|
-| train_sents_a.h5	| -		| Text file (7200 lines) where each line is the predicted sentence for image vectors predicted by model_b (generated from train_preds_b).	|
-| train_sents_a.h5	| -		| Text file (7200 lines) where each line is the predicted sentence for image vectors predicted by model_c (generated from train_preds_c).	|
-| test_sents.h5		| -		| Text file (540 lines) where each line is the predicted sentence for image vectors predicted by model_x (the best model) (generated from train_preds_x).	|
+| train_sents.txt	| -		| Text file (7200 lines) where each line is the ground truth sentence prediction for each image in the training set (generated from train_feats_a): what the neuralTalk model would predict on the images. |
+| train_sents_a.txt	| -		| Text file (7200 lines) where each line is the predicted sentence for image vectors predicted by model_a (generated from train_preds_a).	|
+| train_sents_a.txt	| -		| Text file (7200 lines) where each line is the predicted sentence for image vectors predicted by model_b (generated from train_preds_b).	|
+| train_sents_a.txt	| -		| Text file (7200 lines) where each line is the predicted sentence for image vectors predicted by model_c (generated from train_preds_c).	|
+| test_sents.txt	| -		| Text file (540 lines) where each line is the predicted sentence for image vectors predicted by model_x (the best model) (generated from train_preds_x).	|
 
 
 Note: Original data provided by Gallant's Lab (http://crcns.org/data-sets/vc/vim-2/about-vim-2)
