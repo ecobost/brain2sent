@@ -65,7 +65,7 @@ end
 local loader = DataLoaderRaw{folder_path = opt.image_folder, coco_json = ''}
 
 -------------------------------------------------------------------------------
--- Load the networks from  model checkpoint
+-- Load the network from  model checkpoint
 -------------------------------------------------------------------------------
 assert(string.len(opt.model) > 0, 'must provide a model')
 local checkpoint = torch.load(opt.model)
