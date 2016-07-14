@@ -67,9 +67,7 @@ nn.Sequential {
   (37): cudnn.ReLU
   (38): nn.Dropout(0.500000)
   (39): nn.Linear(4096 -> 768)
-
   (40): cudnn.ReLU
-
 }
 
 # Options
