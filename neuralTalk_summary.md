@@ -25,7 +25,8 @@ Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
 Single layer, 768 input, hidden and cell vector, 9567 words in vocabulary.
 
 # Convnet architecture
-VGG-16 architecture with top layer replaced to produce a 768-d output vector. Output of `print(checkpoint.protos.cnn)`:
+VGG-16 architecture with top layer replaced to produce a 768-dimensional output vector. Output of `print(checkpoint.protos.cnn)`:
+
 nn.Sequential {
   [input -> (1) -> (2) -> (3) -> (4) -> (5) -> (6) -> (7) -> (8) -> (9) -> (10) -> (11) -> (12) -> (13) -> (14) -> (15) -> (16) -> (17) -> (18) -> (19) -> (20) -> (21) -> (22) -> (23) -> (24) -> (25) -> (26) -> (27) -> (28) -> (29) -> (30) -> (31) -> (32) -> (33) -> (34) -> (35) -> (36) -> (37) -> (38) -> (39) -> (40) -> output]
   (1): cudnn.SpatialConvolution(3 -> 64, 3x3, 1,1, 1,1)
@@ -65,13 +66,14 @@ nn.Sequential {
   (35): nn.Dropout(0.500000)
   (36): nn.Linear(4096 -> 4096)
   (37): cudnn.ReLU
-  (38): nn.Dropout(0.500000)
-  (39): nn.Linear(4096 -> 768)
-  (40): cudnn.ReLU
+  (38): nn.Dropout(0.500000)  
+  (39): nn.Linear(4096 -> 768)  
+  (40): cudnn.ReLU  
 }
 
 # Options
-Overall configuration options. Output of `print(checkpoint.opt)`:
+Output of `print(checkpoint.opt)`:
+
 {
   cnn_optim_beta : 0.999
   finetune_cnn_after : 0
