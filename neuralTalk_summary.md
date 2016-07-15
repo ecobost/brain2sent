@@ -113,7 +113,7 @@ Output of `print(checkpoint.opt)`:
 
 # Options
 Output of `print(checkpoint.opt)`:
-	{  
+		{
 		cnn_optim_beta : 0.999
 		finetune_cnn_after : 0
 		batch_size : 16
@@ -148,4 +148,4 @@ Output of `print(checkpoint.opt)`:
 		backend : "cudnn"
 		save_checkpoint_every : 2500
 		optim_alpha : 0.8
-	}
+		}
