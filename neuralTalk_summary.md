@@ -7,10 +7,10 @@ Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
 		{image_id, caption}  
 	}  
 * val_loss_history: Validation loss   
-	`	{iteration#: loss}`
+`	{iteration#: loss}`
 * val_lang_stats_history: Language metrics  
->	{#iteration: metrics  
->>		{Bleu_1, ROUGE_L, METEOR, Bleu_4, Bleu_3, Bleu_2, CIDEr}  
+		`{#iteration: metrics`  
+` {Bleu_1, ROUGE_L, METEOR, Bleu_4, Bleu_3, Bleu_2, CIDEr}  
 >	}
 * vocab: Vocabulary
 	{word_id: word}
