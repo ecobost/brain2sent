@@ -113,39 +113,41 @@ Output of `print(checkpoint.opt)`:
 
 # Options
 Output of `print(checkpoint.opt)`:
-		{
-		cnn_optim_beta : 0.999
-		finetune_cnn_after : 0
-		batch_size : 16
-		val_images_use : 3200
-		optim_epsilon : 1e-08
-		input_encoding_size : 768
-		losses_log_every : 25
-		id : "1-501-1448236541"
-		optim_beta : 0.999
-		input_h5 : "/scr/r6/karpathy/cocotalk.h5"
-		rnn_size : 768
-		cnn_learning_rate : 1e-05
-		cnn_optim_alpha : 0.8
-		language_eval : 1
-		learning_rate_decay_every : 50000
-		optim : "adam"
-		gpuid : 0
-		cnn_model : "model/VGG_ILSVRC_16_layers.caffemodel"
-		drop_prob_lm : 0.75
-		grad_clip : 0.1
-		cnn_weight_decay : 0
-		input_json : "/scr/r6/karpathy/cocotalk.json"
-		seed : 123
-		learning_rate_decay_start : -1
-		seq_per_img : 5
-		cnn_optim : "adam"
-		max_iters : -1
-		checkpoint_path : "checkpoints"
-		start_from : "/scr/r6/karpathy/neuraltalk2_checkpoints/vgood1/model_id3-230-1448140513.t7"
-		learning_rate : 0.0004
-		cnn_proto : "model/VGG_ILSVRC_16_layers_deploy.prototxt"
-		backend : "cudnn"
-		save_checkpoint_every : 2500
-		optim_alpha : 0.8
-		}
+```
+{
+	cnn_optim_beta : 0.999
+	finetune_cnn_after : 0
+	batch_size : 16
+	val_images_use : 3200
+	optim_epsilon : 1e-08
+	input_encoding_size : 768
+	losses_log_every : 25
+	id : "1-501-1448236541"
+	optim_beta : 0.999
+	input_h5 : "/scr/r6/karpathy/cocotalk.h5"
+	rnn_size : 768
+	cnn_learning_rate : 1e-05
+	cnn_optim_alpha : 0.8
+	language_eval : 1
+	learning_rate_decay_every : 50000
+	optim : "adam"
+	gpuid : 0
+	cnn_model : "model/VGG_ILSVRC_16_layers.caffemodel"
+	drop_prob_lm : 0.75
+	grad_clip : 0.1
+	cnn_weight_decay : 0
+	input_json : "/scr/r6/karpathy/cocotalk.json"
+	seed : 123
+	learning_rate_decay_start : -1
+	seq_per_img : 5
+	cnn_optim : "adam"
+	max_iters : -1
+	checkpoint_path : "checkpoints"
+	start_from : "/scr/r6/karpathy/neuraltalk2_checkpoints/vgood1/model_id3-230-1448140513.t7"
+	learning_rate : 0.0004
+	cnn_proto : "model/VGG_ILSVRC_16_layers_deploy.prototxt"
+	backend : "cudnn"
+	save_checkpoint_every : 2500
+	optim_alpha : 0.8
+}
+```
