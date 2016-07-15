@@ -8,11 +8,12 @@ Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
 `	{iteration#: loss}`
 * val_lang_stats_history: Language metrics  
 `{#iteration: metrics{Bleu_1, ROUGE_L, METEOR, Bleu_4, Bleu_3, Bleu_2, CIDEr}}`
+`   {Bleu_1, ROUGE_L, METEOR, Bleu_4, Bleu_3, Bleu_2, CIDEr}}`
 * vocab: Vocabulary  
 `{word_id: word}`
-* iter: Number of iterations
+* iter: Number of iterations  
 `132500`
-* opt: Configuration options
+* opt: Configuration options  
 `{option_name: value}` (see below)
 * protos: Actual trained models (see below)
 `{cnn: Trained convnet, lm: Trained LSTM}` (see below)
