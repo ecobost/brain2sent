@@ -3,18 +3,25 @@ Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
 
 * Training loss  
 `loss_history = {#iteration: loss}`
+
 * Predicted sentences on validation examples  
 `val_predictions = {#iteration: {image_id, caption}}`
-* Validation loss   
+
+* Validation loss  
 `val_loss_history = {#iteration: validation loss}`
+
 * Language metrics  
 `val_lang_stats_history = {#iteration: {Bleu_1, ROUGE_L, METEOR, Bleu_4, Bleu_3, Bleu_2, CIDEr}}`
-* Vocabulary
+
+* Vocabulary  
 `vocab = {word_id: word}`
+
 * Number of iterations  
 `iter = 132500`
+
 * Configuration options (see below)  
-`opt = {option_name: value}` 
+`opt = {option_name: value}`
+
 * Actual trained models (see below)  
 `protos = {cnn: Trained convnet, lm: Trained LSTM}`
 
