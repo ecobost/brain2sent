@@ -1,5 +1,6 @@
 # Checkpoint data
 Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
+
 * Training loss  
 `loss_history = {#iteration: loss}`
 * Predicted sentences on validation examples  
@@ -8,14 +9,16 @@ Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
 `val_loss_history = {#iteration: validation loss}`
 * Language metrics  
 `val_lang_stats_history = {#iteration: {Bleu_1, ROUGE_L, METEOR, Bleu_4, Bleu_3, Bleu_2, CIDEr}}`
-* vocab: Vocabulary
+* Vocabulary
 `vocab = {word_id: word}`
-* iter: Number of iterations  
-`132500`
+* Number of iterations  
+`iter = 132500`
 * Configuration options (see below)  
 `opt = {option_name: value}` 
-* Actual trained models  
-`protos = {cnn: Trained convnet, lm: Trained LSTM}` (see below)
+* Actual trained models (see below)  
+`protos = {cnn: Trained convnet, lm: Trained LSTM}`
+
+Note: Use `checkpoint.xxxxx` to access contents
 
 # LSTM architecture
 Single layer, 768 input, hidden and cell vector, 9567 words in vocabulary.
