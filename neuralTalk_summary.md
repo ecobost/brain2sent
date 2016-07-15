@@ -113,7 +113,8 @@ Output of `print(checkpoint.opt)`:
 
 # Options
 Output of `print(checkpoint.opt)`:
-```
+
+```lua
 {
 	cnn_optim_beta : 0.999
 	finetune_cnn_after : 0
