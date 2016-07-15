@@ -1,22 +1,21 @@
 # Checkpoint data
 Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
-* loss_history: Training loss  
-`{#iteration: loss}`
-* val_predictions: Predicted sentences on validation examples  
-`{#iteration: prediction {image_id, caption}}`
-* val_loss_history: Validation loss   
-`	{iteration#: loss}`
-* val_lang_stats_history: Language metrics  
-`{#iteration: metrics{Bleu_1, ROUGE_L, METEOR, Bleu_4, Bleu_3, Bleu_2, CIDEr}}`  
-        `         {Bleu_1, ROUGE_L, METEOR, Bleu_4, Bleu_3, Bleu_2, CIDEr}}`
-* vocab: Vocabulary  
-`{word_id: word}`
+* Training loss  
+`loss_history = {#iteration: loss}`
+* Predicted sentences on validation examples  
+`val_predictions = {#iteration: {image_id, caption}}`
+* Validation loss   
+`val_loss_history = {#iteration: validation loss}`
+* Language metrics  
+`val_lang_stats_history = {#iteration: {Bleu_1, ROUGE_L, METEOR, Bleu_4, Bleu_3, Bleu_2, CIDEr}}`
+* vocab: Vocabulary
+`vocab = {word_id: word}`
 * iter: Number of iterations  
 `132500`
-* opt: Configuration options  
-`{option_name: value}` (see below)
-* protos: Actual trained models  
-`{cnn: Trained convnet, lm: Trained LSTM}` (see below)
+* Configuration options (see below)  
+`opt = {option_name: value}` 
+* Actual trained models  
+`protos = {cnn: Trained convnet, lm: Trained LSTM}` (see below)
 
 # LSTM architecture
 Single layer, 768 input, hidden and cell vector, 9567 words in vocabulary.
