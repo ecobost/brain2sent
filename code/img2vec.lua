@@ -15,6 +15,8 @@ Note:
 	To assert that rows in the feature vector matrix correspond to the images I 
 	want, I modified misc.DataLoaderRaw.lua (see lines 43-56) to read images in
 	sequential order (img_1.png, img_2.png, ...)
+
+	Needs to be run in the neuraltalk2 folder.
 --]]
 
 require 'torch'
@@ -104,4 +106,4 @@ end
 local feats_file = hdf5.open(opt.feats_filename, 'w')
 feats_file:write('feats', all_feats)
 feats_file:close()	
-print('Done')
+print('Done!')

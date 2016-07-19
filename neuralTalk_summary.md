@@ -1,4 +1,4 @@
-# Checkpoint data
+## Checkpoint data
 Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
 
 * Training loss  
@@ -27,10 +27,10 @@ Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
 
 Note: Use `checkpoint.xxxxx` to access contents
 
-# LSTM architecture
+## LSTM architecture
 Single layer, 768 input, hidden and cell vector, 9567 words in vocabulary.
 
-# Convnet architecture
+## Convnet architecture
 VGG-16 architecture with top layer replaced to produce a 768-dimensional output vector.  
 Output of `print(checkpoint.protos.cnn)`:
 
@@ -80,7 +80,7 @@ nn.Sequential {
 }
 ```
 
-# Options
+## Options
 Output of `print(checkpoint.opt)`:
 
 ```lua

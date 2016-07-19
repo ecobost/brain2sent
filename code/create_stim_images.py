@@ -15,7 +15,7 @@ folder_name = 'images/' # Needs to exist beforehand
 # Open matlab-style file
 print('Reading input...')
 stim_file = h5py.File('Stimuli.mat','r')
-stim = np.array(stim_file['st'])
+stim = np.array(stim_file['st']) # Change to 'sv' for validation stimuli
 stim = stim.transpose()
 
 # Save images

@@ -49,8 +49,8 @@ function DataLoaderRaw:__init(opt)
       n=n+1
 	end
 	--]]
-	for n = 1, 10 do
-	  local fullpath = path.join(opt.folder_path, 'img' .. n .. '.jpg')
+	for n = 1, 108000 do
+	  local fullpath = path.join(opt.folder_path, 'img_' .. n .. '.png')
 	  table.insert(self.files, fullpath)
       table.insert(self.ids, tostring(n)) -- just order them sequentially
     end

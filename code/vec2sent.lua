@@ -10,6 +10,9 @@ Runs the RNN language model to generate phrases conditioned on 768-d vectors
 Example:
 		$ th vec2sent.lua -model /path/to/model -feats /path/to/feature/vectors
 	See code for defaults.
+
+Note:
+	Needs to be run in the neuraltalk2 folder.
 --]]
 
 require 'torch'
@@ -103,3 +106,4 @@ end
 
 -- close file
 sents_file:close()
+print('Done!')
