@@ -13,8 +13,8 @@ Example:
 
 Note:
 	To assert that rows in the feature vector matrix correspond to the images I 
-	want, I modified misc.DataLoaderRaw.lua (see lines 43-56) to read images in
-	sequential order (img_1.png, img_2.png, ...)
+	want, I modified misc.DataLoaderRaw.lua (see lines 43-56 there) to read 
+	images in sequential order (img_1.png, img_2.png, ...)
 
 	Needs to be run in the neuraltalk2 folder.
 --]]
