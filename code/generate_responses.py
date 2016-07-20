@@ -5,7 +5,8 @@
 Reads matrices from Gallant's data, creates the brain mask, drops invalid
 columns and generates a matrix (timesteps x voxels) for (1) BOLD responses, 
 (2) BOLD responses at different time delays (shifted by 4, 5, 6, 7 and 8 secs)
-and (3) estimated neural responses. See code for details.
+and (3) estimated neural responses deconvolved via polynomial division. 
+See code for details.
 
 Works for train or test responses.
 """
@@ -62,7 +63,7 @@ for delay in [4, 5, 6, 7, 8]:
 
 # Save as deconv BOLD
 deconv_bold = deconvolve_bold(bold) # deconvolve via polynomial division
-deconv_file = h5py.File('deconv.h5', 'w')
+deconv_file = h5py.File('pd_deconv.h5', 'w')
 deconv_file.create_dataset('responses', data=deconv_bold)
 deconv_file.close()
 
@@ -70,37 +71,39 @@ deconv_file.close()
 voxel_file.close()
 
 def deconvolve_bold(bold):
-""" Deconvolving the neural response via polydiv using the canonical HRF.
+	""" Deconvolving the neural response via polydiv using the canonical HRF.
 
-"If u and v are vectors of polynomial coefficients, convolving them is 
-equivalent to multiplying the two polynomials, and deconvolution is polynomial
-division." (Explanation from Matlab's deconv() function)
+	"If u and v are vectors of polynomial coefficients, convolving them is
+	equivalent to multiplying the two polynomials, and deconvolution is 
+	polynomial division." (Explanation from Matlab's deconv function)
 
-This is probably the simplest approach to deconvolution. See Wu et al., 2013 and Pedregosa et al., 2015 for better ways to do it: they estimate an HRF and neural
-responses per voxel via GLM (both provide code).
+	This is probably the simplest approach to deconvolution. See Wu et al., 2013
+	and Pedregosa et al., 2015 for better ways to do it: they estimate an HRF
+	and neural responses per voxel via GLM (both provide code).
 
-Args:
-	bold: A matrix (timesteps x voxels). BOLD activations.
+	Args:
+		bold: A matrix (timesteps x voxels). BOLD activations.
 
-Returns:
-	deconv_bold: A matrix (timesteps x voxels). The (normalized) estimated 
-		neural responses that produced the input activations.
-"""
-deconv_bold = np.zeros_like(bold) # output matrix
-hrf = hm.glover_hrf(1, oversampling=1) # 32-second canonical HRF
-for voxel in range(bold.shape[1]):
-	# pad input by filter_size-1 to recover the entire response vector 
-	padded_bold = np.pad(bold[:, voxel], (0, 31), 'constant', constant_values=0)
+	Returns:
+		deconv_bold: A matrix (timesteps x voxels). The (normalized) estimated 
+			neural responses that produced the input activations.
+	"""
+	deconv_bold = np.zeros_like(bold) # output matrix
+	hrf = hm.glover_hrf(1, oversampling=1) # 32-second canonical HRF
+	for voxel in range(bold.shape[1]):
+		# pad input by filter_size-1 to recover the entire response vector 
+		padded_bold = np.pad(bold[:, voxel], (0, 31), 'constant', 
+							 constant_values=0)
 	
-	# drop leading zeros in HRF and deconvolve
-	response, _ = np.polydiv(padded_bold, hrf[4:]) 
+		# drop leading zeros in HRF and deconvolve
+		response, _ = np.polydiv(padded_bold, hrf[4:]) 
 	
-	# realign and store neural responses
-	deconv_bold[:, voxel] = response[4:]
+		# realign and store neural responses
+		deconv_bold[:, voxel] = response[4:]
 
-# normalize per voxel
-deconv_mean = deconv_bold.mean(axis=0)
-deconv_std = deconv_bold.std(axis=0)
-deconv_bold = (deconv_bold - deconv_mean)/deconv_std
+	# normalize per voxel
+	deconv_mean = deconv_bold.mean(axis=0)
+	deconv_std = deconv_bold.std(axis=0)
+	deconv_bold = (deconv_bold - deconv_mean)/deconv_std
 
-return deconv_bold
+	return deconv_bold
