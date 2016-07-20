@@ -28,7 +28,7 @@ Contents of the pretrained checkpoint (model_id1-501-1448236541.t7):
 Note: Use `checkpoint.xxxxx` to access contents
 
 ## LSTM architecture
-Single layer, 768 input, hidden and cell vector, 9567 words in vocabulary.
+Single layer, 768 input, hidden and cell vector, 9567 words in vocabulary. The image vector produced by the convnet is feeded as input at t = 0, the start token is feeded at t = 1 and from them on as normal (feeding the previosuly predicted word). This is not as described in the original neural talk paper where they used a vanilla RNN and fed the image vector as the first hidden vector \[Karpathy and Fei-Fei, 2015\].
 
 ## Convnet architecture
 VGG-16 architecture with top layer replaced to produce a 768-dimensional output vector.  
