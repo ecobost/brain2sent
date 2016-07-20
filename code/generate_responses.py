@@ -3,8 +3,8 @@
 """ Generates different brain activation matrices (in h5 files) from BOLD data.
 
 Reads matrices from Gallant's data, creates the brain mask, drops invalid
-columns and generates a matrix (timesteps x voxels) for (1) BOLD responses, 
-(2) BOLD responses at different time delays (shifted by 4, 5, 6, 7 and 8 secs)
+columns and generates a matrix (timesteps x voxels) for (1) BOLD activations, 
+(2) BOLD activations at different time delays (shifted by 4, 5, 6, 7 and 8 secs)
 and (3) estimated neural responses deconvolved via polynomial division. 
 See code for details.
 
