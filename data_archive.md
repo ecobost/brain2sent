@@ -18,9 +18,9 @@ Description of data files.
 | 	   Filename			| 	Size	| 				Description				|
 |:---------------------:|:---------:|:--------------------------------------|
 | train_full_feats.h5	| 332 Mb	| Matrix (108000 x 768) called 'feats'. Each row corresponds to the convnet-generated feature vector for each image in the original stimuli matrix, thus, one vector per video frame.							|
-| train_feats.h5		| -			| Matrix (7200 x 768) called 'feats'. Each row is the feature vector for the image the subject was seeing at that timepoint. Obtained by subsampling 1 every 15 rows of train_full_feats.							|
-| train_1sec_feats.h5	| -			| Matrix (7200 x 768) called 'feats'. Each row is the mean feature vector for images spanning one second of stimuli. Obtained by averaging every 15 rows in train_full_feats.								|
-| train_conv_feats.h5	| -			| Matrix (7200 x 768) called 'feats'. Each row is obtained by convolving the feature vectors in train_full_feats with the canonical (Glover) HRF and subsampling the results (1 every 15 rows).					|
+| train_feats.h5		| 22 Mb		| Matrix (7200 x 768) called 'feats'. Each row is the feature vector for the image the subject was seeing at that timepoint. Obtained by subsampling 1 every 15 rows of train_full_feats.							|
+| train_1sec_feats.h5	| 22 Mb		| Matrix (7200 x 768) called 'feats'. Each row is the mean feature vector for images spanning one second of video. Obtained by averaging every 15 rows in train_full_feats.								|
+| train_conv_feats.h5	| 44 Mb		| Matrix (7200 x 768) called 'feats'. Each row is obtained by convolving the feature vectors in train_full_feats with the canonical (Glover) HRF and subsampling the results (1 every 15 rows).					|
 | test_full_feats.h5	| 25 Mb		| Matrix (8100 x 768) called 'test_feats'. Similar to train_full_feats but for test images.	|
 | test_feats.h5			|	-		| Matrix (540 x 768) called 'test_feats'. Similar to train_feats but for test images.		|
 | test_xxxx_feats.h5	|	-		| Matrix (540 x 768) called 'test_feats'. Test features for model_x (the best model). Similar to train_xxxx_feats but for test images.	|
