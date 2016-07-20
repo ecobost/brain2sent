@@ -12,7 +12,7 @@ A rough draft of what is needed to recreate the experiments. See the documentati
 	2. Use img2vec.lua to create the feature vector representation of each image in the folder /images. Saved as train_feats.h5
 	3. Use generate_feats.py to generate the subsampled, averaged and deconvolved feature representations for each timestep.
 3. Fit the models
-	1. Use ..... (scikit-learn)
+	1. Use train_models.py to fit the different models. They are compared via cross validation.
 4. Predict the sentences
 	1. Use vec2seq.lua to create the sentences for each predicted image vector
 
