@@ -1,13 +1,19 @@
 # brain2vec
-Mapping fMRI brain volumes to a lower dimensional embedding space and using that to generate sentences describing what the subject is seing.
+Mapping fMRI brain volumes to a joint low-dimensional space and using that to generate sentences describing what the subject is seeing.
 
 # Pipeline
-1. Use create_stim_images.py to put all stimuli images (from Stimuli.mat) into a single folder /images with names 'img_xx.png' for xx = 1 ... n
-2. Use img2vec.lua to create the feature vector representation of each image in the folder /images. Saved as train_feats.h5
-[YET TO DO]
-3. Use ... to create the different feature representations train_feats_?.h5 for each timestep in the experiment (see data_archive).
-4. USe .. to deconvolve the bold signal
-5. Use ... (scikit-learn) to fit the models
-6. Use vec2seq to create the sentences for each predicted image vector
+A rough draft of what is needed to recreate the experiments. See the documentation in each file for details.
+
+1. Process the BOLD activations
+	1. Use generate_responses.py to extract the BOLD activations at different time delays and estimate neural responses (deconvolved via polynomial division).
+	2. Use generate_wu_deconv.m to estimate a voxel-specific HRF and estimate the neural responses via Wiener deconvolution (as in Wu et al.,2013).
+2. Create the image vectors from the experimental stimuli
+	1. Use create_stim_images.py to put all stimuli images (from Stimuli.mat) into a single folder (/images) with names 'img_xx.png' for xx = 1 ... n
+	2. Use img2vec.lua to create the feature vector representation of each image in the folder /images. Saved as train_feats.h5
+	3. Use generate_feats.py to generate the subsampled, averaged and deconvolved feature representations for each timestep.
+3. Fit the models
+	1. Use ..... (scikit-learn)
+4. Predict the sentences
+	1. Use vec2seq.lua to create the sentences for each predicted image vector
 
 Done!
