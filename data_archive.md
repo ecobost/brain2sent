@@ -28,37 +28,37 @@ Description of data files.
 ## Models
 | 	   Filename			| 	Size	| 				Description				|
 |:---------------------:|:---------:|:--------------------------------------|
-| model_a.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_4s_delay to predict train_feats.														|
-| model_b.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_4s_delay to predict train_1sec_feats.												|
-| model_c.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_5s_delay to predict train_feats.														|
-| model_d.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_5s_delay to predict train_1sec_feats.												|
-| model_e.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_6s_delay to predict train_feats.														|
-| model_f.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_6s_delay to predict train_1sec_feats.												|
-| model_g.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_7s_delay to predict train_feats.														|
-| model_h.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_7s_delay to predict train_1sec_feats.												|
-| model_i.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_8s_delay to predict train_feats.														|
-| model_j.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_bold_8s_delay to predict train_1sec_feats.												|
-| model_k.h5			| -			| Matrix (768 x 26946) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on the joint features from train_bold_5s_delay, train_bold_6s_delay, train_bold_7s_delay to predict train_feats. 													|
-| model_l.h5			| -			| Matrix (768 x 26946) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on the joint features from train_bold_5s_delay, train_bold_6s_delay, train_bold_7s_delay to predict train_1sec_feats. 											|
-| model_m.h5			| -			| Matrix (768 x 44910) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on the joint features from train_bold_4s_delay, train_bold_5s_delay, train_bold_6s_delay, train_bold_7s_delay, train_bold_8s_delay to predict train_feats.		|
-| model_n.h5			| -			| Matrix (768 x 44910) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on the joint features from train_bold_4s_delay, train_bold_5s_delay, train_bold_6s_delay, train_bold_7s_delay, train_bold_8s_delay to predict train_1sec_feats.	|
-| model_o.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_pd_deconv to predict train_feats															|
-| model_p.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_pd_deconv to predict train_1sec_feats													|
-| model_q.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_wu_deconv to predict train_feats															|
-| model_r.h5			| -			| Matrix (768 x 8982) called 'weights'. Weights for the l1-regularized multiple linear regression model trained on train_wu_deconv to predict train_1sec_feats													|
-| model_s.h5			| -			| Matrix (73728 x 768) called 'weights' with the weights for the l1-regularized multiple linear regression model trained on train_bold to predict train_conv_feats													|
+| model_a.h5			| -			| A matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_4s_delay to predict train_feats.		|
+| model_b.h5			| -			| A matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_4s_delay to predict train_1sec_feats.|
+| model_c.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_5s_delay to predict train_feats.		|
+| model_d.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_5s_delay to predict train_1sec_feats.|
+| model_e.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_6s_delay to predict train_feats.		|
+| model_f.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_6s_delay to predict train_1sec_feats.|
+| model_g.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_7s_delay to predict train_feats.		|
+| model_h.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_7s_delay to predict train_1sec_feats.|
+| model_i.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_8s_delay to predict train_feats.		|
+| model_j.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold_8s_delay to predict train_1sec_feats.|
+| model_k.h5			| -			| Matrix (768 x 26946) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on the joint features from train_bold_5s_delay, train_bold_6s_delay, train_bold_7s_delay to predict train_feats.		|
+| model_l.h5			| -			| Matrix (768 x 26946) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on the joint features from train_bold_5s_delay, train_bold_6s_delay, train_bold_7s_delay to predict train_1sec_feats.	|
+| model_m.h5			| -			| Matrix (768 x 44910) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on the joint features from train_bold_4s_delay, train_bold_5s_delay, train_bold_6s_delay, train_bold_7s_delay, train_bold_8s_delay to predict train_feats.																|
+| model_n.h5			| -			| Matrix (768 x 44910) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on the joint features from train_bold_4s_delay, train_bold_5s_delay, train_bold_6s_delay, train_bold_7s_delay, train_bold_8s_delay to predict train_1sec_feats.															|
+| model_o.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_pd_deconv to predict train_feats.			|
+| model_p.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_pd_deconv to predict train_1sec_feats.	|
+| model_q.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_wu_deconv to predict train_feats.			|
+| model_r.h5			| -			| Matrix (768 x 8982) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_wu_deconv to predict train_1sec_feats.	|
+| model_s.h5			| -			| Matrix (73728 x 768) called 'weights' and a vector (768 x 1) called 'bias'. Weights for the l1-regularized multiple linear regression model trained on train_bold to predict train_conv_feats.			|
 
 ## Image vector predictions from best model
 | 	   Filename			| 	Size 	| 				Description				|
 |:---------------------:|:---------:|:--------------------------------------|
 | train_preds_x.h5		| -			| Matrix (7200 x 768) called 'preds'. Each row is the image vector predicted by model_x (the best model) for each training sample.	|
-| test_preds_x.h5		| -			| Matrix (540 x 768) called 'test_preds'. Similar to train_preds_x but for test samples. |
+| test_preds_x.h5		| -			| Matrix (540 x 768) called 'test_preds'. Similar to train_preds_x but for test samples.											|
 
 ## Sentence predictions (used only for qualitative comparisons, not training/cv)
 | 	   Filename			| 	Size 	| 				Description				|
 |:---------------------:|:---------:|:--------------------------------------|
 | train_sents_gt.txt	| -			| Text file (7200 lines). Each line is the ground truth sentence prediction made by neuralTalk for each image in the training set (generated from train_feats).												|
-| train_sents_x.txt		| -			| Text file (7200 lines). Each line is the sentence prediction for image vectors predicted by model_x (the best model) in the training set (generated from train_preds_x).											|
+| train_sents_x.txt		| -			| Text file (7200 lines). Each line is the sentence prediction for image vectors predicted by model_x (the best model) in the training set (generated from train_preds_x).								|
 | test_sents_gt.txt		| -			| Text file (540 lines). Similar to train_sents_gt but for the test set (generated from test_feats).	|
 | test_sents_x.txt		| -			| Text file (540 lines). Similar to train_sents_x but for the test set (generated from test_preds_x).	|
 
