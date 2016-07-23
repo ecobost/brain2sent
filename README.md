@@ -1,4 +1,4 @@
-# brain2vec
+# brain2sent
 Mapping fMRI brain volumes to a joint low-dimensional space and using that to generate sentences describing what the subject is seeing.
 
 # Pipeline
