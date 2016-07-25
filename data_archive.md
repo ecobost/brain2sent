@@ -3,15 +3,16 @@ Description of data files.
 ## Brain responses
 | 	   Filename			| 	Size 	| 				Description				|
 |:---------------------:|:---------:|:--------------------------------------|
-| train_bold.h5			| 259 Mb	| Matrix (7200 x 8982) called 'responses'. BOLD activations during training for Subject 1 (timesteps x voxels). Valid voxels are extracted using the provided ROI masks (9137 voxels out of 73728; all regions are used). Voxels with nan values are dropped (155). |
+| train_bold.h5			| 259 Mb	| Matrix (7200 x 8982) called 'responses'. BOLD activations during training for Subject 1 (timesteps x voxels). Valid voxels are extracted using the provided ROI masks (9137 voxels out of 73728; all regions are used). Voxels with nan values are dropped (155). 					|
+| roi_info.h5			| 74 Kb		| Vector (8982) called 'rois'. ROI ID for each voxel in train_bold (ID assignments are listed in section ROIs).	|
 | train_bold_4s_delay.h5| 259 Mb	| Matrix (7200 x 8982) called 'responses'. BOLD activations at time t-4 seconds. Obtained by shifting each row in train_bold 4 positions ahead and filling the first 4 rows with nans.						|
-| train_bold_5s_delay.h5| 259 Mb	| Matrix (7200 x 8982) called 'responses'. Similar to train_bold_4s_delay but for 5 seconds.	|
-| train_bold_6s_delay.h5| 259 Mb	| Matrix (7200 x 8982) called 'responses'. Similar to train_bold_4s_delay but for 6 seconds.	|
-| train_bold_7s_delay.h5| 259 Mb	| Matrix (7200 x 8982) called 'responses'. Similar to train_bold_4s_delay but for 7 seconds.	|
-| train_bold_8s_delay.h5| 259 Mb	| Matrix (7200 x 8982) called 'responses'. Similar to train_bold_4s_delay but for 8 seconds.	|
+| train_bold_5s_delay.h5| 259 Mb	| Matrix (7200 x 8982) called 'responses'. Similar to train_bold_4s_delay but for 5 seconds.					|
+| train_bold_6s_delay.h5| 259 Mb	| Matrix (7200 x 8982) called 'responses'. Similar to train_bold_4s_delay but for 6 seconds.					|
+| train_bold_7s_delay.h5| 259 Mb	| Matrix (7200 x 8982) called 'responses'. Similar to train_bold_4s_delay but for 7 seconds.					|
+| train_bold_8s_delay.h5| 259 Mb	| Matrix (7200 x 8982) called 'responses'. Similar to train_bold_4s_delay but for 8 seconds.					|
 | train_pd_deconv.h5	| 259 Mb	| Matrix (7200 x 8982) called 'responses'. Neural response estimated by deconvolving the canonical (Glover) HRF from the BOLD activations in train_bold via polynomial division.							|
 | train_wu_deconv.h5	| 518 Mb	| Matrix (7200 x 8982) called 'responses'. Neural response deconvolved by using spontaneous events to estimate a voxel-specific HRF and Wiener deconvolution as described in Wu, 2013.							|
-| train_wu_hrfs.h5		| 2 Mb		| Matrix (32 x 8982) called 'HRFs'. Voxel-specific HRFs estimated for the Wu deconvolution.		|
+| train_wu_hrfs.h5		| 2 Mb		| Matrix (32 x 8982) called 'HRFs'. Voxel-specific HRFs estimated for the Wu deconvolution.						|
 | test_xxxx.h5			| -			| Matrix (540 x 8982) called 'test_responses'. Responses for model_x (the best model). Similar to train_xxxx but for BOLD activity during testing.																|
 
 ## Image vectors
@@ -61,6 +62,36 @@ Description of data files.
 | train_sents_x.txt		| -			| Text file (7200 lines). Each line is the sentence prediction for image vectors predicted by model_x (the best model) in the training set (generated from train_preds_x).								|
 | test_sents_gt.txt		| -			| Text file (540 lines). Similar to train_sents_gt but for the test set (generated from test_feats).	|
 | test_sents_x.txt		| -			| Text file (540 lines). Similar to train_sents_x but for the test set (generated from test_preds_x).	|
+
+## ROIs (Subject 1)
+| ID	| Name		|	Number of voxels	|
+|:-----:|:---------:|:---------------------:|
+| 24	| IPlh		| 943					|
+| 32	| IPrh		| 1308					|
+| 40	| MTlh		| 165					|
+| 48	| MTplh		| 58					|
+| 56	| MTprh		| 91					|
+| 64	| MTrh		| 152					|
+| 72	| OBJlh		| 119					|
+| 80	| OBJrh		| 44					|
+| 104	| RSCrh		| 71					|
+| 112	| STSrh		| 45					|
+| 120	| VOlh		| 111					|
+| 128	| VOrh		| 299					|
+| 136	| latocclh	| 309					|
+| 144	| latoccrh	| 413					|
+| 152	| v1lh		| 490					|
+| 160	| v1rh		| 504					|
+| 168	| v2lh		| 715					|
+| 176	| v2rh		| 762					|
+| 184	| v3alh		|  92					|
+| 192	| v3arh		| 160					|
+| 200	| v3blh		| 104					|
+| 208	| v3brh		| 152					|
+| 216	| v3lh		| 581					|
+| 224	| v3rh		| 560					|
+| 232	| v4lh		| 308					|
+| 240	| v4rh		| 426					|
 
 
 Note: Original data provided by Gallant's Lab (http://crcns.org/data-sets/vc/vim-2/about-vim-2)

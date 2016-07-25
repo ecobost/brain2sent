@@ -27,7 +27,7 @@ def main():
 	i = 1
 	for roi in rois:
 		brain = brain + 8*i*np.array(rois[roi])
-		i += 8
+		i += 1
 
 	# Save ROIs as images (to check against mean EPI and visualization)
 	for i in range(18):
@@ -40,7 +40,7 @@ def main():
 	for i in range(18):
 		plt.imsave('mean_' + str(i+1) + '.png', epi_mean[i,...])
 
-	# Apply ROI mask
+	# Select voxels from all regions
 	roi_mask = (brain > 0).flatten()
 	bold = bold[:, roi_mask]
 
@@ -49,7 +49,13 @@ def main():
 	nan_mask = np.logical_not(nan_cols) 
 	bold = bold[:, nan_mask] # 8982 remaining voxels for S1
 	# Tested: Same voxels are dropped for test responses, i.e., masks are the same
-
+	
+	# Save voxels' ROI (for voxel selection)
+	roi_info = (brain[brain > 0])[nan_mask]
+	roi_file = h5py.File('roi_info.h5', 'w')
+	roi_file.create_dataset('rois', data=roi_info)
+	roi_file.close()
+	
 	# Save as BOLD
 	bold_file = h5py.File('bold.h5', 'w')
 	bold_file.create_dataset('responses', data=bold)
