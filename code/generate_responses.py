@@ -13,7 +13,6 @@ Works for train or test responses.
 import h5py
 import numpy as np
 import matplotlib.pyplot as plt
-import nipy.modalities.fmri.hemodynamic_models as hm
 
 def main():
 	"""Main function. Executed if run as script."""
@@ -97,6 +96,8 @@ def deconvolve_bold(bold):
 		deconv_bold: A matrix (timesteps x voxels). The (normalized) estimated 
 			neural responses that produced the input activations.
 	"""
+	import nipy.modalities.fmri.hemodynamic_models as hm
+	
 	deconv_bold = np.zeros_like(bold) # output matrix
 	hrf = hm.glover_hrf(1, oversampling=1) # 32-second canonical HRF
 	for voxel in range(bold.shape[1]):
