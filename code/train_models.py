@@ -123,7 +123,7 @@ def train_lasso(features_filename, targets_filename, model_name):
 				   'alpha': np.zeros(num_outputs), 'k': np.zeros(num_outputs)}
 	
 	# Over every output element
-	for i in range(num_outputs)
+	for i in range(num_outputs):
 		y_i = y[:, i]
 		
 		# Train feature selector (random forest)
