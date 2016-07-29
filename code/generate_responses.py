@@ -62,7 +62,7 @@ def main():
 
 	# Save as BOLD with different delays (from 4-8 secs)
 	for delay in [4, 5, 6, 7, 8]:
-		delay_bold = np.full(bold.shape, np.nan, dtype = 'float32')
+		delay_bold = np.full(bold.shape, np.nan, dtype='float32')
 		delay_bold[delay:, :] = bold[:-delay, :]
 		delay_file = h5py.File('bold_' + str(delay) + 's_delay.h5', 'w')
 		delay_file.create_dataset('responses', data=delay_bold)
