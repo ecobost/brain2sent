@@ -40,7 +40,7 @@ def main():
 	train_lasso('train_wu_deconv.h5', 'train_1sec_feats.h5', 'n')
 	train_lasso('train_bold.h5', 'train_conv_feats.h5', 'o')
 
-	# Neural network models (each takes around 2 hours)
+	# Neural network models (each takes around 8 hours)
 	train_neural_network('train_bold_4s_delay.h5', 'train_feats.h5', 'p')
 	train_neural_network('train_bold_4s_delay.h5', 'train_1sec_feats.h5', 'q')
 	train_neural_network('train_bold_5s_delay.h5', 'train_feats.h5', 'r')
