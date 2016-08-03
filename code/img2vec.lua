@@ -37,9 +37,9 @@ cmd:text('Options')
 
 -- Basic options
 cmd:option('-model', 'models/model_id1-501-1448236541.t7', 'path to the pretrained model')
-cmd:option('-num_images', 108000, 'how many images to process')
+cmd:option('-num_images', 10, 'how many images to process')
 cmd:option('-image_folder', 'images/', 'folder where to find the images')
-cmd:option('-feats_filename', 'full_feats.h5', 'name of the file where feats are saved')
+cmd:option('-feats_filename', 'feats.h5', 'name of the file where feats are saved')
 -- misc
 cmd:option('-backend', 'cudnn', 'nn|cudnn')
 cmd:option('-seed', 123, 'random number generator seed to use')
