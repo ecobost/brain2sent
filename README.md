@@ -6,7 +6,7 @@ A rough draft of what is needed to recreate the experiments. See the documentati
 
 1. Process the BOLD activations
 	1. Use generate_responses.py to extract BOLD activations and ROI info from the mat file. Saved with or without temporal smoothing at delays of 4, 5, 6 and 7 seconds.
-	2. Use generate_wu_deconv.m to estimate voxel-specific HRFs and neural responses via Wiener deconvolution (as in Wu et al.,2013).
+	2. Use generate_wu_deconv.m to estimate voxel-specific HRFs and neural responses via Wiener deconvolution (as in Wu et al., 2013).
 2. Create the image vectors from the experimental stimuli
 	1. Use create_stim_images.py to put all stimuli images (from Stimuli.mat) into a single folder (/images) with names 'img_xx.png' for xx = 1 ... n
 	2. Use img2vec.lua to create the feature vector representation of each image in the folder /images.
