@@ -34,21 +34,21 @@ I decided to go for the following models*:
 	1000, 2500, 5000}. Regularization parameter in range {10^x | x in [1.5, 1.6,
 	1.7, 1.8, ..., 4.2, 4.3, 4.4, 4.5]}
 4 Use ROIs as feature selection. Fit a separate ridge regression for each ROI 
-	and retain the one that gave the best CV. Regularization parameter 
-	cross-validated as in 3.
+	and retain the one that gave the best CV. Regularization parameter in range
+	{10^x | x in [3, 3.1, 3.2, ..., 4.8, 4.9, 5]}.
 5 Use the trained lasso model as feature selection. Select all features that 
 	have a coefficient different than zero in the lasso model and fit a ridge
-	regression. Regularization parameter cross-validated as in 3.
+	regression. Regularization parameter cross-validated in range {10^x | x in 
+	[1, 1.1, 1.2, 1.3, ..., 3.7, 3.8, 3.9, 4]}.
 6 Use the trained ridge model as feature selection. Choose the k features with 
 	highest absolute value and refit a ridge regression model. k and 
-	regularization parameter cross-validated as in 3.
+	regularization parameter cross-validated as in 5.
 7 Fit a neural network with a single hidden layer with 400 units, output is the 
 	768-d vector representing the image vectors. Trained with SGD+NAG, learning 
 	rate is divided by 5 if the training loss has not decreased in two epochs, 
 	training stops when learning rate is too small. Regularization parameter 
 	(called alpha by scikit-learn) is searched using 5-fold cv in range {10^x | 
-	x in {2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.3, 2.35, 2.4, 2.45, 2.5, 2.55,
-	2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3}}
+	x in {2, 2.05, 2.1, ..., 2.9, 2.95, 3}}
 
 * All models (except for the neural network) are fitted for each of the 768 
 output units to predict.
@@ -58,7 +58,7 @@ Other things that could be tried:
 + Other regression models: random Forest/ExtraTrees, SVR, Nearest Neighbor
 + Dimensionality reduction: PCA
 
-See train_models.py for the scikit-learn code declaring and training each model.
+See train_models.py for the scikit-learn code defining and training each model.
 """
 import numpy as np
 import h5py
@@ -129,11 +129,95 @@ Lasso: alpha= 0.00347872947997 sparsity = 343 mse = 0.0185642872093
 # For f_regression maybe select anything with p < 0.01 (instead of going for different number of features) or add this to the option of number of features. something like [1, 2, 3, 5, 10 , 25, 70, 500, 1000, (selector.pvalues_ < 0.01).sum(), (selector.pvalues_ < 0.001).sum()] Make sure these are not zero, otherwise the whole thing will crash.
 
 # Test using the LOOCV rather than 5 cv for ridge
+for k in num_features:
+	print(k, 'feature(s)'); selector = SelectKBest(f_regression, k=k).fit(X_train, y_train); X_new = selector.transform(X_train); X_test_new = selector.transform(X_test); model = linear_model.RidgeCV(alphas=ridge_alphas).fit(X_new, y_train); y_pred = model.predict(X_test_new); mse = ((y_test - y_pred)**2).mean(); print('Ridge: alpha =', model.alpha_, 'mse =', mse);
 
+1 feature(s)
+Ridge: alpha = 100.0 mse = 0.0193551832689
+3 feature(s)
+Ridge: alpha = 100.0 mse = 0.0191561625298
+10 feature(s)
+Ridge: alpha = 316.0 mse = 0.0186798388242
+31 feature(s)
+Ridge: alpha = 316.0 mse = 0.0190873807304
+100 feature(s)
+Ridge: alpha = 1000.0 mse = 0.018848967138
+316 feature(s)
+Ridge: alpha = 3160.0 mse = 0.018859615626
+1000 feature(s)
+Ridge: alpha = 3160.0 mse = 0.019277270148
+3160 feature(s)
+Ridge: alpha = 10000.0 mse = 0.0187265390582
+All feats
+Ridge: alpha = 31600.0 mse = 0.0182215347193
+# Selects smaller alphas and results are slightly worse when it does so. It is faster, though (not quite 5x).
 
 # Test another y_i
+y5_train = y[:-718, 5]
+y5_test = y[-718:, 5]
+
+for k in num_features:
+	print(k, 'feature(s)'); selector = SelectKBest(f_regression, k=k).fit(X_train, y5_train); X_new = selector.transform(X_train); X_test_new = selector.transform(X_test); model = linear_model.RidgeCV(alphas=ridge_alphas, cv=5).fit(X_new, y5_train); y5_pred = model.predict(X_test_new); mse = ((y5_test - y5_pred)**2).mean(); print('Ridge: alpha =', model.alpha_, 'mse =', mse); model = linear_model.LassoCV(cv=5, n_jobs=-1, selection='random', random_state=123, eps = 0.008).fit(X_new, y5_train); print('Min', model.alphas_.min(), 'Max', model.alphas_.max()); sparsity = (model.coef_ != 0).sum(); y5_pred = model.predict(X_test_new); mse = ((y5_test - y5_pred)**2).mean(); print('Lasso: alpha=', model.alpha_, 'sparsity =', sparsity , 'mse =', mse)
+	
+1 feature(s)
+Ridge: alpha = 31.6 mse = 0.0313072994508
+Lasso: alpha= 0.000385105024423 sparsity = 1 mse = 0.0313062022563
+3 feature(s)
+Ridge: alpha = 316 mse = 0.031644974755
+Lasso: alpha= 0.000385105024423 sparsity = 3 mse = 0.031638848892
+10 feature(s)
+Ridge: alpha = 3160 mse = 0.0318372528349
+Lasso: alpha= 0.00130347262705 sparsity = 9 mse = 0.031823262039
+31 feature(s)
+Ridge: alpha = 3160 mse = 0.0313485807876
+Lasso: alpha= 0.00245727484769 sparsity = 16 mse = 0.031313630266
+100 feature(s)
+Ridge: alpha = 3160 mse = 0.0308838979964
+Lasso: alpha= 0.00234030697011 sparsity = 40 mse = 0.0309568527152
+316 feature(s)
+Ridge: alpha = 3160 mse = 0.0301621903717
+Lasso: alpha= 0.00222890683941 sparsity = 105 mse = 0.0305949741133
+1000 feature(s)
+Ridge: alpha = 10000 mse = 0.0287189387462
+Lasso: alpha= 0.00270904084922 sparsity = 242 mse = 0.0292954022182
+3160 feature(s)
+Ridge: alpha = 10000 mse = 0.0278673440986
+Lasso: alpha= 0.00298660214166 sparsity = 519 mse = 0.0295853446381
+# This goes from 31.6 to 10000 alpha. Also, best was in 3160
 
 
+# And another just to be sure y_i
+y5_train = y[:-718, 100]
+y5_test = y[-718:, 100]
+
+1 feature(s)
+Ridge: alpha = 316 mse = 0.0430027341081
+Lasso: alpha= 0.000305072878063 sparsity = 1 mse = 0.0429948025532
+3 feature(s)
+Ridge: alpha = 316 mse = 0.0432209442601
+Lasso: alpha= 0.000206517246254 sparsity = 3 mse = 0.0432272192428
+10 feature(s)
+Ridge: alpha = 3160 mse = 0.0430950707528
+Lasso: alpha= 0.00131774347944 sparsity = 10 mse = 0.0431234001582
+31 feature(s)
+Ridge: alpha = 3160 mse = 0.0426921968199
+Lasso: alpha= 0.00287557979514 sparsity = 18 mse = 0.0427062736123
+100 feature(s)
+Ridge: alpha = 3160 mse = 0.0411894804371
+Lasso: alpha= 0.00194660641236 sparsity = 58 mse = 0.0410441381884
+316 feature(s)
+Ridge: alpha = 3160 mse = 0.0403293577006
+Lasso: alpha= 0.00248417791101 sparsity = 154 mse = 0.040071063323
+1000 feature(s)
+Ridge: alpha = 10000 mse = 0.0400486951881
+Lasso: alpha= 0.00260833641735 sparsity = 348 mse = 0.0408686093885
+3160 feature(s)
+Ridge: alpha = 10000 mse = 0.0400413138872
+Lasso: alpha= 0.00317020423562 sparsity = 642 mse = 0.0400374050188
+# Yeah I will need something bigger than 10000 because some are gonna need that
+# and maybe something slightly smaller than 100.
+
+del y5, y5_train y5_test, y5_pred 
 
 
 
@@ -353,7 +437,6 @@ np.corrcoef(y_p, y_test) = 0.21247009
 
 
 
-
 ###############################################################################
 # Testing smoothing the BOLD ativations temporally.
 from scipy import ndimage
@@ -553,8 +636,6 @@ del y4, y4_train y4_test, y4_pred
 
 
 
-
-
 ###############################################################################
 # Timing how much it would take ridge and lasso on all features for feature y_3
 import time
@@ -591,28 +672,6 @@ print('Lasso: alpha=', model.alpha_, 'sparsity =', sparsity , 'mse =', mse)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###############################################################################
 # Test the ROI version thing
 # Read ROI assignments
@@ -636,15 +695,106 @@ masks['OBJ'] = (roi == 9) | (roi == 10) #?
 masks['rsc'] = (roi == 13)
 masks['sts'] = (roi == 14)
 for ROI_name, mask in masks.items():
-	print(ROI_name,':', mask.sum(), 'features'); X_new = X_train[:, mask]; X_test_new = X_test[:, mask];
+	print(ROI_name,':', mask.sum(), 'features'); X_new = X_train[:, mask]; X_test_new = X_test[:, mask]; model = linear_model.RidgeCV(alphas=ridge_alphas, cv=5).fit(X_new, y_train); y_pred = model.predict(X_test_new); mse = ((y_test - y_pred)**2).mean(); print('Ridge: alpha =', model.alpha_, 'mse =', mse); model = linear_model.LassoCV(cv=5, n_jobs=-1, selection='random', random_state=123, eps = 0.01).fit(X_new, y_train); print('Max', model.alphas_.max(), 'Min', model.alphas_.min()); sparsity = (model.coef_ != 0).sum(); y_pred = model.predict(X_test_new); mse = ((y_test - y_pred)**2).mean(); print('Lasso: alpha=', model.alpha_, 'sparsity =', sparsity , 'mse =', mse)
+	
+ip : 2251 features
+Ridge: alpha = 10000 mse = 0.0187121158387
+Lasso: alpha= 0.00293632192558 sparsity = 231 mse = 0.0188190286733
+v3a : 252 features
+Ridge: alpha = 10000 mse = 0.0187463976904
+Lasso: alpha= 0.00254477658378 sparsity = 64 mse = 0.0187399163802
+v1 : 994 features
+Ridge: alpha = 31600 mse = 0.0192935254364
+Lasso: alpha= 0.00359299573451 sparsity = 74 mse = 0.0192534876104
+OBJ : 163 features
+Ridge: alpha = 10000 mse = 0.0190032666555
+Lasso: alpha= 0.00258242770317 sparsity = 53 mse = 0.018953917105
+vo : 410 features
+Ridge: alpha = 10000 mse = 0.0187250231285
+Lasso: alpha= 0.00268487966143 sparsity = 97 mse = 0.0188348540851
+lo : 722 features
+Ridge: alpha = 10000 mse = 0.0188253936249
+Lasso: alpha= 0.00200021331775 sparsity = 210 mse = 0.0191386408637
+mt : 466 features
+Ridge: alpha = 10000 mse = 0.0187577759497
+Lasso: alpha= 0.00294958332898 sparsity = 86 mse = 0.018910062142
+sts : 45 features
+Ridge: alpha = 100000 mse = 0.0193121068679
+Lasso: alpha= 0.00636122329665 sparsity = 0 mse = 0.0193221658188
+v2 : 1477 features
+Ridge: alpha = 31600 mse = 0.019470167435
+Lasso: alpha= 0.00411921457495 sparsity = 63 mse = 0.019210554996
+v4 : 734 features
+Ridge: alpha = 10000 mse = 0.0186581361689
+Lasso: alpha= 0.00224547202347 sparsity = 160 mse = 0.0187459548216
+v3b : 256 features
+Ridge: alpha = 3160 mse = 0.0185048601184
+Lasso: alpha= 0.00258662048078 sparsity = 87 mse = 0.0187338340224
+rsc : 71 features
+Ridge: alpha = 3160 mse = 0.0191780867289
+Lasso: alpha= 0.00125019054522 sparsity = 44 mse = 0.0192245958442
+v3 : 1141 features
+Ridge: alpha = 31600 mse = 0.0193227580453
+Lasso: alpha= 0.00359351300226 sparsity = 87 mse = 0.0193904209834
+# kind of average results (0.185-0.187) in a lot of ROIs. Smaller alpha is 3160
+# (10**3.5) and bigger alpha was 31600 (10**4.5), so maybe try it only with 
+# bigger alphas. 10**(3-5)
 
-	model = linear_model.RidgeCV(alphas=ridge_alphas, cv=5).fit(X_new, y_train); y_pred = model.predict(X_test_new); mse = ((y_test - y_pred)**2).mean(); print('Ridge: alpha =', model.alpha_, 'mse =', mse)
 
-	model = linear_model.LassoCV(cv=5, n_jobs=-1, selection='random', random_state=123, eps = 0.01).fit(X_new, y_train); print('Max', model.alphas_.max(), 'Min', model.alphas_.min()); sparsity = (model.coef_ != 0).sum(); y_pred = model.predict(X_test_new); mse = ((y_test - y_pred)**2).mean(); print('Lasso: alpha=', model.alpha_, 'sparsity =', sparsity , 'mse =', mse)
+# Try it with another y_i
+y6_train = y[:-718, 5]
+y6_test = y[-718:, 5]
+
+for ROI_name, mask in masks.items():
+	print(ROI_name,':', mask.sum(), 'features'); X_new = X_train[:, mask]; X_test_new = X_test[:, mask]; model = linear_model.RidgeCV(alphas=ridge_alphas, cv=5).fit(X_new, y6_train); y6_pred = model.predict(X_test_new); mse = ((y6_test - y6_pred)**2).mean(); print('Ridge: alpha =', model.alpha_, 'mse =', mse); model = linear_model.LassoCV(cv=5, n_jobs=-1, selection='random', random_state=123, eps = 0.01).fit(X_new, y6_train); print('Max', model.alphas_.max(), 'Min', model.alphas_.min()); sparsity = (model.coef_ != 0).sum(); y6_pred = model.predict(X_test_new); mse = ((y6_test - y6_pred)**2).mean(); print('Lasso: alpha=', model.alpha_, 'sparsity =', sparsity , 'mse =', mse)
 	
-	
-	
-	
+ip : 2251 features
+Ridge: alpha = 10000 mse = 0.0308855504854
+Lasso: alpha= 0.00400181996869 sparsity = 256 mse = 0.0309644845896
+v3a : 252 features
+Ridge: alpha = 10000 mse = 0.0321421488408
+Lasso: alpha= 0.00366210439647 sparsity = 66 mse = 0.0322195520732
+v1 : 994 features
+Ridge: alpha = 10000 mse = 0.0316913662661
+Lasso: alpha= 0.00390463198001 sparsity = 148 mse = 0.0312489480532
+OBJ : 163 features
+Ridge: alpha = 3160 mse = 0.0319064740871
+Lasso: alpha= 0.00405153865901 sparsity = 44 mse = 0.0317213987357
+vo : 410 features
+Ridge: alpha = 3160 mse = 0.0304249441308
+Lasso: alpha= 0.00221788037459 sparsity = 189 mse = 0.0301266462979
+lo : 722 features
+Ridge: alpha = 10000 mse = 0.032910244523
+Lasso: alpha= 0.00459410872374 sparsity = 98 mse = 0.0329809555544
+mt : 466 features
+Ridge: alpha = 10000 mse = 0.0319795473444
+Lasso: alpha= 0.00304405231226 sparsity = 161 mse = 0.0321604842432
+sts : 45 features
+Ridge: alpha = 31600 mse = 0.0332738978859
+Lasso: alpha= 0.0107699556137 sparsity = 0 mse = 0.0333765696274
+v2 : 1477 features
+Ridge: alpha = 10000 mse = 0.0307579439957
+Lasso: alpha= 0.00363398663213 sparsity = 236 mse = 0.0310465460723
+v4 : 734 features
+Ridge: alpha = 10000 mse = 0.0333350014734
+Lasso: alpha= 0.00282842295764 sparsity = 203 mse = 0.0323518178529
+v3b : 256 features
+Ridge: alpha = 3160 mse = 0.0326728720724
+Lasso: alpha= 0.0034641184187 sparsity = 68 mse = 0.0324062824028
+rsc : 71 features
+Ridge: alpha = 3160 mse = 0.0329103098971
+Lasso: alpha= 0.00265715193829 sparsity = 33 mse = 0.0324777428148
+v3 : 1141 features
+Ridge: alpha = 10000 mse = 0.0315121304323
+Lasso: alpha= 0.00373590665814 sparsity = 212 mse = 0.0313712096561
+# 0.030 in vo, ip (still worse than f_regression). High alphas, too.
+
+del y6, y6_train y6_test, y6_pred 
+
+
+
+
+
 
 ###############################################################################
 # Fit an ordinary linear model to see whether it overfits. Yep, it does.
@@ -695,6 +845,7 @@ Lasso: alpha= 0.00289114446382 sparsity = 339 mse = 0.019056575336
 
 
 
+
 ###############################################################################
 # Test a neural network and see what kind of regularization should it use
 # Baseline correlation: 0.526314
@@ -714,7 +865,7 @@ for layer_size in hidden_layer_size:
 			corrf +=  np.corrcoef(y_pred[:,i], y_test[:,i])[0,1]
 		corr =	corr/718; corrf =	corrf/768; print('mse =', mse, 'mse3 =',mse3, 'corr =', corr, 'corr/f =', corrf)
 		
-# Results. Around the same as fitting a ridge per feature but waay easier/faster
+# Results. Slightly worse than fitting a ridge per feature but easier/faster
 Layer size: 50
 alpha =  10
 mse = 0.0257794951244 mse3 = 0.0223201188953 corr = 0.475850131809 corr/f = 0.0529520142246
