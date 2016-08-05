@@ -26,7 +26,7 @@ Description of data files.
 | test_conv_feats.h5	| 4 Mb		| Matrix (540 x 768) called 'test_feats'. Similar to train_conv_feats but for test images.	|
 
 ## Models
-xxxx = \['4sec'|'5sec'|'6sec'|'7sec'|'deconv'|'conv'\]'_smooth'?. For instance,
+xxxx = ['4sec'|'5sec'|'6sec'|'7sec'|'conv'\]'_smooth'? | 'deconv'. For instance,
 l1_xxxx.h5 could be 'l1_5sec_smooth.h5'. Models are trained on train_xxxx_bold 
 to predict train_feats except for 'conv' (or 'conv_smooth') that are trained on
 train_bold (or train_smooth_bold) to predict train_conv_feats.
@@ -36,7 +36,6 @@ train_bold (or train_smooth_bold) to predict train_conv_feats.
 | l1_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l1-regularized multioutput linear regression model (Lasso). No feature selection												|
 | l2_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge). No feature selection												|
 | f_xxxx.h5		|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using an F-statistic.				|
-| roi_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features based on ROI.						|
 | roi_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features based on ROI.						|
 | l1-fs_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using the l1 model fitted above.	|
 | l2-fs_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using the l2 model fitted above.	|
