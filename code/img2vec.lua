@@ -8,13 +8,13 @@ Passes images through a pretrained (and fine-tuned) VGG-net and saves the
 convnet activations (feature vectors) to file. 
 
 Example:
-		$ th img2vec.lua -model /path/to/model -image_folder /path/to/image/directory -num_images XX
+		$ th img2vec.lua -image_folder /path/to/image/folder -model /path/to/model -num_images XX
 	where XX is the total number of images to process. See code for defaults.
 
 Note:
 	To assert that rows in the feature vector matrix correspond to the images I 
-	want, I modified misc.DataLoaderRaw.lua (see lines 43-56 there) to read 
-	images in sequential order (img_1.png, img_2.png, ...)
+	want, I modified misc/DataLoaderRaw.lua to read images in sequential order 
+	(img_1.png, img_2.png, ...)
 
 	Needs to be run in the neuraltalk2 folder.
 --]]
@@ -37,9 +37,9 @@ cmd:text('Options')
 
 -- Basic options
 cmd:option('-model', 'models/model_id1-501-1448236541.t7', 'path to the pretrained model')
-cmd:option('-num_images', 10, 'how many images to process')
+cmd:option('-num_images', 108000, 'how many images to process')
 cmd:option('-image_folder', 'images/', 'folder where to find the images')
-cmd:option('-feats_filename', 'feats.h5', 'name of the file where feats are saved')
+cmd:option('-feats_filename', 'full_feats.h5', 'name of the file where feats are saved')
 -- misc
 cmd:option('-backend', 'cudnn', 'nn|cudnn')
 cmd:option('-seed', 123, 'random number generator seed to use')
@@ -91,7 +91,7 @@ for n = 1, opt.num_images do
 
 	-- forward the model to get loss
 	local feats = protos.cnn:forward(data.images)
-
+	
 	-- save feats for the image
 	all_feats[{n, {}}] = feats:double()
 

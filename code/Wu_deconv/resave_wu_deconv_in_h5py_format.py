@@ -15,11 +15,11 @@ HRFs = np.array(wu_deconv_file['HRFs']['value']).transpose()
 wu_deconv_file.close()
 
 # Save deconv BOLD
-deconv_file = h5py.File('wu_deconv.h5', 'w') # deletes old version
+deconv_file = h5py.File('deconv.h5', 'w') 
 deconv_file.create_dataset('responses', data=deconv_bold)
 deconv_file.close()
 
 # Save HRFs
-hrfs_file = h5py.File('wu_hrfs.h5', 'w')
+hrfs_file = h5py.File('deconv_hrfs.h5', 'w')
 hrfs_file.create_dataset('HRFs', data=HRFs)
 hrfs_file.close()
