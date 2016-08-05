@@ -1,4 +1,14 @@
 --[[
+Written by: Andrej Karpathy & Justin Johnson (github.com/karpathy/neuraltalk2) 
+Modified by: Erick Cobos T (a01184587@itesm.mx)
+Date: 15-July-2016
+
+Minimal changes (lines 53-66) so it reads images named 'img_xx.png' in order.
+
+	Needs to be put in the neuraltalk2/misc folder.
+--]]
+
+--[[ ORIGINAL COMMENT
 Same as DataLoader but only requires a folder of images.
 Does not have an h5 dependency.
 Only used at test time.
