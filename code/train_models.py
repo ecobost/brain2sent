@@ -28,7 +28,7 @@ def main():
 	train_lasso('train_7sec_smooth_bold.h5', 'train_feats.h5', 'l1_7sec_smooth')
 	train_lasso('train_bold.h5', 'train_conv_feats.h5', 'l1_conv')
 	train_lasso('train_smooth_bold.h5', 'train_conv_feats.h5', 'l1_conv_smooth')
-	train_lasso('train_deconv_bold.h5', 'train_feats.h5', 'l1_deconv')
+	train_lasso('train_deconv.h5', 'train_feats.h5', 'l1_deconv')
 		
 	# Ridge models (each takes around ... days)
 	train_ridge('train_4sec_bold.h5', 'train_feats.h5', 'l2_4sec')
@@ -41,7 +41,7 @@ def main():
 	train_ridge('train_7sec_smooth_bold.h5', 'train_feats.h5', 'l2_7sec_smooth')
 	train_ridge('train_bold.h5', 'train_conv_feats.h5', 'l2_conv')
 	train_ridge('train_smooth_bold.h5', 'train_conv_feats.h5', 'l2_conv_smooth')
-	train_ridge('train_deconv_bold.h5', 'train_feats.h5', 'l2_deconv')
+	train_ridge('train_deconv.h5', 'train_feats.h5', 'l2_deconv')
 		
 	# F-statisc models (each takes around ... days)
 	train_f_selection('train_4sec_bold.h5', 'train_feats.h5', 'f_4sec')
@@ -54,7 +54,7 @@ def main():
 	train_f_selection('train_7sec_smooth_bold.h5', 'train_feats.h5', 'f_7sec_smooth')
 	train_f_selection('train_bold.h5', 'train_conv_feats.h5', 'f_conv')
 	train_f_selection('train_smooth_bold.h5', 'train_conv_feats.h5', 'f_conv_smooth')
-	train_f_selection('train_deconv_bold.h5', 'train_feats.h5', 'f_deconv')
+	train_f_selection('train_deconv.h5', 'train_feats.h5', 'f_deconv')
 		
 	# ROI models (each takes around ... days)
 	train_roi_selection('train_4sec_bold.h5', 'train_feats.h5', 'roi_4sec')
@@ -67,7 +67,7 @@ def main():
 	train_roi_selection('train_7sec_smooth_bold.h5', 'train_feats.h5', 'roi_7sec_smooth')
 	train_roi_selection('train_bold.h5', 'train_conv_feats.h5', 'roi_conv')
 	train_roi_selection('train_smooth_bold.h5', 'train_conv_feats.h5', 'roi_conv_smooth')
-	train_roi_selection('train_deconv_bold.h5', 'train_feats.h5', 'roi_deconv')
+	train_roi_selection('train_deconv.h5', 'train_feats.h5', 'roi_deconv')
 	
 	# Lasso for feature selection models (each takes around ... days)
 	train_lasso_selection('train_4sec_bold.h5', 'train_feats.h5', 'l1_4sec.h5', 'l1-fs_4sec')
@@ -80,7 +80,7 @@ def main():
 	train_lasso_selection('train_7sec_smooth_bold.h5', 'train_feats.h5', 'l1_7sec_smooth.h5', 'l1-fs_7sec_smooth')
 	train_lasso_selection('train_bold.h5', 'train_conv_feats.h5', 'l1_conv.h5', 'l1-fs_conv')
 	train_lasso_selection('train_smooth_bold.h5', 'train_conv_feats.h5', 'l1_conv_smooth.h5', 'l1-fs_conv_smooth')
-	train_lasso_selection('train_deconv_bold.h5', 'train_feats.h5', 'l1_deconv.h5', 'l1-fs_deconv')
+	train_lasso_selection('train_deconv.h5', 'train_feats.h5', 'l1_deconv.h5', 'l1-fs_deconv')
 	
 	# Ridge for feature selection (each takes around ... days)
 	train_ridge_selection('train_4sec_bold.h5', 'train_feats.h5', 'l2_4sec.h5', 'l2-fs_4sec')
@@ -93,7 +93,7 @@ def main():
 	train_ridge_selection('train_7sec_smooth_bold.h5', 'train_feats.h5', 'l2_7sec_smooth.h5', 'l2-fs_7sec_smooth')
 	train_ridge_selection('train_bold.h5', 'train_conv_feats.h5', 'l2_conv.h5', 'l2-fs_conv')
 	train_ridge_selection('train_smooth_bold.h5', 'train_conv_feats.h5', 'l2_conv_smooth.h5', 'l2-fs_conv_smooth')
-	train_ridge_selection('train_deconv_bold.h5', 'train_feats.h5', 'l2_deconv.h5', 'l2-fs_deconv')
+	train_ridge_selection('train_deconv.h5', 'train_feats.h5', 'l2_deconv.h5', 'l2-fs_deconv')
 	
 	# Neural network models (each takes around 8 hours)
 	train_neural_network('train_4sec_bold.h5', 'train_feats.h5', 'nn_4sec')
@@ -106,7 +106,7 @@ def main():
 	train_neural_network('train_7sec_smooth_bold.h5', 'train_feats.h5', 'nn_7sec_smooth')
 	train_neural_network('train_bold.h5', 'train_conv_feats.h5', 'nn_conv')
 	train_neural_network('train_smooth_bold.h5', 'train_conv_feats.h5', 'nn_conv_smooth')
-	train_neural_network('train_deconv_bold.h5', 'train_feats.h5', 'nn_deconv')
+	train_neural_network('train_deconv.h5', 'train_feats.h5', 'nn_deconv')
 	
 def read_inputs(features_filename, targets_filename):
 	# Read regression features
