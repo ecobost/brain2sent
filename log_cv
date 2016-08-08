@@ -48,7 +48,7 @@ I decided to go for the following models*:
 	rate is divided by 5 if the training loss has not decreased in two epochs, 
 	training stops when learning rate is too small. Regularization parameter 
 	(called alpha by scikit-learn) is searched using 5-fold cv in range {10^x | 
-	x in {2, 2.05, 2.1, ..., 2.9, 2.95, 3}}
+	x in {1.5, 1.55, 1.6, ..., 2.4, 2.45, 2.5}}
 
 * All models (except for the neural network) are fitted for each of the 768 
 output units to predict.
@@ -652,6 +652,7 @@ print('Ridge: alpha =', model.alpha_, 'mse =', mse)
 # Ridge: alpha = 31600 mse = 0.0182215347193
 # Nice, doesn't take much and produces good results witouth much hassle.
 # there was an alpah=10000 so it didn't even use the highest alpha.
+# Without OpenBlas, this takes over 3 hours.
 
 
 model = linear_model.LassoCV(cv=5, n_jobs=-1, selection='random', random_state=123, eps = 0.01)
