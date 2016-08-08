@@ -5,6 +5,13 @@
 Models use BOLD activations to predict the feature representation (image 
 vectors) of the image the subject is seeing. See data_archive.md for a 
 description of each model and its inputs. 
+
+Important note:
+I very much recommend you install OpenBlas for training. It gives me close to a 
+70x speed-up. Some models would take weeks otherwise. You can do:
+	sudo apt-get remove libatlas3gf-base libatlas-dev
+	sudo apt-get install libopenblas-dev liblapack-dev
+	sudo pip3 install --upgrade numpy
 """
 import h5py
 import numpy as np
@@ -588,7 +595,7 @@ def train_neural_network(features_filename, targets_filename, model_name):
 	Xs, y = read_inputs(features_filename, targets_filename)
 	
 	# Set regularization parameters and number of features
-	regularization_params = {'alpha': np.logspace(2, 3, 20)}
+	regularization_params = {'alpha': np.logspace(1.5, 2.5, 20)}
 
 	# Train model (searching for best regularization parameter)
 	nn = MLPRegressor(hidden_layer_sizes=(400,), algorithm='sgd', 
