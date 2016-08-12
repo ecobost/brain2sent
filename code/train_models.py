@@ -15,9 +15,8 @@ I very much recommend you install OpenBlas for training. It gives me close to a
 """
 import h5py
 import numpy as np
-from sklearn.linear_model import LassoCV
 from sklearn.model_selection import GridSearchCV
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import Ridge, Lasso
 from sklearn.feature_selection import f_regression
 from sklearn.neural_network import MLPRegressor
 
@@ -37,7 +36,7 @@ def main():
 	train_lasso('train_smooth_bold.h5', 'train_conv_feats.h5', 'l1_conv_smooth')
 	train_lasso('train_deconv.h5', 'train_feats.h5', 'l1_deconv')
 		
-	# Ridge models (each takes around ... days)
+	# Ridge models (each takes around 4 days)
 	train_ridge('train_4sec_bold.h5', 'train_feats.h5', 'l2_4sec')
 	train_ridge('train_5sec_bold.h5', 'train_feats.h5', 'l2_5sec')
 	train_ridge('train_6sec_bold.h5', 'train_feats.h5', 'l2_6sec')
@@ -50,7 +49,7 @@ def main():
 	train_ridge('train_smooth_bold.h5', 'train_conv_feats.h5', 'l2_conv_smooth')
 	train_ridge('train_deconv.h5', 'train_feats.h5', 'l2_deconv')
 		
-	# F-statisc models (each takes around ... days)
+	# F-statisc models (each takes around a week)
 	train_f_selection('train_4sec_bold.h5', 'train_feats.h5', 'f_4sec')
 	train_f_selection('train_5sec_bold.h5', 'train_feats.h5', 'f_5sec')
 	train_f_selection('train_6sec_bold.h5', 'train_feats.h5', 'f_6sec')
@@ -102,7 +101,7 @@ def main():
 	train_ridge_selection('train_smooth_bold.h5', 'train_conv_feats.h5', 'l2_conv_smooth.h5', 'l2-fs_conv_smooth')
 	train_ridge_selection('train_deconv.h5', 'train_feats.h5', 'l2_deconv.h5', 'l2-fs_deconv')
 	
-	# Neural network models (each takes around 8 hours)
+	# Neural network models (each takes around 11 hours)
 	train_neural_network('train_4sec_bold.h5', 'train_feats.h5', 'nn_4sec')
 	train_neural_network('train_5sec_bold.h5', 'train_feats.h5', 'nn_5sec')
 	train_neural_network('train_6sec_bold.h5', 'train_feats.h5', 'nn_6sec')
@@ -117,20 +116,23 @@ def main():
 	
 def read_inputs(features_filename, targets_filename):
 	# Read regression features
-	Xs_file = h5py.File(features_filename, 'r')
-	Xs = np.array(Xs_file['responses'])
-	Xs_file.close()
+	with h5py.File(features_filename, 'r') as Xs_file:
+		Xs = np.array(Xs_file['responses'])
 
 	# Read regression targets
-	y_file = h5py.File(targets_filename, 'r')
-	y = np.array(y_file['feats'])
-	y_file.close()
-
+	with h5py.File(targets_filename, 'r') as y_file:
+		y = np.array(y_file['feats'])
+	
 	# Drop first and last 10 samples to avoid convolution/smoothing artifacts
 	Xs = Xs[10:-10, :]
 	y = y[10:-10, :]
 	
 	return Xs, y
+	
+def save_linear_model(model_filename, weights, bias):
+	with h5py.File(model_filename, 'w') as model_file:
+		model_file.create_dataset('weights', data=weights)
+		model_file.create_dataset('bias', data=bias)
 	
 	
 def train_lasso(features_filename, targets_filename, model_name):
@@ -147,54 +149,49 @@ def train_lasso(features_filename, targets_filename, model_name):
 	bias = np.zeros(num_outputs)
 	
 	# And for bookkeeping
-	best_models = {'mse': np.zeros(num_outputs), 'alpha': np.zeros(num_outputs),
+	best_models = {'R2': np.zeros(num_outputs), 'alpha': np.zeros(num_outputs),
 				   'sparsity': np.zeros(num_outputs)}
 	
 	# Over every output element
 	for i in range(num_outputs):
 		y_i = y[:, i]
 		
-		# Train model (selecting a good regularization parameter)
-		model = LassoCV(eps=0.01, selection='random', random_state=123, cv=5,
-						n_jobs=-1).fit(Xs, y_i)
+		# Train model (searching for best regularization parameter)
+		cv = GridSearchCV(Lasso(), regularization_params, cv=5, n_jobs=-1).fit(Xs, y_i)
+		model = cv.best_estimator_
 		
 		# Store it
 		weights[i, :] = model.coef_
 		bias[i] = model.intercept_
 		
 		# Bookkeping
-		best_models['mse'][i] = model.mse_path_.mean(axis=1).max()
-		best_models['alpha'][i] = model.alpha_
+		best_models['R2'][i] = cv.best_score_
+		best_models['alpha'][i] = model.alpha
 		best_models['sparsity'][i] = (model.coef_ != 0).sum()
-				
+		
 		# Report and save checkpoint
 		if i%100 == 0:
 			print(i+1, 'out of', num_outputs)
-			print('MSE:', best_models['mse'][:i])
+			print('R2:', best_models['R2'][:i])
 			print('Alphas:', best_models['alpha'][:i])
 			print('Sparsity:', best_models['sparsity'][:i])
 						
 			print('Saving checkpoint...')
 			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			model_file = h5py.File(checkpoint_name, 'w')
-			model_file.create_dataset('weights', data=weights)
-			model_file.create_dataset('bias', data=bias)
-			model_file.close()
+			save_linear_model(checkpoint_name, weights, bias)
 
 	# Print final cross-validation results
 	print('Final results')
 	print(i+1, 'out of', num_outputs)
-	print('MSE:', best_models['mse'])
+	print('R2:', best_models['R2'])
+	print('Average R2:', best_models['R2'].mean()) 
 	print('Alphas:', best_models['alpha'])
 	print('Sparsity (per output):', (weights != 0).sum(axis=1))
 	print('Sparsity (per feature):', (weights != 0).sum(axis=0))
 		
 	# Save model
-	model_file = h5py.File(model_name + '.h5', 'w')
-	model_file.create_dataset('weights', data=weights)
-	model_file.create_dataset('bias', data=bias)
-	model_file.close()
-	
+	save_linear_model(model_name + '.h5', weights, bias)
+
 	
 def train_ridge(features_filename, targets_filename, model_name):
 	""" Trains a Ridge model on all input features (no feature selection). """
@@ -239,22 +236,17 @@ def train_ridge(features_filename, targets_filename, model_name):
 						
 			print('Saving checkpoint...')
 			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			model_file = h5py.File(checkpoint_name, 'w')
-			model_file.create_dataset('weights', data=weights)
-			model_file.create_dataset('bias', data=bias)
-			model_file.close()
+			save_linear_model(checkpoint_name, weights, bias)
 
 	# Print final cross-validation results
 	print('Final results')
 	print(i+1, 'out of', num_outputs)
 	print('R2:', best_models['R2'])
+	print('Average R2:', best_models['R2'].mean()) 
 	print('Alphas:', best_models['alpha'])
 		
 	# Save model
-	model_file = h5py.File(model_name + '.h5', 'w')
-	model_file.create_dataset('weights', data=weights)
-	model_file.create_dataset('bias', data=bias)
-	model_file.close()
+	save_linear_model(model_name + '.h5', weights, bias)
 	
 	
 def train_f_selection(features_filename, targets_filename, model_name):
@@ -265,8 +257,8 @@ def train_f_selection(features_filename, targets_filename, model_name):
 	Xs, y = read_inputs(features_filename, targets_filename)
 	
 	# Set regularization parameters and number of features
-	regularization_params = {'alpha': np.logspace(1.5, 4.5, 30)}
-	ks = [1, 3, 7, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000]
+	regularization_params = {'alpha': np.logspace(2.5, 5, 25)}
+	ks = [5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000]
 	
 	# Initialize containers for weights and bias
 	num_features = Xs.shape[1]
@@ -318,23 +310,20 @@ def train_f_selection(features_filename, targets_filename, model_name):
 						
 			print('Saving checkpoint...')
 			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			model_file = h5py.File(checkpoint_name, 'w')
-			model_file.create_dataset('weights', data=weights)
-			model_file.create_dataset('bias', data=bias)
-			model_file.close()
+			with h5py.File(checkpoint_name, 'w') as model_file:
+			save_linear_model(checkpoint_name, weights, bias)
 
 	# Print final cross-validation results
 	print('Final results')
 	print(i+1, 'out of', num_outputs)
 	print('R2:', best_models['R2'])
+	print('Average R2:', best_models['R2'].mean()) 
 	print('Alphas:', best_models['alpha'])
 	print('Ks:', best_models['k'])
+	print('Average K:', best_models['k'].mean())
 		
 	# Save model
-	model_file = h5py.File(model_name + '.h5', 'w')
-	model_file.create_dataset('weights', data=weights)
-	model_file.create_dataset('bias', data=bias)
-	model_file.close()
+	save_linear_model(model_name + '.h5', weights, bias)
 	
 	
 def train_roi_selection(features_filename, targets_filename, model_name):
@@ -345,9 +334,8 @@ def train_roi_selection(features_filename, targets_filename, model_name):
 	Xs, y = read_inputs(features_filename, targets_filename)
 	
 	# Read ROI assignments
-	roi_file = h5py.File('roi_info.h5', 'r')
-	roi = np.array(roi_file['rois'])
-	roi_file.close()
+	with h5py.File('roi_info.h5', 'r') as roi_file:
+		roi = np.array(roi_file['rois'])
 
 	# Get masks
 	masks = {}
@@ -366,7 +354,7 @@ def train_roi_selection(features_filename, targets_filename, model_name):
 	masks['sts'] = (roi == 14)
 	
 	# Set regularization parameters
-	regularization_params = {'alpha': np.logspace(3, 5, 20)}
+	regularization_params = {'alpha': np.logspace(2.5, 5, 25)}
 	
 	# Initialize containers for weights and bias
 	num_features = Xs.shape[1]
@@ -409,23 +397,18 @@ def train_roi_selection(features_filename, targets_filename, model_name):
 						
 			print('Saving checkpoint...')
 			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			model_file = h5py.File(checkpoint_name, 'w')
-			model_file.create_dataset('weights', data=weights)
-			model_file.create_dataset('bias', data=bias)
-			model_file.close()
+			save_linear_model(checkpoint_name, weights, bias)
 
 	# Print final cross-validation results
 	print('Final results')
 	print(i+1, 'out of', num_outputs)
 	print('R2:', best_models['R2'])
+	print('Average R2:', best_models['R2'].mean()) 
 	print('Alphas:', best_models['alpha'])
 	print('ROIs:', best_models['roi'])
 		
 	# Save model
-	model_file = h5py.File(model_name + '.h5', 'w')
-	model_file.create_dataset('weights', data=weights)
-	model_file.create_dataset('bias', data=bias)
-	model_file.close()
+	save_linear_model(model_name + '.h5', weights, bias)
 	
 	
 def train_lasso_selection(features_filename, targets_filename, selector_filename,
@@ -437,9 +420,8 @@ def train_lasso_selection(features_filename, targets_filename, selector_filename
 	Xs, y = read_inputs(features_filename, targets_filename)
 	
 	# Read pretrained model
-	selector_file = h5py.File(selector_filename, 'r')
-	selector = np.array(selector_file['weights'])
-	selector_file.close()
+	with h5py.File(selector_filename, 'r') as selector_file:
+		selector = np.array(selector_file['weights'])
 	
 	# Set regularization parameters and number of features
 	regularization_params = {'alpha': np.logspace(1, 4, 30)}
@@ -484,25 +466,19 @@ def train_lasso_selection(features_filename, targets_filename, selector_filename
 						
 			print('Saving checkpoint...')
 			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			model_file = h5py.File(checkpoint_name, 'w')
-			model_file.create_dataset('weights', data=weights)
-			model_file.create_dataset('bias', data=bias)
-			model_file.close()
-
+			save_linear_model(checkpoint_name, weights, bias)
 
 	# Print final cross-validation results
 	print('Final results')
 	print(i+1, 'out of', num_outputs)
 	print('R2:', best_models['R2'])
+	print('Average R2:', best_models['R2'].mean()) 
 	print('Alphas:', best_models['alpha'])
 	print('Sparsity (per output):', (weights != 0).sum(axis=1))
 	print('Sparsity (per feature):', (weights != 0).sum(axis=0))
 		
 	# Save model
-	model_file = h5py.File(model_name + '.h5', 'w')
-	model_file.create_dataset('weights', data=weights)
-	model_file.create_dataset('bias', data=bias)
-	model_file.close()
+	save_linear_model(model_name + '.h5', weights, bias)
 	
 	
 def train_ridge_selection(features_filename, targets_filename, selector_filename,
@@ -514,13 +490,12 @@ def train_ridge_selection(features_filename, targets_filename, selector_filename
 	Xs, y = read_inputs(features_filename, targets_filename)
 	
 	# Read pretrained model
-	selector_file = h5py.File(selector_filename, 'r')
-	selector = np.array(selector_file['weights'])
-	selector_file.close()
+	with h5py.File(selector_filename, 'r') as selector_file:
+		selector = np.array(selector_file['weights'])
 	
 	# Set regularization parameters and number of features
-	regularization_params = {'alpha': np.logspace(1, 4, 30)}
-	ks = [1, 3, 7, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000]
+	regularization_params = {'alpha': np.logspace(2.5, 5, 25)}
+	ks = [5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000]
 	
 	# Initialize containers for weights and bias
 	num_features = Xs.shape[1]
@@ -568,24 +543,20 @@ def train_ridge_selection(features_filename, targets_filename, selector_filename
 						
 			print('Saving checkpoint...')
 			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			model_file = h5py.File(checkpoint_name, 'w')
-			model_file.create_dataset('weights', data=weights)
-			model_file.create_dataset('bias', data=bias)
-			model_file.close()
+			save_linear_model(checkpoint_name, weights, bias)
 
 	# Print final cross-validation results
 	print('Final results')
 	print(i+1, 'out of', num_outputs)
 	print('R2:', best_models['R2'])
+	print('Average R2:', best_models['R2'].mean()) 
 	print('Alphas:', best_models['alpha'])
 	print('Ks:', best_models['k'])
+	print('Average K:', best_models['k'].mean()) 
 		
 	# Save model
-	model_file = h5py.File(model_name + '.h5', 'w')
-	model_file.create_dataset('weights', data=weights)
-	model_file.create_dataset('bias', data=bias)
-	model_file.close()
-	
+	save_linear_model(model_name + '.h5', weights, bias)
+
 	
 def train_neural_network(features_filename, targets_filename, model_name):
 	""" Trains a neural network with 400 units in the hidden layer. """
@@ -608,13 +579,11 @@ def train_neural_network(features_filename, targets_filename, model_name):
 	print('Best alpha:', cv.best_params_['alpha'], 'R2 score:', cv.best_score_)
 
 	# Save model
-	model_file = h5py.File(model_name + '.h5', 'w')
-	model_file.create_dataset('weights_ih', data=model.coefs_[0].transpose())
-	model_file.create_dataset('bias_ih', data=model.intercepts_[0])
-	model_file.create_dataset('weights_ho', data=model.coefs_[1].transpose())
-	model_file.create_dataset('bias_ho', data=model.intercepts_[1])
-	model_file.close()
-	
+	with h5py.File(model_name + '.h5', 'w') as model_file:
+		model_file.create_dataset('weights_ih', data=model.coefs_[0].transpose())
+		model_file.create_dataset('bias_ih', data=model.intercepts_[0])
+		model_file.create_dataset('weights_ho', data=model.coefs_[1].transpose())
+		model_file.create_dataset('bias_ho', data=model.intercepts_[1])
 	
 if __name__ == "__main__":
 	main()
