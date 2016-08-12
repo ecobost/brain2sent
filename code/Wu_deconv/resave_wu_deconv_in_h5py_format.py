@@ -9,17 +9,14 @@ import h5py
 import numpy as np
 
 # Read Octave file
-wu_deconv_file = h5py.File('wu_deconv.h5', 'r')
-deconv_bold = np.array(wu_deconv_file['deconv_bold']['value']).transpose()
-HRFs = np.array(wu_deconv_file['HRFs']['value']).transpose()
-wu_deconv_file.close()
+with h5py.File('wu_deconv.h5', 'r') as wu_deconv_file:
+	deconv_bold = np.array(wu_deconv_file['deconv_bold']['value']).transpose()
+	HRFs = np.array(wu_deconv_file['HRFs']['value']).transpose()
 
 # Save deconv BOLD
-deconv_file = h5py.File('deconv.h5', 'w') 
-deconv_file.create_dataset('responses', data=deconv_bold)
-deconv_file.close()
+with h5py.File('deconv.h5', 'w') as deconv_file:
+	deconv_file.create_dataset('responses', data=deconv_bold)
 
 # Save HRFs
-hrfs_file = h5py.File('deconv_hrfs.h5', 'w')
-hrfs_file.create_dataset('HRFs', data=HRFs)
-hrfs_file.close()
+with h5py.File('deconv_hrfs.h5', 'w') as hrfs_file:
+	hrfs_file.create_dataset('HRFs', data=HRFs)

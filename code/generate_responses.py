@@ -45,41 +45,36 @@ bold = bold[:, nan_mask] # 8982 remaining voxels for S1
 # Tested: Same voxels are dropped for train and test responses
 
 # Save as BOLD
-bold_file = h5py.File(file_prefix + 'bold.h5', 'w')
-bold_file.create_dataset('responses', data=bold)
-bold_file.close()
+with h5py.File(file_prefix + 'bold.h5', 'w') as bold_file:
+	bold_file.create_dataset('responses', data=bold)
 
 # Create smooth BOLD
 smooth_bold = ndimage.gaussian_filter1d(bold, sigma=1.5, axis=0)
 
 # Save as smooth BOLD
-smooth_bold_file = h5py.File(file_prefix + 'smooth_bold.h5', 'w')
-smooth_bold_file.create_dataset('responses', data=smooth_bold)
-smooth_bold_file.close()
+with h5py.File(file_prefix + 'smooth_bold.h5', 'w') as smooth_bold_file:
+	smooth_bold_file.create_dataset('responses', data=smooth_bold)
 
 # Save as BOLD with different delays (from 4-7 secs)
 for delay in [4, 5, 6, 7]:
 	delay_bold = np.full(bold.shape, np.nan, dtype='float32')
 	delay_bold[:-delay, :] = bold[delay:, :]
-	delay_file = h5py.File(file_prefix + str(delay) + 'sec_bold.h5', 'w')
-	delay_file.create_dataset('responses', data=delay_bold)
-	delay_file.close()
+	with h5py.File(file_prefix + str(delay) + 'sec_bold.h5', 'w') as delay_file:
+		delay_file.create_dataset('responses', data=delay_bold)
 	
 # Save as smooth BOLD with different delays (from 4-7 secs)
 for delay in [4, 5, 6, 7]:
 	delay_bold = np.full(smooth_bold.shape, np.nan, dtype='float32')
 	delay_bold[:-delay, :] = smooth_bold[delay:, :]
-	delay_file = h5py.File(file_prefix + str(delay) + 'sec_smooth_bold.h5', 'w')
-	delay_file.create_dataset('responses', data=delay_bold)
-	delay_file.close()
+	with h5py.File(file_prefix + str(delay) + 'sec_smooth_bold.h5', 'w') as delay_file:
+		delay_file.create_dataset('responses', data=delay_bold)
 
 # Create ROI per voxel (later used for voxel selection)
 roi_info = (brain[brain > 0])[nan_mask]
 
 # Save ROI info
-roi_file = h5py.File('roi_info.h5', 'w')
-roi_file.create_dataset('rois', data=roi_info)
-roi_file.close()
+with h5py.File('roi_info.h5', 'w') as roi_file:
+	roi_file.create_dataset('rois', data=roi_info)
 
 # Close voxel file
 voxel_file.close()
