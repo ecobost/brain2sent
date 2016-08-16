@@ -1245,3 +1245,151 @@ mse = 0.0213370311191 mse3 = 0.0193240176896 corr = 0.567520347669 corr/f = 0.01
 
 # Trains fast (less than an hour) and results are average, could have it 
 # as a baseline
+
+
+
+
+###############################################################################
+# Test how to deconvolve the predicted features by the xx_conv models.
+from sklearn.metrics import r2_score
+
+# Bold without delay
+with h5py.File('train_bold.h5', 'r') as Xs2_file:
+	Xs2 = np.array(Xs2_file['responses'])
+Xs2 = Xs2[10 : -10, :]
+X_conv_train = Xs2[:-718,:]
+X_conv_test = Xs2[-718:,:]
+
+# True convolved features
+with h5py.File('train_conv_feats.h5', 'r') as y_conv_file:
+	y_conv = np.array(y_conv_file['feats'])
+y_conv = y_conv[10:-10] 
+y_conv_train = y_conv[:-718, 3]
+y_conv_test = y_conv[-718:, 3]
+
+# Predicted convolved features (predicted with l2_conv)
+with h5py.File('l2_conv.h5', 'r') as model_file:
+	weights = np.array(model_file['weights'])
+	bias = np.array(model_file['bias'])
+y_conv_pred = np.dot(Xs2, weights.transpose()) + bias # to compare with y_conv, y
+y_conv_pred_train = y_conv_pred[:-718,3] # compare with y_conv_train, y_train
+
+# Option 1: just shifting the answer by 5 seconds back
+y_conv_shifted = np.zeros_like(y_conv_pred_train)
+y_conv_shifted[:-5] = y_conv_pred_train[5:]
+# That's actually quite fine.
+
+# Correlation of predicted convolution vs. actual convolution
+np.corrcoef(y_conv_pred_train, y_conv_train) = 0.7657
+# Correlation of predicted convoluted (shifted 5 secs) feat vs actual feat (no convolution)
+np.corrcoef(y_conv_shifted, y_train) = 0.6446
+# MSE
+((y_train - y_conv_shifted)**2).mean() = 0.0122
+r2_score(y_train, y_conv_shifted) = 0.369 # usually 0.08
+# That's too good to be true. Probably because of overfitting.
+
+# Imma try predicting on l2 with l2_5sec_smooth (next best after l2_conv)
+with h5py.File('train_5sec_smooth_bold.h5', 'r') as Xs3_file:
+	Xs3 = np.array(Xs3_file['responses'])
+Xs3 = Xs3[10 : -10, :]
+X_smooth_train = Xs3[:-718,:]
+X_smooth_test = Xs3[-718:,:]
+with h5py.File('l2_5sec_smooth.h5', 'r') as model_file:
+	weights = np.array(model_file['weights'])
+	bias = np.array(model_file['bias'])
+y7_pred = np.dot(Xs3, weights.transpose()) + bias # to compare with y
+y7_pred_train = y7_pred[:-718,3]
+
+np.corrcoef(y7_pred_train, y_train) = 0.7136
+((y7_pred_train - y_train)**2).mean() = 0.0111
+r2_score(y_train, y7_pred_train) = 0.424
+# So yeah, they are about the same (5sec smooth is actually better), is just ovefitting. But can I improve the output from l2_conv if I deconvolve it better.
+
+# Plot to see how they look
+plt.plot(y_train, 'r')
+plt.plot(y_conv_shifted, 'b')
+plt.plot(y7_pred_train, 'g')
+# It lokks like they are learning the same thing, the 5sec_smooth version is just smoother.
+
+# I don't trust whether they can be compared on the training set, so I'm gonna
+# train them using the last 718 for testing (as in the other experiments)
+regularization_params = {'alpha': np.logspace(3.5, 5.5, 20)}
+# l2_5sec_smooth
+cv = GridSearchCV(Ridge(), regularization_params, cv=5, n_jobs=-1)
+cv.fit(X_smooth_train, y_train)
+model = cv.best_estimator_
+y7_pred = model.predict(X_smooth_test)
+y7_shifted = y7_pred[:-5] # drop the last 5
+
+np.corrcoef(y7_shifted, y_test[:-5]) = 0.2863
+((y7_shifted - y_test[:-5])**2).mean() = 0.01783
+r2_score(y_test[:-5], y7_shifted) = 0.0741
+# makes more sense, wuite worse than in trainng. Means my model is comlex enough.
+
+#l2_conv
+cv = GridSearchCV(Ridge(), regularization_params, cv=5, n_jobs=-1)
+cv.fit(X_conv_train, y_conv_train)
+model = cv.best_estimator_
+y8_pred = model.predict(X_conv_test)
+y8_shifted = y8_pred[5:] # shift it
+
+np.corrcoef(y8_shifted, y_test[:-5]) = 0.257911
+((y8_shifted - y_test[:-5])**2).mean() = 0.01838
+r2_score(y_test[:-5], y8_shifted) = 0.04525
+# same results as with training, just shifting it gives average to good results
+# even though here 5sec_smooth beats conv, conv_smooth may be the better one.
+# will see in test results.
+
+plt.plot(y_test[:-5], 'r')
+plt.plot(y8_shifted, 'b')
+plt.plot(y7_shifted, 'g')
+# Plots look fine. same as above, they are learning pretty much the same with 
+# 5sec_smooth been smoother.
+
+# See whether deconvolving y8_pred rather than just shifting it is better?
+# Wiener deconv from here: https://gist.github.com/danstowell/f2d81a897df9e23cc1da
+# Not positive whether it's alright. I'll probably reimplement it if useful.
+import nipy.modalities.fmri.hemodynamic_models as hm
+from numpy.fft import fft, ifft
+
+hrf = hm.glover_hrf(1, oversampling=1) # 32-second canonical HRF
+hrf = hrf[2:] # drop leading zeros
+SNR = 2
+signal = y8_pred
+
+H = fft(hrf, len(signal))
+#y8_deconv = np.real(ifft(fft(signal)*np.conj(H)/(H*np.conj(H) + SNR**2))) #original
+B = fft(signal)
+weiner_filter = np.conj(H)/(H*np.conj(H) + (1/SNR)**2)
+y8_deconv = np.real(ifft(weiner_filter*B))
+
+y8_deconv = y8_deconv[:-5] # drop the last 5 as they were probably badly deconvolved
+
+np.corrcoef(y8_deconv, y_test[:-5]) = 0.2385
+((y8_deconv - y_test[:-5])**2).mean() = 0.02453
+r2_score(y_test[:-5], y8_deconv) = -0.2737
+# Results are worse than simply shifting the answer, plus I tried different SNRs 
+# and results were worse, too. Results with polydiv deconvolution were awful.
+
+# Deconvolution is not that bad but it seems it is not shifting it back to the exact point i want, so I will shift it 2 secs in the future manually.
+np.corrcoef(y8_deconv[:-2], y_test[2:-5]) = 0.2694
+((y8_deconv[:-2] - y_test[2:-5])**2).mean() = 0.02439
+r2_score(y_test[2:-5], y8_deconv[:-2]) = -0.264202
+# It improves, corr is better than just shifting it 5 secs, others are still bad but they depend on the spread of results which could be rescaled using the training ys. But why the 2? (do the couple of zeros at the start of the filter have something to do with it), that may be it. Maybe it is the implementation that is wrong. Dropping the first 2 zeros in the hrf gives me the right answer.
+
+# Comparing with the version that is just shifted it appears to be shifting it plus
+# smoothing it. SNR controls the smoothing (more SNR, less smoothing, picks more noise from the original signal)
+SNR = 2
+np.corrcoef(y8_deconv[:-2], y_test[2:-5]) = 0.2846 # What??
+SNR = 1
+np.corrcoef(y8_deconv[:-2], y_test[2:-5]) = 0.2698
+SNR = y_test.var() #0.01924
+np.corrcoef(y8_deconv[:-2], y_test[2:-5]) = 0.1006 
+
+# will the SNR affect other y_is different, though, does this become a hyperparamter.
+# yes, it is a hyperparametr and it will probably affect other y_is differently.
+
+# Test whether i canestimate S by using y_train. so I can get rid of the SNR thing, or improve results by using the frequencies of the features. I could also use the trainng set to either somehow calculate SNR or to cross-validate SNR but the estimate will be high and will produce more complex SNR
+
+# think why taking the 2 first of hrf works.
+# Check whether SNr is the same for other y_is (maybe?)

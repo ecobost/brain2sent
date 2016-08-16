@@ -62,7 +62,7 @@ def main():
 	train_f_selection('train_smooth_bold.h5', 'train_conv_feats.h5', 'f_conv_smooth')
 	train_f_selection('train_deconv.h5', 'train_feats.h5', 'f_deconv')
 		
-	# ROI models (each takes around ... days)
+	# ROI models (each takes around 2 days)
 	train_roi_selection('train_4sec_bold.h5', 'train_feats.h5', 'roi_4sec')
 	train_roi_selection('train_5sec_bold.h5', 'train_feats.h5', 'roi_5sec')
 	train_roi_selection('train_6sec_bold.h5', 'train_feats.h5', 'roi_6sec')
@@ -310,7 +310,6 @@ def train_f_selection(features_filename, targets_filename, model_name):
 						
 			print('Saving checkpoint...')
 			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			with h5py.File(checkpoint_name, 'w') as model_file:
 			save_linear_model(checkpoint_name, weights, bias)
 
 	# Print final cross-validation results
