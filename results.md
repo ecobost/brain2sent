@@ -16,16 +16,16 @@ Alpha (the regularization parameter) and k (the number of features) was cross-va
 | nn_conv_smooth| 0.202			| 73.86		| -			|
 | nn_deconv		| 0.125			| 106.25	| -			|
 | l2_4sec		| 0.080			| -			| -			|
-| l2_5sec		| xxxxx			| -			| -			|
-| l2_6sec		| xxxxx			| -			| -			|
+| l2_5sec		| 0.083			| -			| -			|
+| l2_6sec		| 0.069			| -			| -			|
 | l2_7sec		| 0.050			| -			| -			|
-| l2_4sec_smooth| xxxxx			| -			| -			|
+| l2_4sec_smooth| 0.089			| -			| -			|
 | l2_5sec_smooth| 0.091			| -			| -			|
 | l2_6sec_smooth| 0.079			| -			| -			|
-| l2_7sec_smooth| xxxxx			| -			| -			|
+| l2_7sec_smooth| 0.061			| -			| -			|
 | l2_conv		| 0.116			| -			| -			|
 | l2_conv_smooth| 0.133			| -			| -			|
-| l2_deconv		| xxxxx			| -			| -			|
+| l2_deconv		| 0.074		| -			| -			|
 | f_4sec		| xxxxx			| -			| -			|
 | f_5sec		| xxxxx			| -			| -			|
 | f_6sec		| xxxxx			| -			| -			|
