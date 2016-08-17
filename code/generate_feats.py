@@ -15,6 +15,7 @@ from scipy.stats import gamma
 file_prefix = 'train_' # whether to read/write train or test files
 
 def main():
+	""" Generates the two feature representations."""
 	# Read feats
 	with h5py.File(file_prefix + 'full_feats.h5', 'r') as full_feats_file:
 		full_feats = np.array(full_feats_file['feats'])
