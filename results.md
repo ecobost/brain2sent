@@ -1,42 +1,53 @@
 # Cross-validation results
 Results computed using 5-fold cross-validation.
-Alpha (the regularization parameter) and k (the number of features) was cross-validated in some models. The R^2 is that of the best/selected configuration.
+Alpha (the regularization parameter) was crossvalidated for neural networks. The R^2 is that of the best/selected configuration.
 
-| Model			| R^2_feature*	| Best alpha| Best k	| 
-|:-------------:|:-------------:|:---------:|:---------:|
-| nn_4sec		| 0.131			| 112.88	| -			|
-| nn_5sec		| 0.134			| 106.25	| -			|
-| nn_6sec		| 0.114			| 112.88	| -			|
-| nn_7sec		| 0.086			| 127.43	| -			|
-| nn_4sec_smooth| 0.142			| 65.43		| -			|
-| nn_5sec_smooth| 0.143			| 73.86		| -			|
-| nn_6sec_smooth| 0.124			| 83.38		| -			|
-| nn_7sec_smooth| 0.098			| 94.12		| -			|
-| nn_conv		| 0.182			| 106.25	| -			|
-| nn_conv_smooth| 0.202			| 73.86		| -			|
-| nn_deconv		| 0.125			| 106.25	| -			|
-| l2_4sec		| 0.080			| -			| -			|
-| l2_5sec		| 0.083			| -			| -			|
-| l2_6sec		| 0.069			| -			| -			|
-| l2_7sec		| 0.050			| -			| -			|
-| l2_4sec_smooth| 0.089			| -			| -			|
-| l2_5sec_smooth| 0.091			| -			| -			|
-| l2_6sec_smooth| 0.079			| -			| -			|
-| l2_7sec_smooth| 0.061			| -			| -			|
-| l2_conv		| 0.116			| -			| -			|
-| l2_conv_smooth| 0.133			| -			| -			|
-| l2_deconv		| 0.074		| -			| -			|
-| f_4sec		| xxxxx			| -			| -			|
-| f_5sec		| xxxxx			| -			| -			|
-| f_6sec		| xxxxx			| -			| -			|
-| f_7sec		| xxxxx			| -			| -			|
-| f_4sec_smooth	| xxxxx			| -			| -			|
-| f_5sec_smooth	| xxxxx			| -			| -			|
-| f_6sec_smooth	| xxxxx			| -			| -			|
-| f_7sec_smooth	| xxxxx			| -			| -			|
-| f_conv		| xxxxx			| -			| -			|
-| f_conv_smooth	| xxxxx			| -			| -			|
-| f_deconv		| xxxxx			| -			| -			|
+| Model				| R^2_feature*	| Best alpha|
+|:-----------------:|:-------------:|:---------:|
+| nn_4sec			| 0.131			| 112.88	|
+| nn_5sec			| 0.134			| 106.25	|
+| nn_6sec			| 0.114			| 112.88	|
+| nn_7sec			| 0.086			| 127.43	|
+| nn_4sec_smooth	| 0.142			| 65.43		|
+| nn_5sec_smooth	| 0.143			| 73.86		|
+| nn_6sec_smooth	| 0.124			| 83.38		|
+| nn_7sec_smooth	| 0.098			| 94.12		|
+| nn_conv			| 0.182			| 106.25	|
+| nn_conv_smooth	| 0.202			| 73.86		|
+| nn_deconv			| 0.125			| 106.25	|
+| l2_4sec			| 0.080			| -			|
+| l2_5sec			| 0.083			| -			|
+| l2_6sec			| 0.069			| -			|
+| l2_7sec			| 0.050			| -			|
+| l2_4sec_smooth	| 0.089			| -			|
+| l2_5sec_smooth	| 0.091			| -			|
+| l2_6sec_smooth	| 0.079			| -			|
+| l2_7sec_smooth	| 0.061			| -			|
+| l2_conv			| 0.116			| -			|
+| l2_conv_smooth	| 0.133			| -			|
+| l2_deconv			| 0.074			| -			|
+| f_4sec			| xxxxx			| -			|
+| f_5sec			| xxxxx			| -			|
+| f_6sec			| xxxxx			| -			|
+| f_7sec			| xxxxx			| -			|
+| f_4sec_smooth		| xxxxx			| -			|
+| f_5sec_smooth		| xxxxx			| -			|
+| f_6sec_smooth		| xxxxx			| -			|
+| f_7sec_smooth		| xxxxx			| -			|
+| f_conv			| xxxxx			| -			|
+| f_conv_smooth		| xxxxx			| -			|
+| f_deconv			| xxxxx			| -			|
+| roi_4sec			| 0.052			| -			|
+| roi_5sec			| xxxxx			| -			|
+| roi_6sec			| xxxxx			| -			|
+| roi_7sec			| xxxxx			| -			|
+| roi_4sec_smooth	| xxxxx			| -			|
+| roi_5sec_smooth	| xxxxx			| -			|
+| roi_6sec_smooth	| xxxxx			| -			|
+| roi_7sec_smooth	| xxxxx			| -			|
+| roi_conv			| xxxxx			| -			|
+| roi_conv_smooth	| xxxxx			| -			|
+| roi_deconv		| xxxxx			| -			|
 
 \* Cross-validation R2 scores for nn models are those from scikit-learn's score_r2 metric which calculates a weighted average over all features (weight is the feature variance) rather than a simple arithmetic mean as defined below. Thus, nn R2 scores cannot be directly compared to the rest of models (which were calculated as below). Test scores however can be compared among all models. We apologize for the inconvenience :)
 
