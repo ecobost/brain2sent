@@ -33,13 +33,13 @@ train_bold (or train_smooth_bold) to predict train_conv_feats.
  
 | Filename		| Size	| 						Description					|
 |:-------------:|:-----:|:--------------------------------------------------|
-| l1_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l1-regularized multioutput linear regression model (Lasso). No feature selection												|
-| l2_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge). No feature selection												|
-| f_xxxx.h5		|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using an F-statistic.				|
-| roi_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features based on ROI.						|
-| l1-fs_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using the l1 model fitted above.	|
-| l2-fs_xxxx.h5	|-		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using the l2 model fitted above.	|
-| nn_xxxx.h5	|-		| Matrix (400 x 8982) called 'weights_ih' and vector (400) called 'bias_ih' that map input to hidden layer activations and matrix (768 x 400) called 'weights_ho'and vector (768) called 'bias_ho' that map hidden layer activations to output.	|
+| l1_xxxx.h5	| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l1-regularized multioutput linear regression model (Lasso). No feature selection												|
+| l2_xxxx.h5	| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge). No feature selection												|
+| f_xxxx.h5		| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using an F-statistic.				|
+| roi_xxxx.h5	| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features based on ROI.						|
+| l1-fs_xxxx.h5	| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using the l1 model fitted above.	|
+| l2-fs_xxxx.h5	| 55 Mb		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using the l2 model fitted above.	|
+| nn_xxxx.h5	| 31 Mb		| Matrix (400 x 8982) called 'weights_ih' and vector (400) called 'bias_ih' that map input to hidden layer activations and matrix (768 x 400) called 'weights_ho'and vector (768) called 'bias_ho' that map hidden layer activations to output.	|
 
 ## Image vector predictions from best model
 |	Filename		| 	Size 	| 				Description					|
@@ -50,7 +50,7 @@ train_bold (or train_smooth_bold) to predict train_conv_feats.
 ## Sentence predictions (used only for qualitative comparisons, not training/cv)
 | 	   Filename			| 	Size 	| 				Description				|
 |:---------------------:|:---------:|:--------------------------------------|
-| train_sents_gt.txt	| -			| Text file (7200 lines). Each line is the ground truth sentence prediction made by neuralTalk for each image in the training set (generated from train_feats).												|
+| train_sents_gt.txt	| 307 kb	| Text file (7200 lines). Each line is the ground truth sentence prediction made by neuralTalk for each image in the training set (generated from train_feats).												|
 | train_sents_x.txt		| -			| Text file (7200 lines). Each line is the sentence prediction for image vectors predicted by model_x (the best model) in the training set (generated from train_preds_x).								|
 | test_sents_gt.txt		| -			| Text file (540 lines). Similar to train_sents_gt but for the test set (generated from test_feats).	|
 | test_sents_x.txt		| -			| Text file (540 lines). Similar to train_sents_x but for the test set (generated from test_preds_x).	|
