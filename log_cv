@@ -1284,8 +1284,8 @@ hrf /= hrf.sum()
 SNR = 30
 signal = y_conv_train
 H = fft(hrf, len(signal))
-weiner_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
-y_deconv = np.real(ifft(weiner_filter * fft(signal)))
+wiener_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
+y_deconv = np.real(ifft(wiener_filter * fft(signal)))
 
 np.corrcoef(y_deconv, y_train) = 0.857966 # SNR = 1
 np.corrcoef(y_deconv, y_train) = 0.931714 # SNR = 10
@@ -1306,8 +1306,15 @@ np.corrcoef(y_shifted, y_test[:-5]) = 0.257404
 ((y_shifted - y_test[:-5])**2).mean() = 0.01833
 r2_score(y_test[:-5], y_shifted) = 0.04805
 
+# At different shifts
+np.corrcoef(y8_pred[3:], y_test[:-3]) = 0.18144444
+np.corrcoef(y8_pred[4:], y_test[:-4]) = 0.25195873
+np.corrcoef(y8_pred[5:], y_test[:-5]) = 0.25740413
+np.corrcoef(y8_pred[6:], y_test[:-6]) = 0.22466334
+np.corrcoef(y8_pred[7:], y_test[:-7]) = 0.19036582
+
 # Deconvolved
-SNR = 5
+SNR = 1
 signal = y8_pred
 H = fft(hrf, len(signal))
 weiner_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
@@ -1336,7 +1343,263 @@ np.corrcoef(y8_deconv, y_test) = 0.2573 # SNR = 0.1 , too smooth
 np.corrcoef(y8_deconv, y_test) = 0.2705 # SNR = 1
 np.corrcoef(y8_deconv, y_test) = 0.2482 # SNR = 10
 
-# Check a way to cross-validate sNR maybe using the training set.
+
+# Find the best SNR (this uses the correct test predictions for cross-validation.
+# I just want to know what would be the gold standard
+SNRs = np.logspace(-1, 1, 20) 
+signal = y8_pred
+H = fft(hrf, len(signal))
+for SNR in SNRs:
+	weiner_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
+	y8_deconv = np.real(ifft(weiner_filter * fft(signal)))
+	print('SNR:', SNR, 'corr =', np.corrcoef(y8_deconv, y_test)[0,1], 'mse=', ((y8_deconv - y_test)**2).mean(), 'r2=', r2_score(y_test, y8_deconv))
+	
+SNR: 0.1 corr = 0.257331029022 mse= 0.0418394685535 r2= -1.17363693341
+SNR: 0.12742749857 corr = 0.257489583682 mse= 0.0415528073472 r2= -1.15874435932
+SNR: 0.162377673919 corr = 0.257742418096 mse= 0.0410984879794 r2= -1.13514163702
+SNR: 0.206913808111 corr = 0.258141311883 mse= 0.040388932825 r2= -1.09827894868
+SNR: 0.263665089873 corr = 0.258760412844 mse= 0.0393060371083 r2= -1.04202053512
+SNR: 0.335981828628 corr = 0.259698172694 mse= 0.0377113114429 r2= -0.959171619372
+SNR: 0.428133239872 corr = 0.26107053624 mse= 0.0354856468183 r2= -0.843544270444
+SNR: 0.545559478117 corr = 0.262989918083 mse= 0.0326114806523 r2= -0.694226080058
+SNR: 0.695192796178 corr = 0.265532550049 mse= 0.0292734853381 r2= -0.520811116882
+SNR: 0.88586679041 corr = 0.268709230971 mse= 0.0258845655781 r2= -0.344750535585
+SNR: 1.12883789168 corr = 0.272448853292 mse= 0.0229380631212 r2= -0.191674342552
+SNR: 1.43844988829 corr = 0.276573355593 mse= 0.0207546747558 r2= -0.0782433226301
+SNR: 1.83298071083 corr = 0.280735545311 mse= 0.0193566651365 r2= -0.00561416535648
+SNR: 2.33572146909 corr = 0.284336993965 mse= 0.0185651366365 r2= 0.0355071882557
+SNR: 2.97635144163 corr = 0.286499094494 mse= 0.0181714042417 r2= 0.0559623064693
+SNR: 3.79269019073 corr = 0.286177367018 mse= 0.0180340866096 r2= 0.0630962086718
+SNR: 4.83293023857 corr = 0.282440458972 mse= 0.0180931447526 r2= 0.0600280300991
+SNR: 6.15848211066 corr = 0.274791197323 mse= 0.0183525147511 r2= 0.0465532841809
+SNR: 7.84759970351 corr = 0.263281685402 mse= 0.0188674681146 r2= 0.0198005148805
+SNR: 10.0 corr = 0.248260957521 mse= 0.0197529845342 r2= -0.0262036831027
+# Best is around 3. Results are fine. Weirdly best mse comes at a higher SNR ~3.8 (more noise).
+
+# Now using the training set
+SNRs = np.logspace(-1, 1, 20) 
+signal = model.predict(X_conv_train)
+H = fft(hrf, len(signal))
+for SNR in SNRs:
+	wiener_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
+	y8_deconv = np.real(ifft(wiener_filter * fft(signal)))
+	print('SNR:', SNR, 'corr =', np.corrcoef(y8_deconv, y_train)[0,1], 'mse=', ((y8_deconv - y_train)**2).mean(),  'r2=', r2_score(y_train, y8_deconv))
+	
+SNR: 0.1 corr = 0.688404059432 mse= 0.0393721295399 r2= -1.03230183295
+SNR: 0.12742749857 corr = 0.688559046433 mse= 0.0390487762948 r2= -1.01561105701
+SNR: 0.162377673919 corr = 0.688804381882 mse= 0.0385364597241 r2= -0.989166414108
+SNR: 0.206913808111 corr = 0.689186866874 mse= 0.0377366855078 r2= -0.947883846346
+SNR: 0.263665089873 corr = 0.68976919952 mse= 0.0365168780232 r2= -0.884920094683
+SNR: 0.335981828628 corr = 0.690624377313 mse= 0.0347219858741 r2= -0.792271750611
+SNR: 0.428133239872 corr = 0.691815282027 mse= 0.0322190406636 r2= -0.663075280959
+SNR: 0.545559478117 corr = 0.693354190152 mse= 0.0289880376077 r2= -0.496298083243
+SNR: 0.695192796178 corr = 0.695152441188 mse= 0.0252316052862 r2= -0.302399394461
+SNR: 0.88586679041 corr = 0.696991063735 mse= 0.0214016375981 r2= -0.104704973471
+SNR: 1.12883789168 corr = 0.69853249158 mse= 0.018038496465 r2= 0.0688928981488
+SNR: 1.43844988829 corr = 0.69934510581 mse= 0.0154992248963 r2= 0.199964453683
+SNR: 1.83298071083 corr = 0.6988989032 mse= 0.0138212060881 r2= 0.286580055619
+SNR: 2.33572146909 corr = 0.696529382332 mse= 0.0128206769665 r2= 0.338225145474
+SNR: 2.97635144163 corr = 0.691379329128 mse= 0.0122708330947 r2= 0.366606864254
+SNR: 3.79269019073 corr = 0.68232691424 mse= 0.0120054768835 r2= 0.380303962196
+SNR: 4.83293023857 corr = 0.667932299291 mse= 0.011937964078 r2= 0.383788823184
+SNR: 6.15848211066 corr = 0.64645091159 mse= 0.0120478118849 r2= 0.3781187235
+SNR: 7.84759970351 corr = 0.61602353503 mse= 0.0123712068335 r2= 0.361425794912
+SNR: 10.0 corr = 0.575252359882 mse= 0.0130069463825 r2= 0.328610332155
+# Best correlation at 1.4. Best mse at 4.8. ANyway, it's not a bad proxy to select
+# SNR. I was expecting for the SNR to be bigger than when calculated on the tes set as traioning set predictions do have more signal in them as they are better than test set predictions. That is odd, also, what is with the best mse being a different sNR.
+# Maybe correlation is better because, agian, it does not depend on ther magnitude of y8_deconv.	
+		
+# Test with y_5 to see whether the same SNR holds or what would be a good search range for SNRs.
+y_conv_train = y_conv[:-718, 5]
+y_conv_test = y_conv[-718:, 5]
+y_train = y[:-718, 5]
+y_test = y[-718:, 5]
+
+regularization_params = {'alpha': np.logspace(3.5, 5.5, 20)}
+cv = GridSearchCV(Ridge(), regularization_params, cv=5, n_jobs=-1)
+cv.fit(X_conv_train, y_conv_train)
+model = cv.best_estimator_
+y8_pred = model.predict(X_conv_test)
+
+# Shifting it 5 secs
+y_shifted = y8_pred[5:]
+np.corrcoef(y_shifted, y_test[:-5]) = 0.416856
+((y_shifted - y_test[:-5])**2).mean() = 0.027964
+r2_score(y_test[:-5], y_shifted) = 0.158943
+
+# At different shifts
+np.corrcoef(y8_pred[3:], y_test[:-3]) = 0.375331
+np.corrcoef(y8_pred[4:], y_test[:-4]) = 0.41222
+np.corrcoef(y8_pred[5:], y_test[:-5]) = 0.416856
+np.corrcoef(y8_pred[6:], y_test[:-6]) = 0.40321
+np.corrcoef(y8_pred[7:], y_test[:-7]) = 0.36231
+
+# Deconvolved
+SNR = 1
+signal = y8_pred
+H = fft(hrf, len(signal))
+wiener_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
+y8_deconv = np.real(ifft(wiener_filter * fft(signal)))
+
+np.corrcoef(y8_deconv, y_test) = 0.449832
+((y8_deconv - y_test)**2).mean() = 0.037125
+r2_score(y_test, y8_deconv) = -0.115889
+# Again, deconvolution is better than just shifting the data. And again, only for
+# correlation, I guess the deconvolution messes up the scale
+
+# Using the test data to get the best SNR
+SNRs = np.logspace(-1, 1, 20) 
+signal = y8_pred
+H = fft(hrf, len(signal))
+for SNR in SNRs:
+		wiener_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
+		y8_deconv = np.real(ifft(wiener_filter * fft(signal)))
+		print('SNR:', SNR, 'corr =', np.corrcoef(y8_deconv, y_test)[0,1], 'mse=', ((y8_deconv - y_test)**2).mean(), 'r2=', r2_score(y_test, y8_deconv))
+		
+SNR: 0.1 corr = 0.457794104102 mse= 0.0724715881496 r2= -1.17828977166
+SNR: 0.12742749857 corr = 0.457730135676 mse= 0.0718680395315 r2= -1.16014881718
+SNR: 0.162377673919 corr = 0.457626737067 mse= 0.0709127367317 r2= -1.13143513268
+SNR: 0.206913808111 corr = 0.457460102794 mse= 0.0694238315873 r2= -1.0866828797
+SNR: 0.263665089873 corr = 0.457192903395 mse= 0.0671589413882 r2= -1.0186067235
+SNR: 0.335981828628 corr = 0.456768004584 mse= 0.0638405188792 r2= -0.918864383172
+SNR: 0.428133239872 corr = 0.456101327322 mse= 0.0592452811317 r2= -0.780744609074
+SNR: 0.545559478117 corr = 0.455075955366 mse= 0.0533807410965 r2= -0.604473219136
+SNR: 0.695192796178 corr = 0.453539098126 mse= 0.0466889424238 r2= -0.403336787952
+SNR: 0.88586679041 corr = 0.451296212659 mse= 0.0400737884779 r2= -0.204504079213
+SNR: 1.12883789168 corr = 0.448086946015 mse= 0.0345585037227 r2= -0.0387303094233
+SNR: 1.43844988829 corr = 0.443541127739 mse= 0.0307526704493 r2= 0.0756622118908
+SNR: 1.83298071083 corr = 0.437147473607 mse= 0.0286261724484 r2= 0.139578692307
+SNR: 2.33572146909 corr = 0.428254914041 mse= 0.0277542357069 r2= 0.165786630261
+SNR: 2.97635144163 corr = 0.416083291905 mse= 0.0276905091771 r2= 0.167702068455
+SNR: 3.79269019073 corr = 0.399778467295 mse= 0.0281637159108 r2= 0.153478820225
+SNR: 4.83293023857 corr = 0.378627622559 mse= 0.0290963727632 r2= 0.125445808476
+SNR: 6.15848211066 corr = 0.352408903525 mse= 0.030560560506 r2= 0.0814364902677
+SNR: 7.84759970351 corr = 0.321578753796 mse= 0.0327508856907 r2= 0.015601546283
+SNR: 10.0 corr = 0.287030513527 mse= 0.0360211325275 r2= -0.0826927703918
+# Best correlation is less than 0.1 (it plateauas at 0.45789 at around 0.001), best r2 at around 3.
+
+	
+# Now using the training set
+SNRs = np.logspace(-1, 1, 20) 
+signal = model.predict(X_conv_train)
+H = fft(hrf, len(signal))
+for SNR in SNRs:
+	wiener_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
+	y8_deconv = np.real(ifft(wiener_filter * fft(signal)))
+	print('SNR:', SNR, 'corr =', np.corrcoef(y8_deconv, y_train)[0,1], 'mse=', ((y8_deconv - y_train)**2).mean(),  'r2=', r2_score(y_train, y8_deconv))
+	
+SNR: 0.1 corr = 0.746051353813 mse= 0.0816292328095 r2= -1.12453601711
+SNR: 0.12742749857 corr = 0.746201447019 mse= 0.0808784391688 r2= -1.10499536879
+SNR: 0.162377673919 corr = 0.74643900549 mse= 0.0796893819418 r2= -1.07404818458
+SNR: 0.206913808111 corr = 0.746809312482 mse= 0.0778343576579 r2= -1.02576810441
+SNR: 0.263665089873 corr = 0.747373062891 mse= 0.0750079401178 r2= -0.952205905472
+SNR: 0.335981828628 corr = 0.748201187208 mse= 0.0708553101321 r2= -0.844126830529
+SNR: 0.428133239872 corr = 0.749356078264 mse= 0.0650773364262 r2= -0.693745492599
+SNR: 0.545559478117 corr = 0.750855344095 mse= 0.0576414785418 r2= -0.500214972345
+SNR: 0.695192796178 corr = 0.752629311345 mse= 0.0490309007068 r2= -0.276110419245
+SNR: 0.88586679041 corr = 0.754500275669 mse= 0.0402949181922 r2= -0.0487420016046
+SNR: 1.12883789168 corr = 0.756194058825 mse= 0.0326686233186 r2= 0.149744956786
+SNR: 1.43844988829 corr = 0.757346669876 mse= 0.0269516043324 r2= 0.298539847156
+SNR: 1.83298071083 corr = 0.757473046203 mse= 0.0232105473081 r2= 0.395907053935
+SNR: 2.33572146909 corr = 0.755920001948 mse= 0.0210166915236 r2= 0.453005785236
+SNR: 2.97635144163 corr = 0.75182540212 mse= 0.0198541777016 r2= 0.483262133364
+SNR: 3.79269019073 corr = 0.744081134131 mse= 0.0193526068306 r2= 0.49631634622
+SNR: 4.83293023857 corr = 0.7313208427 mse= 0.0193261107892 r2= 0.497005949593
+SNR: 6.15848211066 corr = 0.711939456507 mse= 0.0197391737242 r2= 0.486255302398
+SNR: 7.84759970351 corr = 0.684113646115 mse= 0.020683386922 r2= 0.46168058967
+SNR: 10.0 corr = 0.64595121153 mse= 0.0223966992898 r2= 0.417088796893
+# best at around 2, so training SNr is higher than the best
+
+# SNR seems like quite an important hyperparameter, selecting the best with the training set makes me lose a couple percent in correlation. For y_3, the best selected with training will produce corr = 0.27657 (compared to the very best 0.286) and for y_5 it will produce 0.4371 compared to 0.4578. Maybe I can just live with it, but I wish I hadn't.
+# Yep, SNR mostly controls the smoothness. Results are not that bad even if SNr is slightly off.
+
+# i like logspace(-2, 1.5, 50)
+
+# try another one y_i=100
+y_conv_train = y_conv[:-718, 100]
+y_conv_test = y_conv[-718:, 100]
+y_train = y[:-718, 100]
+y_test = y[-718:, 100]
+
+regularization_params = {'alpha': np.logspace(3.5, 5.5, 20)}
+cv = GridSearchCV(Ridge(), regularization_params, cv=5, n_jobs=-1)
+cv.fit(X_conv_train, y_conv_train)
+model = cv.best_estimator_
+y8_pred = model.predict(X_conv_test)
+
+# Shifting it 5 secs
+y_shifted = y8_pred[5:]
+np.corrcoef(y_shifted, y_test[:-5]) = 0.341707
+((y_shifted - y_test[:-5])**2).mean() = 0.0390328
+r2_score(y_test[:-5], y_shifted) = 0.1134189
+
+# Using the test data to get the best SNR
+SNRs = np.logspace(-1, 1, 20) 
+signal = y8_pred
+H = fft(hrf, len(signal))
+for SNR in SNRs:
+		wiener_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
+		y8_deconv = np.real(ifft(wiener_filter * fft(signal)))
+		print('SNR:', SNR, 'corr =', np.corrcoef(y8_deconv, y_test)[0,1], 'mse=', ((y8_deconv - y_test)**2).mean(), 'r2=', r2_score(y_test, y8_deconv))
+		
+SNR: 0.1 corr = 0.35271777056 mse= 0.101445990166 r2= -1.31750690073
+SNR: 0.12742749857 corr = 0.352692736868 mse= 0.100637020984 r2= -1.29902621305
+SNR: 0.162377673919 corr = 0.352651482874 mse= 0.0993555811331 r2= -1.26975205748
+SNR: 0.206913808111 corr = 0.352583138373 mse= 0.0973559424887 r2= -1.22407083983
+SNR: 0.263665089873 corr = 0.352469473046 mse= 0.0943084852411 r2= -1.15445248242
+SNR: 0.335981828628 corr = 0.352280884178 mse= 0.0898312086752 r2= -1.05217027963
+SNR: 0.428133239872 corr = 0.351973337327 mse= 0.0836071850143 r2= -0.909984099963
+SNR: 0.545559478117 corr = 0.351493033199 mse= 0.0756230674575 r2= -0.727589039262
+SNR: 0.695192796178 corr = 0.35079931865 mse= 0.0664544338755 r2= -0.518134022243
+SNR: 0.88586679041 corr = 0.349902968391 mse= 0.0573210939116 r2= -0.309485278625
+SNR: 1.12883789168 corr = 0.348876603729 mse= 0.0496287961607 r2= -0.133756764457
+SNR: 1.43844988829 corr = 0.347776125609 mse= 0.0442229005399 r2= -0.0102605041765
+SNR: 1.83298071083 corr = 0.346482507274 mse= 0.0410531253431 r2= 0.0621521745329
+SNR: 2.33572146909 corr = 0.344568793858 mse= 0.0395047990164 r2= 0.0975232812765
+SNR: 2.97635144163 corr = 0.341303858684 mse= 0.0389187550016 r2= 0.110911302293
+SNR: 3.79269019073 corr = 0.335821622157 mse= 0.0388594739547 r2= 0.112265562182
+SNR: 4.83293023857 corr = 0.327354497133 mse= 0.0391298638123 r2= 0.106088577169
+SNR: 6.15848211066 corr = 0.315359077424 mse= 0.0397029379441 r2= 0.0929968497086
+SNR: 7.84759970351 corr = 0.29946403312 mse= 0.0406760710463 r2= 0.0707658805401
+SNR: 10.0 corr = 0.2793579846 mse= 0.0422778080475 r2= 0.0341746210202
+#plateasu at 0.035275 at SNr 0.018, r2 at around 4. Yep, go with corr
+
+# Now using the training set
+SNRs = np.logspace(-1, 1, 20) 
+signal = model.predict(X_conv_train)
+H = fft(hrf, len(signal))
+for SNR in SNRs:
+	wiener_filter = np.conj(H) / (H*np.conj(H) + (1 / SNR)**2)
+	y8_deconv = np.real(ifft(wiener_filter * fft(signal)))
+	print('SNR:', SNR, 'corr =', np.corrcoef(y8_deconv, y_train)[0,1], 'mse=', ((y8_deconv - y_train)**2).mean(),  'r2=', r2_score(y_train, y8_deconv))
+	
+	SNR: 0.1 corr = 0.64909294452 mse= 0.107144664879 r2= -1.38939481329
+SNR: 0.12742749857 corr = 0.649254356528 mse= 0.106240685358 r2= -1.36923548961
+SNR: 0.162377673919 corr = 0.649510011433 mse= 0.104807894314 r2= -1.33728332949
+SNR: 0.206913808111 corr = 0.649908983997 mse= 0.102569885689 r2= -1.28737430035
+SNR: 0.263665089873 corr = 0.650517489663 mse= 0.0991535929327 r2= -1.21118877864
+SNR: 0.335981828628 corr = 0.651413955882 mse= 0.0941207052748 r2= -1.09895215277
+SNR: 0.428133239872 corr = 0.652669776336 mse= 0.0870918995696 r2= -0.942205273082
+SNR: 0.545559478117 corr = 0.654310862262 mse= 0.078004129526 r2= -0.739542166796
+SNR: 0.695192796178 corr = 0.656269657488 mse= 0.0674269043615 r2= -0.503663255086
+SNR: 0.88586679041 corr = 0.658353838965 mse= 0.0566471634123 r2= -0.263268111367
+SNR: 1.12883789168 corr = 0.660241732024 mse= 0.0472127773725 r2= -0.0528752458361
+SNR: 1.43844988829 corr = 0.661469307123 mse= 0.0401438956957 r2= 0.104765353752
+SNR: 1.83298071083 corr = 0.661377168422 mse= 0.0355322369822 r2= 0.20760830373
+SNR: 2.33572146909 corr = 0.659043202791 mse= 0.0328296186408 r2= 0.267878427816
+SNR: 2.97635144163 corr = 0.653252521438 mse= 0.0313707006835 r2= 0.300413234884
+SNR: 3.79269019073 corr = 0.642551802968 mse= 0.0306720818906 r2= 0.315992882474
+SNR: 4.83293023857 corr = 0.62541335055 mse= 0.0304770299351 r2= 0.320342666306
+SNR: 6.15848211066 corr = 0.600477154388 mse= 0.0307010398559 r2= 0.315347101257
+SNR: 7.84759970351 corr = 0.566827496688 mse= 0.0313834514478 r2= 0.300128884653
+SNR: 10.0 corr = 0.524321726569 mse= 0.0326767401776 r2= 0.271287715692
+# best at 1.43, best r2 at 4.85
+
+# also, in the three examples the best SNR with the trainng set is around 1.5
+# maybe is just a coincidence.
+# The SNr selected with the traing set is slightly more noisier, but not for much.
+# That is the other way around for y_3, not sure why.
+
+# Conclusion: Do deconvolve rater than just shift, use the training set, use corr rather than mse, use a logscale -2, 1.5, 50.
 
 
-# Check whether SNr is the same for other y_is (maybe?)
