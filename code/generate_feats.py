@@ -31,7 +31,7 @@ def main():
 	hrf = glover_hrf(np.linspace(0, 32, 481)) # 481 = 32 secs x 15 frames + 1
 	full_conv_feats = np.apply_along_axis(lambda x: np.convolve(hrf, x), axis=0,
 										  arr=full_feats)
-	conv_feats = full_conv_feats[7:108000:15, :] # subsample and delete end
+	conv_feats = full_conv_feats[7:-480:15, :] # subsample and delete end
 
 	# Save convolved feats
 	with h5py.File(file_prefix + 'conv_feats.h5', 'w') as conv_feats_file:
@@ -55,5 +55,5 @@ def glover_hrf(timepoints):
 	hrf /= hrf.sum()
 	return hrf
 	
-if name == "main":
+if __name__ == "__main__":
 	main()
