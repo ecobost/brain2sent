@@ -1,4 +1,4 @@
-function [data_deconv event HRF adjust_global PARA] = wgr_deconv_canonhrf_par(data,thr,event_lag_max,TR)
+function [data_deconv event HRF adjust_global PARA C] = wgr_deconv_canonhrf_par(data,thr,event_lag_max,TR)
 
 %%% this function implements the method described in 
 %%% Wu et al, 
@@ -34,12 +34,12 @@ HRF = zeros(T,nvar);
 PARA = zeros(3,nvar);
 warning off;
 parfor i=1:nvar
-    [data_deconv(:,i) HRF(:,i) event{i} adjust_global(i)  PARA(:,i)] = wgr_adjust_onset(data(:,i),even_new{i},event_lag_max,TR,p_m,T,N);
+    [data_deconv(:,i) HRF(:,i) event{i} adjust_global(i)  PARA(:,i) C(i)] = wgr_adjust_onset(data(:,i),even_new{i},event_lag_max,TR,p_m,T,N);
 end
 warning on;
 
 
-function [dat_deconv hrf even_new ad_global param] = wgr_adjust_onset(dat,even_new,event_lag_max,TR,p_m,T,N)
+function [dat_deconv hrf even_new ad_global param C] = wgr_adjust_onset(dat,even_new,event_lag_max,TR,p_m,T,N)
 %% global adjust.
 kk=1;
 hrf = zeros(T,event_lag_max+1);
