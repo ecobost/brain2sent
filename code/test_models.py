@@ -5,12 +5,10 @@ import numpy as np
 import h5py
 from scipy.stats import gamma
 from numpy.fft import fft, ifft
-from sklearn import metrics
 
-def main:
+def main():
 	"""Main function. Tests all models."""
-	
-	# Lasso models (each takes around ... days)
+	# Lasso models
 	test_linear('l1_4sec', 'test_4sec_bold.h5', 'test_feats.h5')
 	test_linear('l1_5sec', 'test_5sec_bold.h5', 'test_feats.h5')
 	test_linear('l1_6sec', 'test_6sec_bold.h5', 'test_feats.h5')
@@ -23,7 +21,7 @@ def main:
 	test_linear('l1_conv_smooth', 'test_smooth_bold.h5', 'test_conv_feats.h5')
 	test_linear('l1_deconv', 'test_deconv.h5', 'test_feats.h5')
 		
-	# Ridge models (each takes around 4 days)
+	# Ridge models
 	test_linear('l2_4sec.h5', 'test_4sec_bold.h5', 'test_feats.h5')
 	test_linear('l2_5sec.h5', 'test_5sec_bold.h5', 'test_feats.h5')
 	test_linear('l2_6sec.h5', 'test_6sec_bold.h5', 'test_feats.h5')
@@ -36,7 +34,7 @@ def main:
 	test_linear('l2_conv_smooth.h5', 'test_smooth_bold.h5', 'test_conv_feats.h5')
 	test_linear('l2_deconv.h5', 'test_deconv.h5', 'test_feats.h5')
 		
-	# F-statisc models (each takes around a week)
+	# F-statisc models
 	test_linear('f_4sec.h5', 'test_4sec_bold.h5', 'test_feats.h5')
 	test_linear('f_5sec.h5', 'test_5sec_bold.h5', 'test_feats.h5')
 	test_linear('f_6sec.h5', 'test_6sec_bold.h5', 'test_feats.h5')
@@ -49,7 +47,7 @@ def main:
 	test_linear('f_conv_smooth.h5', 'test_smooth_bold.h5', 'test_conv_feats.h5')
 	test_linear('f_deconv.h5', 'test_deconv.h5', 'test_feats.h5')
 		
-	# ROI models (each takes around 2 days)
+	# ROI models
 	test_linear('roi_4sec.h5', 'test_4sec_bold.h5', 'test_feats.h5')
 	test_linear('roi_5sec.h5', 'test_5sec_bold.h5', 'test_feats.h5')
 	test_linear('roi_6sec.h5', 'test_6sec_bold.h5', 'test_feats.h5')
@@ -101,15 +99,26 @@ def main:
 	test_neural_network('nn_conv_smooth.h5', 'test_smooth_bold.h5', 'test_conv_feats.h5')
 	test_neural_network('nn_deconv.h5', 'test_deconv.h5', 'test_feats.h5')
 
-
-def read_inputs(features_filename, targets_filename, var_prefix=''):
+def read_inputs(features_filename, targets_filename):
 	# Read regression features
 	with h5py.File(features_filename, 'r') as Xs_file:
-		Xs = np.array(Xs_file[var_prefix + 'responses'])
+		Xs = np.array(Xs_file['responses'])
 
 	# Read regression targets
 	with h5py.File(targets_filename, 'r') as y_file:
-		y = np.array(y_file[var_prefix + 'feats'])
+		y = np.array(y_file['feats'])
+		
+	# Normalize BOLD data
+	Xs = (Xs - Xs[10:-10].mean(axis=0)) / Xs[10:-10].std(axis=0)
+	# I shouldn't do this, I should use stats from the train data to normalize 
+	# the test data or leave both unnormalized. Problem is that they gave me the
+	# normalized training data and unnormalized test data, so I'm forced to 
+	# normalize the test data (otherwise the models will produce garbage on the
+	# test set) but I don't have the original train data to extract train_mean 
+	# and train_std, so I have to use the test stats. I am not happy with this.
+	# As this is BOLD data, I'm hoping the test mean and test std give me info
+	# about the scanner/session and not about the actual test data. Otherwise,
+	# test results would be invalid :(
 	
 	return Xs, y
 	
@@ -136,10 +145,11 @@ def deconvolve(signal, SNR):
 		SNR = np.full(signal.shape[1], SNR)
 
 	# Wiener deconvolution
-	H = fft(hrf, len(signal))
+	hrf = glover_hrf(np.linspace(0,32,33))
+	H = fft(hrf, len(signal), axis=0)
 	wiener_filter = np.expand_dims(np.conj(H), -1) / np.add.outer(H * np.conj(H), 
 															 	  1 / SNR**2)
-	deconvolved = np.real(ifft(wiener_filter * fft(signal)))
+	deconvolved = np.real(ifft(wiener_filter * fft(signal, axis=0), axis=0))
 
 	return deconvolved
 
@@ -159,8 +169,8 @@ def glover_hrf(timepoints):
 	hrf /= hrf.sum()
 	return hrf
 	
-def compute_metrics(y_true, y_pred):
-	""" Compute RMSE, correlation and R^2 scores. """
+def print_metrics(y_true, y_pred):
+	""" Computes and prints RMSE, correlation and R^2 scores. """
 	# RMSE
 	rmse = np.sqrt(np.mean((y_true - y_pred) ** 2))
 
@@ -169,9 +179,12 @@ def compute_metrics(y_true, y_pred):
 	r_sample = row_wise_corr(y_true, y_pred).mean()
 
 	# R2
-	r2_feature = metrics.r2_score(y_true, y_pred, multioutput='uniform_average')
-	r2_sample = metrics.r2_score(y_true.transpose(), y_pred.transpose(),
-								 multioutput='uniform_average')
+	r2_feature = column_wise_r2(y_true, y_pred).mean()
+	r2_sample = row_wise_r2(y_true, y_pred).mean()
+	
+	print('|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|')
+	print('|', rmse, '|', r_feature, '|', r_sample, '|', r2_feature, '|', 
+		  r2_sample, '|')
 
 	return rmse, r_feature, r_sample, r2_feature, r2_sample
 
@@ -185,13 +198,30 @@ def row_wise_corr(A, B):
 	for x, y in zip(A, B):
 		corr.append(np.corrcoef(x,y)[0,1])
 	return np.array(corr)
+	
+def column_wise_r2(y_true, y_pred, min_var=1e-4):
+	""" Computes R^2 per column."""
+	rss = ((y_true-y_pred)**2).sum(axis=0)
+	tss = ((y_true- y_true.mean(axis=0))**2).sum(axis=0)
+	r2 = 1 - (rss/tss)
+	
+	# Set (almost) constant columns to zero. 
+	r2[y_true.var(axis=0) < min_var] = 0
+	# If the variance is close to zero, tss is close to zero and r2 explodes.  
+	# These don't say much about performance anyway. Only 649 and 743 fall here.
+	
+	return r2
 
+def row_wise_r2(y_true, y_pred, min_var=1e-4):
+	"""Computes R2 per row"""
+	return column_wise_r2(y_true.transpose(), y_pred.transpose(), min_var)
+	
 def test_linear(model_filename, features_filename, targets_filename):
 	""" Tests a linear model."""
 	print('Testing model', model_filename[:-3])
 
 	# Read features and targets
-	X_test, y_test = read_inputs(features_filename, targets_filename, 'test_')
+	X_test, y_test = read_inputs(features_filename, targets_filename)
 	
 	# Read model
 	with h5py.File(model_filename, 'r') as model_file:
@@ -201,51 +231,37 @@ def test_linear(model_filename, features_filename, targets_filename):
 	# Make predictions
 	y_pred = np.dot(X_test, weights.transpose()) + bias
 
-	# Make predictions in the training set (to rescale test set predictions)
-	X_train, y_train = read_inputs('train' + features_filename[4:],
-								   'train' + targets_filename[4:])
-	y_train_pred = np.dot(X_train, weights.transpose()) + bias
-
 	# If the model predicts convolved features, deconvolve them
-	if '_conv_' in model_filename:
-		SNR = estimate_SNR(y_train_pred, y_train)
+	if '_conv_' in targets_filename:
+		# Estimate the signal-to-noise ratio using training set predictions
+		X_train, y_train = read_inputs('train' + features_filename[4:],
+									   'train' + targets_filename[4:])
+		y_train_pred = np.dot(X_train, weights.transpose()) + bias
+		SNR = estimate_SNR(y_train_pred[7:-7,:], y_train[7:-7, :])
+	
+		# Deconvolve	
 		y_pred = deconvolve(y_pred, SNR)
-		y_train_pred = deconvolve(y_train_pred, SNR)
 
 	# Drop first and last 7 predictions to avoid convolution/smoothing artifacts
 	y_test = y_test[7:-7, :]
 	y_pred = y_pred[7:-7, :]
 	
-	# Compute set of metrics (before rescaling)
-	metrics = compute_metrics(y_test, y_pred)
-
-	# Report
-	print('RMSE, r_feature, r_sample, R^2_feature, R^2_sample')
-	print(metrics)
-
-
-	# Rescale y_pred so each feature has the same spread as the training targets
-	expected_mean = y_train_pred.mean()
-	expected_std = y_train_pred.std()
-	desired_mean = y_train.mean() 
-	desired_std = y_train.std()
+	# Report metrics (as is)
+	print_metrics(y_test, y_pred)
+		
+	# Setting those less than zero to zero.
+	print('Inducing sparsity...')
+	y_pred[y_pred < 0] = 0
 	
-	y_pred = (y_pred - expected_mean)/expected_std # normalize to unit std
-	y_pred = (y_pred * desired_std) + desired_mean # give new spread
-	y_pred[y_pred < 0] = 0 # set any negative prediction to zero
+	# Report metrics
+	print_metrics(y_test, y_pred)
 	
-	# Compute metrics
-	metrics = compute_metrics(y_test, y_pred)
-	print('After rescaling...')
-	print('RMSE, r_feature, r_sample, R^2_feature, R^2_sample')
-	print(metrics)
-
-def test_neural_network():
+def test_neural_network(model_filename, features_filename, targets_filename):
 	""" Test the neural network models. """
 	print('Testing model', model_filename[:-3])
 
 	# Read features and targets
-	X_test, y_test = read_inputs(features_filename, targets_filename, 'test_')
+	X_test, y_test = read_inputs(features_filename, targets_filename)
 	
 	# Read model
 	with h5py.File(model_filename, 'r') as model_file:
@@ -258,17 +274,17 @@ def test_neural_network():
 	hidden = np.dot(X_test, weights_ih.transpose()) + bias_ih
 	y_pred = np.dot(hidden, weights_ho.transpose()) + bias_ho
 
-	# Make predictions in the training set (to rescale test set predictions)
-	X_train, y_train = read_inputs('train' + features_filename[4:],
-								   'train' + targets_filename[4:])
-	hidden = np.dot(X_train, weights_ih.transpose()) + bias_ih
-	y_train_pred = np.dot(hidden, weights_ho.transpose()) + bias_ho
-
 	# If the model predicts convolved features, deconvolve them
-	if '_conv_' in model_filename:
-		SNR = estimate_SNR(y_train_pred, y_train)
+	if '_conv_' in targets_filename:
+		# Estimate the signal-to-noise ratio using training set predictions
+		X_train, y_train = read_inputs('train' + features_filename[4:],
+								   'train' + targets_filename[4:])
+		hidden = np.dot(X_train, weights_ih.transpose()) + bias_ih
+		y_train_pred = np.dot(hidden, weights_ho.transpose()) + bias_ho
+		SNR = estimate_SNR(y_train_pred[7:-7,:], y_train[7:-7, :])
+		
+		# Deconvolve
 		y_pred = deconvolve(y_pred, SNR)
-		y_train_pred = deconvolve(y_train_pred, SNR)
 
 	# Drop first and last 7 predictions to avoid convolution/smoothing artifacts
 	y_test = y_test[7:-7, :]
@@ -277,26 +293,17 @@ def test_neural_network():
 	# Compute set of metrics (before rescaling)
 	metrics = compute_metrics(y_test, y_pred)
 
-	# Report
-	print('RMSE, r_feature, r_sample, R^2_feature, R^2_sample')
-	print(metrics)
-
-
-	# Rescale y_pred so each feature has the same spread as the training targets
-	expected_mean = y_train_pred.mean()
-	expected_std = y_train_pred.std()
-	desired_mean = y_train.mean() 
-	desired_std = y_train.std()
+	# Report metrics
+	print_metrics(y_test, y_pred)
 	
-	y_pred = (y_pred - expected_mean)/expected_std # normalize to unit std
-	y_pred = (y_pred * desired_std) + desired_mean # give new spread
-	y_pred[y_pred < 0] = 0 # set any negative prediction to zero
 	
-	# Compute metrics
-	metrics = compute_metrics(y_test, y_pred)
-	print('After rescaling...')
-	print('RMSE, r_feature, r_sample, R^2_feature, R^2_sample')
-	print(metrics)
+	# Setting those less than zero to zero.
+	print('Inducing sparsity...')
+	y_pred[y_pred < 0] = 0
+	
+	# Report metrics
+	print_metrics(y_test, y_pred)
+	
 
-if name == "__main__":
+if __name__ == "__main__":
 	main()
