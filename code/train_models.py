@@ -16,7 +16,7 @@ I very much recommend you install OpenBlas for training. It gives me close to a
 import h5py
 import numpy as np
 from sklearn.model_selection import GridSearchCV
-from sklearn.linear_model import Ridge, Lasso
+from sklearn.linear_model import Ridge
 from sklearn.feature_selection import f_regression
 from sklearn.neural_network import MLPRegressor
 
