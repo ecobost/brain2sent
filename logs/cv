@@ -21,29 +21,18 @@ I tested some things for preprocessing data. I decided:
 
 I decided to go for the following models*:
 
-1 Fit an l1-regularized regression (Lasso) on all input features (no voxel 
-	selection). The regularization parameter (called alpha in scikit-learn) is
-	selected via 5-fold cross-validation in a range from high to low sparsity 
-	(100 alphas given by scikit-learn)
-2 Fit an l2-regularized regression (Ridge) on all input features (no voxel
+1 Fit an l2-regularized regression (Ridge) on all input features (no voxel
 	selection). The regularization parameter (called alpha in scikit-learn) is
 	selected via 5-fold cross-validation in the range {10^x | x in [3.5, 3.6,
 	3.7, 3.8 ..., 5.2, 5.3, 5.4, 5.5]}
-3 Select best features using an F test (f_regression) and fit a ridge regression.
+2 Select best features using an F test (f_regression) and fit a ridge regression.
 	Number of features k in range {5, 10, 25, 50, 75, 100, 250, 500, 750,
 	1000, 2500, 5000}. Regularization parameter in range {10^x | x in [2.5, 2.6,
 	2.7, ..., 4.8, 4.9, 5]}
-4 Use ROIs as feature selection. Fit a separate ridge regression for each ROI 
+3 Use ROIs as feature selection. Fit a separate ridge regression for each ROI 
 	and retain the one that gave the best CV. Regularization parameter in range
-	10^x | x in [2.5, 2.6, 2.7, ..., 4.8, 4.9, 5]}.
-5 Use the trained lasso model as feature selection. Select all features that 
-	have a coefficient different than zero in the lasso model and fit a ridge
-	regression. Regularization parameter cross-validated in range {10^x | x in 
-	[1, 1.1, 1.2, 1.3, ..., 3.7, 3.8, 3.9, 4]}.
-6 Use the trained ridge model as feature selection. Choose the k features with 
-	highest absolute value and refit a ridge regression model. k and 
-	regularization parameter cross-validated as in 3.
-7 Fit a neural network with a single hidden layer with 400 units, output is the 
+	{10^x | x in [2.5, 2.6, 2.7, ..., 4.8, 4.9, 5]}.
+4 Fit a neural network with a single hidden layer with 400 units, output is the 
 	768-d vector representing the image vectors. Trained with SGD+NAG, learning 
 	rate is divided by 5 if the training loss has not decreased in two epochs, 
 	training stops when learning rate is too small. Regularization parameter 
@@ -54,6 +43,8 @@ I decided to go for the following models*:
 output units to predict.
 
 Other things that could be tried:
++ Lasso model on full inputs
++ Using the Lasso or Ridge on full inputs for feature selection.
 + Feature selection with ExtraTrees.
 + Other regression models: random Forest/ExtraTrees, SVR, Nearest Neighbor
 + Dimensionality reduction: PCA
