@@ -1,5 +1,5 @@
 # Written by: Erick Cobos T
-# Date: 18-August-2016
+# Date: 20-August-2016
 """Compute and print test metrics for all models. """
 import numpy as np
 import h5py
@@ -8,96 +8,57 @@ from numpy.fft import fft, ifft
 
 def main():
 	"""Main function. Tests all models."""
-	# Lasso models
-	test_linear('l1_4sec', 'test_4sec_bold.h5', 'test_feats.h5')
-	test_linear('l1_5sec', 'test_5sec_bold.h5', 'test_feats.h5')
-	test_linear('l1_6sec', 'test_6sec_bold.h5', 'test_feats.h5')
-	test_linear('l1_7sec', 'test_7sec_bold.h5', 'test_feats.h5')
-	test_linear('l1_4sec_smooth', 'test_4sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l1_5sec_smooth', 'test_5sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l1_6sec_smooth', 'test_6sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l1_7sec_smooth', 'test_7sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l1_conv', 'test_bold.h5', 'test_conv_feats.h5')
-	test_linear('l1_conv_smooth', 'test_smooth_bold.h5', 'test_conv_feats.h5')
-	test_linear('l1_deconv', 'test_deconv.h5', 'test_feats.h5')
-		
 	# Ridge models
-	test_linear('l2_4sec.h5', 'test_4sec_bold.h5', 'test_feats.h5')
-	test_linear('l2_5sec.h5', 'test_5sec_bold.h5', 'test_feats.h5')
-	test_linear('l2_6sec.h5', 'test_6sec_bold.h5', 'test_feats.h5')
-	test_linear('l2_7sec.h5', 'test_7sec_bold.h5', 'test_feats.h5')
-	test_linear('l2_4sec_smooth.h5', 'test_4sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l2_5sec_smooth.h5', 'test_5sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l2_6sec_smooth.h5', 'test_6sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l2_7sec_smooth.h5', 'test_7sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l2_conv.h5', 'test_bold.h5', 'test_conv_feats.h5')
-	test_linear('l2_conv_smooth.h5', 'test_smooth_bold.h5', 'test_conv_feats.h5')
-	test_linear('l2_deconv.h5', 'test_deconv.h5', 'test_feats.h5')
+	test_linear('l2_4sec.h5', 'test_4sec_bold.h5')
+	test_linear('l2_5sec.h5', 'test_5sec_bold.h5')
+	test_linear('l2_6sec.h5', 'test_6sec_bold.h5')
+	test_linear('l2_7sec.h5', 'test_7sec_bold.h5')
+	test_linear('l2_4sec_smooth.h5', 'test_4sec_smooth_bold.h5')
+	test_linear('l2_5sec_smooth.h5', 'test_5sec_smooth_bold.h5')
+	test_linear('l2_6sec_smooth.h5', 'test_6sec_smooth_bold.h5')
+	test_linear('l2_7sec_smooth.h5', 'test_7sec_smooth_bold.h5')
+	test_linear('l2_conv.h5', 'test_bold.h5')
+	test_linear('l2_conv_smooth.h5', 'test_smooth_bold.h5')
+	test_linear('l2_deconv.h5', 'test_deconv.h5')
 		
 	# F-statisc models
-	test_linear('f_4sec.h5', 'test_4sec_bold.h5', 'test_feats.h5')
-	test_linear('f_5sec.h5', 'test_5sec_bold.h5', 'test_feats.h5')
-	test_linear('f_6sec.h5', 'test_6sec_bold.h5', 'test_feats.h5')
-	test_linear('f_7sec.h5', 'test_7sec_bold.h5', 'test_feats.h5')
-	test_linear('f_4sec_smooth.h5', 'test_4sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('f_5sec_smooth.h5', 'test_5sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('f_6sec_smooth.h5', 'test_6sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('f_7sec_smooth.h5', 'test_7sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('f_conv.h5', 'test_bold.h5', 'test_conv_feats.h5')
-	test_linear('f_conv_smooth.h5', 'test_smooth_bold.h5', 'test_conv_feats.h5')
-	test_linear('f_deconv.h5', 'test_deconv.h5', 'test_feats.h5')
+	test_linear('f_4sec.h5', 'test_4sec_bold.h5')
+	test_linear('f_5sec.h5', 'test_5sec_bold.h5')
+	test_linear('f_6sec.h5', 'test_6sec_bold.h5')
+	test_linear('f_7sec.h5', 'test_7sec_bold.h5')
+	test_linear('f_4sec_smooth.h5', 'test_4sec_smooth_bold.h5')
+	test_linear('f_5sec_smooth.h5', 'test_5sec_smooth_bold.h5')
+	test_linear('f_6sec_smooth.h5', 'test_6sec_smooth_bold.h5')
+	test_linear('f_7sec_smooth.h5', 'test_7sec_smooth_bold.h5')
+	test_linear('f_conv.h5', 'test_bold.h5')
+	test_linear('f_conv_smooth.h5', 'test_smooth_bold.h5')
+	test_linear('f_deconv.h5', 'test_deconv.h5')
 		
 	# ROI models
-	test_linear('roi_4sec.h5', 'test_4sec_bold.h5', 'test_feats.h5')
-	test_linear('roi_5sec.h5', 'test_5sec_bold.h5', 'test_feats.h5')
-	test_linear('roi_6sec.h5', 'test_6sec_bold.h5', 'test_feats.h5')
-	test_linear('roi_7sec.h5', 'test_7sec_bold.h5', 'test_feats.h5')
-	test_linear('roi_4sec_smooth.h5', 'test_4sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('roi_5sec_smooth.h5', 'test_5sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('roi_6sec_smooth.h5', 'test_6sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('roi_7sec_smooth.h5', 'test_7sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('roi_conv.h5', 'test_bold.h5', 'test_conv_feats.h5')
-	test_linear('roi_conv_smooth.h5', 'test_smooth_bold.h5', 'test_conv_feats.h5')
-	test_linear('roi_deconv.h5', 'test_deconv.h5', 'test_feats.h5')
-	
-	# Lasso for feature selection models
-	test_linear('l1-fs_4sec.h5', 'test_4sec_bold.h5', 'test_feats.h5')
-	test_linear('l1-fs_5sec.h5', 'test_5sec_bold.h5', 'test_feats.h5')
-	test_linear('l1-fs_6sec.h5', 'test_6sec_bold.h5', 'test_feats.h5')
-	test_linear('l1-fs_7sec.h5', 'test_7sec_bold.h5', 'test_feats.h5')
-	test_linear('l1-fs_4sec_smooth.h5', 'test_4sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l1-fs_5sec_smooth.h5', 'test_5sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l1-fs_6sec_smooth.h5', 'test_6sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l1-fs_7sec_smooth.h5', 'test_7sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l1-fs_conv.h5', 'test_bold.h5', 'test_conv_feats.h5')
-	test_linear('l1-fs_conv_smooth.h5', 'test_smooth_bold.h5', 'test_conv_feats.h5')
-	test_linear('l1-fs_deconv.h5', 'test_deconv.h5', 'test_feats.h5')
-	
-	# Ridge for feature selection
-	test_linear('l2-fs_4sec.h5', 'test_4sec_bold.h5', 'test_feats.h5')
-	test_linear('l2-fs_5sec.h5', 'test_5sec_bold.h5', 'test_feats.h5')
-	test_linear('l2-fs_6sec.h5', 'test_6sec_bold.h5', 'test_feats.h5')
-	test_linear('l2-fs_7sec.h5', 'test_7sec_bold.h5', 'test_feats.h5')
-	test_linear('l2-fs_4sec_smooth.h5', 'test_4sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l2-fs_5sec_smooth.h5', 'test_5sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l2-fs_6sec_smooth.h5', 'test_6sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l2-fs_7sec_smooth.h5', 'test_7sec_smooth_bold.h5', 'test_feats.h5')
-	test_linear('l2-fs_conv.h5', 'test_bold.h5', 'test_conv_feats.h5')
-	test_linear('l2-fs_conv_smooth.h5', 'test_smooth_bold.h5', 'test_conv_feats.h5')
-	test_linear('l2-fs_deconv.h5', 'test_deconv.h5', 'test_feats.h5')
+	test_linear('roi_4sec.h5', 'test_4sec_bold.h5')
+	test_linear('roi_5sec.h5', 'test_5sec_bold.h5')
+	test_linear('roi_6sec.h5', 'test_6sec_bold.h5')
+	test_linear('roi_7sec.h5', 'test_7sec_bold.h5')
+	test_linear('roi_4sec_smooth.h5', 'test_4sec_smooth_bold.h5')
+	test_linear('roi_5sec_smooth.h5', 'test_5sec_smooth_bold.h5')
+	test_linear('roi_6sec_smooth.h5', 'test_6sec_smooth_bold.h5')
+	test_linear('roi_7sec_smooth.h5', 'test_7sec_smooth_bold.h5')
+	test_linear('roi_conv.h5', 'test_bold.h5')
+	test_linear('roi_conv_smooth.h5', 'test_smooth_bold.h5')
+	test_linear('roi_deconv.h5', 'test_deconv.h5')
 	
 	# Neural network models
-	test_neural_network('nn_4sec.h5', 'test_4sec_bold.h5', 'test_feats.h5')
-	test_neural_network('nn_5sec.h5', 'test_5sec_bold.h5', 'test_feats.h5')
-	test_neural_network('nn_6sec.h5', 'test_6sec_bold.h5', 'test_feats.h5')
-	test_neural_network('nn_7sec.h5', 'test_7sec_bold.h5', 'test_feats.h5')
-	test_neural_network('nn_4sec_smooth.h5', 'test_4sec_smooth_bold.h5', 'test_feats.h5')
-	test_neural_network('nn_5sec_smooth.h5', 'test_5sec_smooth_bold.h5', 'test_feats.h5')
-	test_neural_network('nn_6sec_smooth.h5', 'test_6sec_smooth_bold.h5', 'test_feats.h5')
-	test_neural_network('nn_7sec_smooth.h5', 'test_7sec_smooth_bold.h5', 'test_feats.h5')
-	test_neural_network('nn_conv.h5', 'test_bold.h5', 'test_conv_feats.h5')
-	test_neural_network('nn_conv_smooth.h5', 'test_smooth_bold.h5', 'test_conv_feats.h5')
-	test_neural_network('nn_deconv.h5', 'test_deconv.h5', 'test_feats.h5')
+	test_neural_network('nn_4sec.h5', 'test_4sec_bold.h5')
+	test_neural_network('nn_5sec.h5', 'test_5sec_bold.h5')
+	test_neural_network('nn_6sec.h5', 'test_6sec_bold.h5')
+	test_neural_network('nn_7sec.h5', 'test_7sec_bold.h5')
+	test_neural_network('nn_4sec_smooth.h5', 'test_4sec_smooth_bold.h5')
+	test_neural_network('nn_5sec_smooth.h5', 'test_5sec_smooth_bold.h5')
+	test_neural_network('nn_6sec_smooth.h5', 'test_6sec_smooth_bold.h5')
+	test_neural_network('nn_7sec_smooth.h5', 'test_7sec_smooth_bold.h5')
+	test_neural_network('nn_conv.h5', 'test_bold.h5')
+	test_neural_network('nn_conv_smooth.h5', 'test_smooth_bold.h5')
+	test_neural_network('nn_deconv.h5', 'test_deconv.h5')
 
 def read_inputs(features_filename, targets_filename):
 	# Read regression features
@@ -199,7 +160,7 @@ def row_wise_corr(A, B):
 		corr.append(np.corrcoef(x,y)[0,1])
 	return np.array(corr)
 	
-def column_wise_r2(y_true, y_pred, min_var=1e-4):
+def column_wise_r2(y_true, y_pred, min_var=0.001):
 	""" Computes R^2 per column."""
 	rss = ((y_true-y_pred)**2).sum(axis=0)
 	tss = ((y_true- y_true.mean(axis=0))**2).sum(axis=0)
@@ -212,16 +173,16 @@ def column_wise_r2(y_true, y_pred, min_var=1e-4):
 	
 	return r2
 
-def row_wise_r2(y_true, y_pred, min_var=1e-4):
+def row_wise_r2(y_true, y_pred, min_var=0.001):
 	"""Computes R2 per row"""
 	return column_wise_r2(y_true.transpose(), y_pred.transpose(), min_var)
 	
-def test_linear(model_filename, features_filename, targets_filename):
+def test_linear(model_filename, features_filename):
 	""" Tests a linear model."""
 	print('Testing model', model_filename[:-3])
 
 	# Read features and targets
-	X_test, y_test = read_inputs(features_filename, targets_filename)
+	X_test, y_test = read_inputs(features_filename, 'test_feats.h5')
 	
 	# Read model
 	with h5py.File(model_filename, 'r') as model_file:
@@ -230,13 +191,15 @@ def test_linear(model_filename, features_filename, targets_filename):
 	
 	# Make predictions
 	y_pred = np.dot(X_test, weights.transpose()) + bias
+	
+	# Make predictions on training set (used to estimate SNR and re-scaling)
+	X_train, y_train = read_inputs('train' + features_filename[4:], 
+								   'train_feats.h5')
+	y_train_pred = np.dot(X_train, weights.transpose()) + bias
 
 	# If the model predicts convolved features, deconvolve them
-	if '_conv_' in targets_filename:
+	if '_conv' in model_filename:
 		# Estimate the signal-to-noise ratio using training set predictions
-		X_train, y_train = read_inputs('train' + features_filename[4:],
-									   'train' + targets_filename[4:])
-		y_train_pred = np.dot(X_train, weights.transpose()) + bias
 		SNR = estimate_SNR(y_train_pred[7:-7,:], y_train[7:-7, :])
 	
 		# Deconvolve	
@@ -245,23 +208,41 @@ def test_linear(model_filename, features_filename, targets_filename):
 	# Drop first and last 7 predictions to avoid convolution/smoothing artifacts
 	y_test = y_test[7:-7, :]
 	y_pred = y_pred[7:-7, :]
+	y_train_pred = y_train_pred[7:-7, :]
 	
 	# Report metrics (as is)
 	print_metrics(y_test, y_pred)
+	
 		
 	# Setting those less than zero to zero.
 	print('Inducing sparsity...')
-	y_pred[y_pred < 0] = 0
+	y_pred2 = y_pred.copy()
+	y_pred2[y_pred < 0] = 0
 	
 	# Report metrics
-	print_metrics(y_test, y_pred)
+	print_metrics(y_test, y_pred2)
 	
-def test_neural_network(model_filename, features_filename, targets_filename):
+	
+	# Rescale y_pred so each feature has the same spread as the training targets
+	expected_mean = y_train_pred.mean(axis=0)
+	expected_std = y_train_pred.std(axis=0)
+	desired_mean = y_train.mean(axis=0) 
+	desired_std = y_train.std(axis=0)
+	
+	y_pred3 = (y_pred - expected_mean)/expected_std # normalize to unit std
+	y_pred3 = (y_pred3 * desired_std) + desired_mean # give new spread
+	y_pred3[y_pred3 < 0] = 0 # set any negative prediction to zero
+	
+	# Report metrics
+	print('Inducing same spread + sparsity...')
+	print_metrics(y_test, y_pred3)
+	
+def test_neural_network(model_filename, features_filename):
 	""" Test the neural network models. """
 	print('Testing model', model_filename[:-3])
 
 	# Read features and targets
-	X_test, y_test = read_inputs(features_filename, targets_filename)
+	X_test, y_test = read_inputs(features_filename, 'test_feats.h5')
 	
 	# Read model
 	with h5py.File(model_filename, 'r') as model_file:
@@ -273,14 +254,16 @@ def test_neural_network(model_filename, features_filename, targets_filename):
 	# Make predictions
 	hidden = np.dot(X_test, weights_ih.transpose()) + bias_ih
 	y_pred = np.dot(hidden, weights_ho.transpose()) + bias_ho
-
+	
+	# Make predictions on training set (used to estimate SNR and re-scaling)
+	X_train, y_train = read_inputs('train' + features_filename[4:],
+								   'train_feats.h5')
+	hidden = np.dot(X_train, weights_ih.transpose()) + bias_ih
+	y_train_pred = np.dot(hidden, weights_ho.transpose()) + bias_ho
+	
 	# If the model predicts convolved features, deconvolve them
-	if '_conv_' in targets_filename:
+	if '_conv' in model_filename:
 		# Estimate the signal-to-noise ratio using training set predictions
-		X_train, y_train = read_inputs('train' + features_filename[4:],
-								   'train' + targets_filename[4:])
-		hidden = np.dot(X_train, weights_ih.transpose()) + bias_ih
-		y_train_pred = np.dot(hidden, weights_ho.transpose()) + bias_ho
 		SNR = estimate_SNR(y_train_pred[7:-7,:], y_train[7:-7, :])
 		
 		# Deconvolve
@@ -289,21 +272,34 @@ def test_neural_network(model_filename, features_filename, targets_filename):
 	# Drop first and last 7 predictions to avoid convolution/smoothing artifacts
 	y_test = y_test[7:-7, :]
 	y_pred = y_pred[7:-7, :]
+	y_train_pred = y_train_pred[7:-7, :]
 	
-	# Compute set of metrics (before rescaling)
-	metrics = compute_metrics(y_test, y_pred)
-
-	# Report metrics
+	# Report metrics (as is)
 	print_metrics(y_test, y_pred)
 	
-	
+		
 	# Setting those less than zero to zero.
 	print('Inducing sparsity...')
-	y_pred[y_pred < 0] = 0
+	y_pred2 = y_pred.copy()
+	y_pred2[y_pred < 0] = 0
 	
 	# Report metrics
-	print_metrics(y_test, y_pred)
+	print_metrics(y_test, y_pred2)
 	
-
+	
+	# Rescale y_pred so each feature has the same spread as the training targets
+	expected_mean = y_train_pred.mean(axis=0)
+	expected_std = y_train_pred.std(axis=0)
+	desired_mean = y_train.mean(axis=0) 
+	desired_std = y_train.std(axis=0)
+	
+	y_pred3 = (y_pred - expected_mean)/expected_std # normalize to unit std
+	y_pred3 = (y_pred3 * desired_std) + desired_mean # give new spread
+	y_pred3[y_pred3 < 0] = 0 # set any negative prediction to zero
+	
+	# Report metrics
+	print('Inducing same spread + sparsity...')
+	print_metrics(y_test, y_pred3)
+	
 if __name__ == "__main__":
 	main()

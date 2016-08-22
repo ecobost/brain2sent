@@ -23,7 +23,6 @@ Description of data files.
 | train_conv_feats.h5	| 44 Mb		| Matrix (7200 x 768) called 'feats'. Each row is obtained by convolving the feature vectors in train_full_feats with the canonical (Glover) HRF and subsampling the results (1 every 15 rows).					|
 | test_full_feats.h5	| 25 Mb		| Matrix (8100 x 768) called 'feats'. Similar to train_full_feats but for test images.	|
 | test_feats.h5			| 2 Mb		| Matrix (540 x 768) called 'feats'. Similar to train_feats but for test images.		|
-| test_conv_feats.h5	| 3 Mb		| Matrix (540 x 768) called 'feats'. Similar to train_conv_feats but for test images.	|
 
 ## Models
 xxxx = ['4sec'|'5sec'|'6sec'|'7sec'|'conv'\]'_smooth'? | 'deconv'. For instance,
@@ -33,12 +32,9 @@ train_bold (or train_smooth_bold) to predict train_conv_feats.
  
 | Filename		| Size	| 						Description					|
 |:-------------:|:-----:|:--------------------------------------------------|
-| l1_xxxx.h5	| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l1-regularized multioutput linear regression model (Lasso). No feature selection												|
 | l2_xxxx.h5	| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge). No feature selection												|
 | f_xxxx.h5		| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using an F-statistic.				|
 | roi_xxxx.h5	| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features based on ROI.						|
-| l1-fs_xxxx.h5	| 55 Mb	| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using the l1 model fitted above.	|
-| l2-fs_xxxx.h5	| 55 Mb		| Matrix (768 x 8982) called 'weights' and vector (768) called 'bias', parameters for an l2-regularized multioutput linear regression model (Ridge) trained after selecting features using the l2 model fitted above.	|
 | nn_xxxx.h5	| 31 Mb		| Matrix (400 x 8982) called 'weights_ih' and vector (400) called 'bias_ih' that map input to hidden layer activations and matrix (768 x 400) called 'weights_ho'and vector (768) called 'bias_ho' that map hidden layer activations to output.	|
 
 ## Image vector predictions from best model
