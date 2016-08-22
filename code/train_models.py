@@ -94,65 +94,6 @@ def save_linear_model(model_filename, weights, bias):
 		model_file.create_dataset('weights', data=weights)
 		model_file.create_dataset('bias', data=bias)
 	
-	
-def train_lasso(features_filename, targets_filename, model_name):
-	""" Trains a Lasso model on all input features (no feature selection). """
-	print('Training model', model_name)
-	
-	# Read features and targets
-	Xs, y = read_inputs(features_filename, targets_filename)
-	
-	# Initialize containers for weights and bias
-	num_features = Xs.shape[1]
-	num_outputs = y.shape[1]
-	weights = np.zeros((num_outputs, num_features))
-	bias = np.zeros(num_outputs)
-	
-	# And for bookkeeping
-	best_models = {'R2': np.zeros(num_outputs), 'alpha': np.zeros(num_outputs),
-				   'sparsity': np.zeros(num_outputs)}
-	
-	# Over every output element
-	for i in range(num_outputs):
-		y_i = y[:, i]
-		
-		# Train model (searching for best regularization parameter)
-		cv = GridSearchCV(Lasso(), regularization_params, cv=5, n_jobs=-1).fit(Xs, y_i)
-		model = cv.best_estimator_
-		
-		# Store it
-		weights[i, :] = model.coef_
-		bias[i] = model.intercept_
-		
-		# Bookkeping
-		best_models['R2'][i] = cv.best_score_
-		best_models['alpha'][i] = model.alpha
-		best_models['sparsity'][i] = (model.coef_ != 0).sum()
-		
-		# Report and save checkpoint
-		if i%100 == 0:
-			print(i+1, 'out of', num_outputs)
-			print('R2:', best_models['R2'][:i])
-			print('Alphas:', best_models['alpha'][:i])
-			print('Sparsity:', best_models['sparsity'][:i])
-						
-			print('Saving checkpoint...')
-			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			save_linear_model(checkpoint_name, weights, bias)
-
-	# Print final cross-validation results
-	print('Final results')
-	print(i+1, 'out of', num_outputs)
-	print('R2:', best_models['R2'])
-	print('Average R2:', best_models['R2'].mean()) 
-	print('Alphas:', best_models['alpha'])
-	print('Sparsity (per output):', (weights != 0).sum(axis=1))
-	print('Sparsity (per feature):', (weights != 0).sum(axis=0))
-		
-	# Save model
-	save_linear_model(model_name + '.h5', weights, bias)
-
-	
 def train_ridge(features_filename, targets_filename, model_name):
 	""" Trains a Ridge model on all input features (no feature selection). """
 	print('Training model', model_name)
@@ -207,8 +148,7 @@ def train_ridge(features_filename, targets_filename, model_name):
 		
 	# Save model
 	save_linear_model(model_name + '.h5', weights, bias)
-	
-	
+		
 def train_f_selection(features_filename, targets_filename, model_name):
 	""" Does feature selection using an F-test and fits a Ridge model. """
 	print('Training model', model_name)
@@ -283,8 +223,7 @@ def train_f_selection(features_filename, targets_filename, model_name):
 		
 	# Save model
 	save_linear_model(model_name + '.h5', weights, bias)
-	
-	
+		
 def train_roi_selection(features_filename, targets_filename, model_name):
 	""" Does feature selection using an F-test and fits a Ridge model. """
 	print('Training model', model_name)
@@ -368,154 +307,6 @@ def train_roi_selection(features_filename, targets_filename, model_name):
 		
 	# Save model
 	save_linear_model(model_name + '.h5', weights, bias)
-	
-	
-def train_lasso_selection(features_filename, targets_filename, selector_filename,
-						  model_name):
-	""" Feature selection using the pretrained Lasso and fits a Ridge model. """
-	print('Training model', model_name)
-	
-	# Read features and targets
-	Xs, y = read_inputs(features_filename, targets_filename)
-	
-	# Read pretrained model
-	with h5py.File(selector_filename, 'r') as selector_file:
-		selector = np.array(selector_file['weights'])
-	
-	# Set regularization parameters and number of features
-	regularization_params = {'alpha': np.logspace(1, 4, 30)}
-	
-	# Initialize containers for weights and bias
-	num_features = Xs.shape[1]
-	num_outputs = y.shape[1]
-	weights = np.zeros((num_outputs, num_features))
-	bias = np.zeros(num_outputs)
-	
-	# And for bookkeeping
-	best_models = {'R2': np.zeros(num_outputs), 'alpha': np.zeros(num_outputs)}
-	
-	# Over every output element
-	for i in range(num_outputs):
-		y_i = y[:, i]
-		
-		# Extract feature selector
-		feature_importances = abs(selector[i, :])
-		mask = (feature_importances > 0)
-				
-		# Select features
-		Xs_select = Xs[:, mask]
-		
-		# Train model (searching for best regularization parameter)
-		cv = GridSearchCV(Ridge(), regularization_params, cv=5, n_jobs=-1).fit(Xs_select, y_i)
-		model = cv.best_estimator_
-		
-		# Store it	
-		weights[i, mask] = model.coef_
-		bias[i] = model.intercept_
-		
-		# Bookkeeping
-		best_models['R2'][i] = cv.best_score_
-		best_models['alpha'][i] = model.alpha
-		
-		# Report and save checkpoint
-		if i%100 == 0:
-			print(i+1, 'out of', num_outputs)
-			print('R2:', best_models['R2'][:i])
-			print('Alphas:', best_models['alpha'][:i])
-						
-			print('Saving checkpoint...')
-			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			save_linear_model(checkpoint_name, weights, bias)
-
-	# Print final cross-validation results
-	print('Final results')
-	print(i+1, 'out of', num_outputs)
-	print('R2:', best_models['R2'])
-	print('Average R2:', best_models['R2'].mean()) 
-	print('Alphas:', best_models['alpha'])
-	print('Sparsity (per output):', (weights != 0).sum(axis=1))
-	print('Sparsity (per feature):', (weights != 0).sum(axis=0))
-		
-	# Save model
-	save_linear_model(model_name + '.h5', weights, bias)
-	
-	
-def train_ridge_selection(features_filename, targets_filename, selector_filename,
-						  model_name):
-	""" Feature selection using the pretrained Ridge and fits a Ridge model. """
-	print('Training model', model_name)
-	
-	# Read features and targets
-	Xs, y = read_inputs(features_filename, targets_filename)
-	
-	# Read pretrained model
-	with h5py.File(selector_filename, 'r') as selector_file:
-		selector = np.array(selector_file['weights'])
-	
-	# Set regularization parameters and number of features
-	regularization_params = {'alpha': np.logspace(2.5, 5, 25)}
-	ks = [5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000]
-	
-	# Initialize containers for weights and bias
-	num_features = Xs.shape[1]
-	num_outputs = y.shape[1]
-	weights = np.zeros((num_outputs, num_features))
-	bias = np.zeros(num_outputs)
-	
-	# And for bookkeeping
-	best_models = {'R2': np.full(num_outputs, -np.inf), 
-				   'alpha': np.zeros(num_outputs), 'k': np.zeros(num_outputs)}
-	
-	# Over every output element
-	for i in range(num_outputs):
-		y_i = y[:, i]
-		
-		# Extract feature selector
-		feature_importances = abs(selector[i, :])
-		sorted_indices = feature_importances.argsort()
-				   
-		# Train models with different number of features
-		for k in ks:
-			# Select best k features
-			selected_features = sorted_indices[-k:]  
-			Xs_select = Xs[:, selected_features]
-			
-			# Train model (searching for best regularization parameter)
-			cv = GridSearchCV(Ridge(), regularization_params, cv=5, n_jobs=-1).fit(Xs_select, y_i)
-			model = cv.best_estimator_
-			
-			# If best model yet, store it
-			if cv.best_score_ > best_models['R2'][i]:
-				weights[i, :] = 0
-				weights[i, selected_features] = model.coef_
-				bias[i] = model.intercept_
-				best_models['R2'][i] = cv.best_score_
-				best_models['alpha'][i] = model.alpha
-				best_models['k'][i] = k		
-				
-		# Report and save checkpoint
-		if i%100 == 0:
-			print(i+1, 'out of', num_outputs)
-			print('R2:', best_models['R2'][:i])
-			print('Alphas:', best_models['alpha'][:i])
-			print('Ks:', best_models['k'][:i])
-						
-			print('Saving checkpoint...')
-			checkpoint_name = model_name + '_' + str(i) + '.h5'
-			save_linear_model(checkpoint_name, weights, bias)
-
-	# Print final cross-validation results
-	print('Final results')
-	print(i+1, 'out of', num_outputs)
-	print('R2:', best_models['R2'])
-	print('Average R2:', best_models['R2'].mean()) 
-	print('Alphas:', best_models['alpha'])
-	print('Ks:', best_models['k'])
-	print('Average K:', best_models['k'].mean()) 
-		
-	# Save model
-	save_linear_model(model_name + '.h5', weights, bias)
-
 	
 def train_neural_network(features_filename, targets_filename, model_name):
 	""" Trains a neural network with 400 units in the hidden layer. """
