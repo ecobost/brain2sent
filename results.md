@@ -12,7 +12,7 @@ Alpha (the regularization parameter) was crossvalidated for neural networks. The
 | nn_5sec_smooth	| 0.143			| 73.86		|
 | nn_6sec_smooth	| 0.124			| 83.38		|
 | nn_7sec_smooth	| 0.098			| 94.12		|
-| nn_conv			| xxxxx			| -			|
+| nn_conv			| 0.179			| 94.12		|
 | nn_conv_smooth	| xxxxx			| -			|
 | nn_deconv			| 0.125			| 106.25	|
 | l2_4sec			| 0.080			| -			|
