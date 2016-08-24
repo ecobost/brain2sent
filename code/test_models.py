@@ -191,15 +191,13 @@ def test_linear(model_filename, features_filename):
 	
 	# Make predictions
 	y_pred = np.dot(X_test, weights.transpose()) + bias
-	
-	# Make predictions on training set (used to estimate SNR and re-scaling)
-	X_train, y_train = read_inputs('train' + features_filename[4:], 
-								   'train_feats.h5')
-	y_train_pred = np.dot(X_train, weights.transpose()) + bias
 
 	# If the model predicts convolved features, deconvolve them
 	if '_conv' in model_filename:
 		# Estimate the signal-to-noise ratio using training set predictions
+		X_train, y_train = read_inputs('train' + features_filename[4:], 
+								   'train_feats.h5')
+		y_train_pred = np.dot(X_train, weights.transpose()) + bias
 		SNR = estimate_SNR(y_train_pred[7:-7,:], y_train[7:-7, :])
 	
 		# Deconvolve	
@@ -208,34 +206,16 @@ def test_linear(model_filename, features_filename):
 	# Drop first and last 7 predictions to avoid convolution/smoothing artifacts
 	y_test = y_test[7:-7, :]
 	y_pred = y_pred[7:-7, :]
-	y_train_pred = y_train_pred[7:-7, :]
 	
 	# Report metrics (as is)
 	print_metrics(y_test, y_pred)
 	
-		
 	# Setting those less than zero to zero.
 	print('Inducing sparsity...')
-	y_pred2 = y_pred.copy()
-	y_pred2[y_pred < 0] = 0
+	y_pred[y_pred < 0] = 0
 	
 	# Report metrics
-	print_metrics(y_test, y_pred2)
-	
-	
-	# Rescale y_pred so each feature has the same spread as the training targets
-	expected_mean = y_train_pred.mean(axis=0)
-	expected_std = y_train_pred.std(axis=0)
-	desired_mean = y_train.mean(axis=0) 
-	desired_std = y_train.std(axis=0)
-	
-	y_pred3 = (y_pred - expected_mean)/expected_std # normalize to unit std
-	y_pred3 = (y_pred3 * desired_std) + desired_mean # give new spread
-	y_pred3[y_pred3 < 0] = 0 # set any negative prediction to zero
-	
-	# Report metrics
-	print('Inducing same spread + sparsity...')
-	print_metrics(y_test, y_pred3)
+	print_metrics(y_test, y_pred)
 	
 def test_neural_network(model_filename, features_filename):
 	""" Test the neural network models. """
@@ -255,15 +235,13 @@ def test_neural_network(model_filename, features_filename):
 	hidden = np.dot(X_test, weights_ih.transpose()) + bias_ih
 	y_pred = np.dot(hidden, weights_ho.transpose()) + bias_ho
 	
-	# Make predictions on training set (used to estimate SNR and re-scaling)
-	X_train, y_train = read_inputs('train' + features_filename[4:],
-								   'train_feats.h5')
-	hidden = np.dot(X_train, weights_ih.transpose()) + bias_ih
-	y_train_pred = np.dot(hidden, weights_ho.transpose()) + bias_ho
-	
 	# If the model predicts convolved features, deconvolve them
 	if '_conv' in model_filename:
 		# Estimate the signal-to-noise ratio using training set predictions
+		X_train, y_train = read_inputs('train' + features_filename[4:],
+								   'train_feats.h5')
+		hidden = np.dot(X_train, weights_ih.transpose()) + bias_ih
+		y_train_pred = np.dot(hidden, weights_ho.transpose()) + bias_ho
 		SNR = estimate_SNR(y_train_pred[7:-7,:], y_train[7:-7, :])
 		
 		# Deconvolve
@@ -272,34 +250,16 @@ def test_neural_network(model_filename, features_filename):
 	# Drop first and last 7 predictions to avoid convolution/smoothing artifacts
 	y_test = y_test[7:-7, :]
 	y_pred = y_pred[7:-7, :]
-	y_train_pred = y_train_pred[7:-7, :]
 	
 	# Report metrics (as is)
 	print_metrics(y_test, y_pred)
-	
 		
 	# Setting those less than zero to zero.
 	print('Inducing sparsity...')
-	y_pred2 = y_pred.copy()
-	y_pred2[y_pred < 0] = 0
+	y_pred[y_pred < 0] = 0
 	
 	# Report metrics
 	print_metrics(y_test, y_pred2)
-	
-	
-	# Rescale y_pred so each feature has the same spread as the training targets
-	expected_mean = y_train_pred.mean(axis=0)
-	expected_std = y_train_pred.std(axis=0)
-	desired_mean = y_train.mean(axis=0) 
-	desired_std = y_train.std(axis=0)
-	
-	y_pred3 = (y_pred - expected_mean)/expected_std # normalize to unit std
-	y_pred3 = (y_pred3 * desired_std) + desired_mean # give new spread
-	y_pred3[y_pred3 < 0] = 0 # set any negative prediction to zero
-	
-	# Report metrics
-	print('Inducing same spread + sparsity...')
-	print_metrics(y_test, y_pred3)
-	
+		
 if __name__ == "__main__":
 	main()
