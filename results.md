@@ -52,12 +52,56 @@ Alpha (the regularization parameter) was crossvalidated for neural networks. The
 \* Cross-validation R2 scores for nn models are those from scikit-learn's score_r2 metric which calculates a weighted average over all features (weight is the feature variance) rather than a simple arithmetic mean as defined below. Thus, nn R2 scores cannot be directly compared to the rest of models (which were calculated as below). Test scores however can be compared among all models. We apologize for the inconvenience :)
 
 # Test results
-All metrics are computed on the test set.
+All metrics are computed on the test set. For models that predict convolved features, they were deconvolved using Wiener deconvolution (signal-to-noise estimated using the training set). Because the expected features are positive, any prediction less than zero was set to zero.
+
 Lower is better for RMSE, higher is better for r and R^2.
 
-| Model	| RMSE	| R^2_sample	| R^2_feature	| r_sample	| r_feature	| 
-|:-----:|:-----:|:-------------:|:-------------:|:---------:|:---------:|
-| a		| xxxx	| xxxxx			| xxx			| xxxx		| xxxx		|
+| Model				| RMSE	| R^2_sample	| R^2_feature	| r_sample	| r_feature	| 
+|:-----------------:|:-----:|:-------------:|:-------------:|:---------:|:---------:|
+| nn_4sec			| 
+| nn_5sec			| 
+| nn_6sec			| 
+| nn_7sec			| 
+| nn_4sec_smooth	| 
+| nn_5sec_smooth	| 
+| nn_6sec_smooth	| 
+| nn_7sec_smooth	| 
+| nn_conv			| 
+| nn_conv_smooth	| 
+| nn_deconv			| 
+| l2_4sec			| 
+| l2_5sec			| 
+| l2_6sec			| 
+| l2_7sec			| 
+| l2_4sec_smooth	| 
+| l2_5sec_smooth	| 
+| l2_6sec_smooth	| 
+| l2_7sec_smooth	| 
+| l2_conv			| 
+| l2_conv_smooth	| 
+| l2_deconv			| 
+| f_4sec			| 
+| f_5sec			| 
+| f_6sec			| 
+| f_7sec			| 
+| f_4sec_smooth		| 
+| f_5sec_smooth		| 
+| f_6sec_smooth		| 
+| f_7sec_smooth		| 
+| f_conv			| 
+| f_conv_smooth		| 
+| f_deconv			| 
+| roi_4sec			| 
+| roi_5sec			| 
+| roi_6sec			| 
+| roi_7sec			| 
+| roi_4sec_smooth	| 
+| roi_5sec_smooth	| 
+| roi_6sec_smooth	| 
+| roi_7sec_smooth	| 
+| roi_conv			| 
+| roi_conv_smooth	| 
+| roi_deconv		| 
 
 # Definitions
 Assuming y_true is the target matrix (samples x feature units, i.e., 540 x 768),
