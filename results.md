@@ -28,7 +28,7 @@ Alpha (the regularization parameter) was crossvalidated for neural networks. The
 | l2_deconv			| 0.074			| -			|
 | f_4sec			| xxxxx			| -			|
 | f_5sec			| xxxxx			| -			|
-| f_6sec			| xxxxx			| -			|
+| f_6sec			| 0.102			| -			|
 | f_7sec			| 0.084			| -			|
 | f_4sec_smooth		| 0.127			| -			|
 | f_5sec_smooth		| 0.127			| -			|
@@ -41,7 +41,7 @@ Alpha (the regularization parameter) was crossvalidated for neural networks. The
 | roi_5sec			| xxxxx			| -			|
 | roi_6sec			| xxxxx			| -			|
 | roi_7sec			| xxxxx			| -			|
-| roi_4sec_smooth	| xxxxx			| -			|
+| roi_4sec_smooth	| 0.070			| -			|
 | roi_5sec_smooth	| xxxxx			| -			|
 | roi_6sec_smooth	| xxxxx			| -			|
 | roi_7sec_smooth	| xxxxx			| -			|
