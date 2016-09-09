@@ -32,7 +32,7 @@ Alpha (the regularization parameter) was crossvalidated for neural networks. The
 | f_7sec			| 0.084			| -			|
 | f_4sec_smooth		| 0.127			| -			|
 | f_5sec_smooth		| 0.127			| -			|
-| f_6sec_smooth		| xxxxx			| -			|
+| f_6sec_smooth		| 0.115			| -			|
 | f_7sec_smooth		| 0.097			| -			|
 | f_conv			| 0.146			| -			|
 | f_conv_smooth		| 0.178			| -			|
@@ -46,7 +46,7 @@ Alpha (the regularization parameter) was crossvalidated for neural networks. The
 | roi_6sec_smooth	| xxxxx			| -			|
 | roi_7sec_smooth	| 0.048			| -			|
 | roi_conv			| 0.074			| -			|
-| roi_conv_smooth	| xxxxx			| -			|
+| roi_conv_smooth	| 0.101			| -			|
 | roi_deconv		| 0.044			| -			|
 
 \* Cross-validation R2 scores for nn models are those from scikit-learn's score_r2 metric which calculates a weighted average over all features (weight is the feature variance) rather than a simple arithmetic mean as defined below. Thus, nn R2 scores cannot be directly compared to the rest of models (which were calculated as below). Test scores however can be compared among all models. We apologize for the inconvenience :)
