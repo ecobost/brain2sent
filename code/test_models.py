@@ -260,7 +260,7 @@ def test_neural_network(model_filename, features_filename):
 	y_pred[y_pred < 0] = 0
 	
 	# Report metrics
-	print_metrics(y_test, y_pred2)
+	print_metrics(y_test, y_pred)
 	print('')
 		
 if __name__ == "__main__":
