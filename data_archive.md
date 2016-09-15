@@ -40,16 +40,16 @@ train_bold (or train_smooth_bold) to predict train_conv_feats.
 ## Image vector predictions from best model
 |	Filename		| 	Size 	| 				Description					|
 |:-----------------:|:---------:|:------------------------------------------|
-| train_preds_x.h5	| -			| Matrix (7200 x 768) called 'preds'. Each row is the image vector predicted by model_x (the best model) for each training sample.	|
-| test_preds_x.h5	| -			| Matrix (540 x 768) called 'test_preds'. Similar to train_preds_x but for test samples.											|
+| train_preds.h5	| 44 Mb		| Matrix (7200 x 768) called 'feats'. Each row is the image vector predicted by l2_4sec (the best model) for each training sample.	|
+| test_preds.h5		| 3 Mb		| Matrix (540 x 768) called 'feats'. Similar to train_preds_x but for test samples.											|
 
 ## Sentence predictions (used only for qualitative comparisons, not training/cv)
 | 	   Filename			| 	Size 	| 				Description				|
 |:---------------------:|:---------:|:--------------------------------------|
 | train_sents_gt.txt	| 307 kb	| Text file (7200 lines). Each line is the ground truth sentence prediction made by neuralTalk for each image in the training set (generated from train_feats).												|
-| train_sents_x.txt		| -			| Text file (7200 lines). Each line is the sentence prediction for image vectors predicted by model_x (the best model) in the training set (generated from train_preds_x).								|
-| test_sents_gt.txt		| -			| Text file (540 lines). Similar to train_sents_gt but for the test set (generated from test_feats).	|
-| test_sents_x.txt		| -			| Text file (540 lines). Similar to train_sents_x but for the test set (generated from test_preds_x).	|
+| train_sents_pred.txt	| 306 kb	| Text file (7200 lines). Each line is the sentence prediction for image vectors predicted by l2_4sec (the best model) in the training set (generated from train_preds).								|
+| test_sents_gt.txt		| 23 Kb		| Text file (540 lines). Similar to train_sents_gt but for the test set (generated from test_feats).	|
+| test_sents_pred.txt	| 23 Kb		| Text file (540 lines). Similar to train_sents_pred but for the test set (generated from test_preds).	|
 
 ## ROIs (Subject 1)
 | ID	| Name		|	Number of voxels	|
