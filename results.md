@@ -123,7 +123,10 @@ y_pred is a matrix (540 x 768) with the predicted output.
 | R^2_sample	| Mean sample-wise coefficient of determination		| `1 - (RSS_sample/TSS_sample).mean()`		|
 
 # Conclusions
-The best model is l2_4sec, i.e., a linear model where
+The best performing model is l2_4sec, i.e., l2-regularized multiple linear
+regression with regularization parameter cross-validated for each feature and a
+delay of 4 seconds between image features and recorded BOLD activity. Using a 
+delay of 5 seconds had similar results.
 
-Not much difference between them, even the neural network has a good result. which
-Who is best, why is f not so good in test, why is 5 not better than 4 secs.
+Selecting voxels using the f_statistic or their ROIs was worse. The neural
+network (one hidden layer with 400 units) performed as well as linear regression.
