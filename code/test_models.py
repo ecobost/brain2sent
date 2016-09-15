@@ -216,6 +216,7 @@ def test_linear(model_filename, features_filename):
 	
 	# Report metrics
 	print_metrics(y_test, y_pred)
+	print('')
 	
 def test_neural_network(model_filename, features_filename):
 	""" Test the neural network models. """
@@ -260,6 +261,7 @@ def test_neural_network(model_filename, features_filename):
 	
 	# Report metrics
 	print_metrics(y_test, y_pred2)
+	print('')
 		
 if __name__ == "__main__":
 	main()
