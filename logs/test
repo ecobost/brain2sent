@@ -151,3 +151,157 @@ Testing model models/nn_deconv
 Inducing sparsity...
 |RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
 | 0.148663376117 | 0.344959132176 | 0.60402822153 | -0.00193932929334 | 0.277209637039 |
+
+Testing model models/roi_4sec
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.144179649194 | 0.267489827807 | 0.599298665274 | 0.0490538104205 | 0.338430453358 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.143839606335 | 0.269358135948 | 0.600578706273 | 0.0525763071846 | 0.341687233138 |
+
+Testing model models/roi_5sec
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.144820316613 | 0.25846780288 | 0.594275117341 | 0.0421592815881 | 0.331116111731 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.1444933102 | 0.260146129473 | 0.595582609086 | 0.0457451954807 | 0.334411152203 |
+
+Testing model models/roi_6sec
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.146490914021 | 0.224634062771 | 0.579981823676 | 0.0250881847177 | 0.315287379415 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.146288189407 | 0.225582923059 | 0.580938952936 | 0.0274914055038 | 0.317403012892 |
+
+Testing model models/roi_7sec
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.148180352691 | 0.183167287816 | 0.56505743411 | 0.0099528693787 | 0.300746867476 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.148102166518 | 0.18360491877 | 0.565479846629 | 0.0109022574691 | 0.301543816873 |
+
+Testing model models/roi_4sec_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.15085504761 | 0.29049868707 | 0.589493314614 | -0.0307926028762 | 0.258118348414 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.14762732246 | 0.294394801707 | 0.597046853087 | 0.00551012380091 | 0.290897786214 |
+
+Testing model models/roi_5sec_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.151554269547 | 0.282450868128 | 0.582660654512 | -0.0381952126946 | 0.249491158622 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.148431616019 | 0.286134059179 | 0.590344566399 | -0.0023019933196 | 0.282020720633 |
+
+Testing model models/roi_6sec_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.151625609844 | 0.254065781832 | 0.570676342979 | -0.0383383243186 | 0.251453655361 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.149376224662 | 0.256763380931 | 0.576964061016 | -0.0116905785972 | 0.27493279331 |
+
+Testing model models/roi_7sec_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.151261413131 | 0.215930592558 | 0.55931004116 | -0.031715940875 | 0.260325408978 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.150067282694 | 0.217749092411 | 0.563303058715 | -0.0168302046504 | 0.272722261885 |
+
+Testing model models/roi_conv
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.172870970236 | 0.261758458431 | 0.529460416808 | -0.214641695645 | 0.0576227631687 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.172771804564 | 0.263406214178 | 0.529947970414 | -0.213295055275 | 0.0588382572641 |
+
+Testing model models/roi_conv_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.169205147761 | 0.27722646432 | 0.510747606851 | -0.187049909258 | 0.0917585331463 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.167852254446 | 0.28042555689 | 0.515881524517 | -0.170758076934 | 0.107639283962 |
+
+Testing model models/roi_deconv
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.145118029342 | 0.250414409412 | 0.591163322552 | 0.0413991373614 | 0.331523250537 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.144885295233 | 0.251941124643 | 0.592210722081 | 0.0438684733268 | 0.333824744827 |
+
+Testing model models/f_4sec
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.143559345052 | 0.331670859252 | 0.62051203876 | 0.038858357584 | 0.333819635726 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.141879082756 | 0.337747522045 | 0.62458692671 | 0.0620768690836 | 0.349754821386 |
+
+Testing model models/f_5sec
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.14451299226 | 0.322327476287 | 0.614558206626 | 0.0294140934214 | 0.323749855121 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.142861831417 | 0.328050803732 | 0.618689986816 | 0.0526960779615 | 0.339976684204 |
+
+Testing model models/f_6sec
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.146525855586 | 0.28410335376 | 0.595199299133 | 0.00904140476018 | 0.305658965684 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.145384570088 | 0.288197667632 | 0.598309924844 | 0.0267654074306 | 0.317289217765 |
+
+Testing model models/f_7sec
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.149081228496 | 0.231545072341 | 0.571204453509 | -0.0145594318415 | 0.284866905133 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.148392081509 | 0.234111927207 | 0.573291833816 | -0.0028142404822 | 0.291961567601 |
+
+Testing model models/f_4sec_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.16871209672 | 0.333249502905 | 0.578293057199 | -0.288979420196 | 0.0447742144276 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.157579824719 | 0.339629967185 | 0.594903528826 | -0.129215099574 | 0.168839720695 |
+
+Testing model models/f_5sec_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.167808066363 | 0.325608589973 | 0.573870910825 | -0.277652389922 | 0.0553944087858 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.157485475025 | 0.331920476281 | 0.59006258237 | -0.127354104988 | 0.171266073898 |
+
+Testing model models/f_6sec_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.166171672164 | 0.293131224584 | 0.557997062787 | -0.254955075804 | 0.0792053614248 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.157983611803 | 0.298230425269 | 0.572029190872 | -0.131211397928 | 0.170844234998 |
+
+Testing model models/f_7sec_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.165064740178 | 0.246661009076 | 0.535928125278 | -0.235021523521 | 0.0986536658575 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.159221730026 | 0.249972161072 | 0.546896454537 | -0.141368553007 | 0.164058899999 |
+
+Testing model models/f_conv
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.150620923365 | 0.325810536559 | 0.605967117121 | -0.0018068074067 | 0.286426988583 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.149835997335 | 0.331154665497 | 0.608860350952 | 0.00867776950283 | 0.294565275617 |
+
+Testing model models/f_conv_smooth
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.158461332046 | 0.322314505513 | 0.561467860372 | -0.109526373693 | 0.182826037918 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.151093668233 | 0.327848439491 | 0.575231674446 | -0.0167108442735 | 0.261963619302 |
+
+Testing model models/f_deconv
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.145030350725 | 0.322039774804 | 0.613076795541 | 0.0226584800621 | 0.319017681528 |
+Inducing sparsity...
+|RMSE | r_feature | r_sample | R^2_feature | R^2_sample|
+| 0.143173699035 | 0.328250025248 | 0.617814309701 | 0.0487897844984 | 0.336991230986 |
