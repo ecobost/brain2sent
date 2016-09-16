@@ -1,6 +1,9 @@
 # brain2sent
 Mapping fMRI brain volumes to a joint low-dimensional space and using that to generate sentences describing what the subject is seeing.
 
+# Results
+You can see results [here](https://htmlpreview.github.io/?https://github.com/ecobost/brain2sent/blob/master/results.html) and check the numbers [here](https://github.com/ecobost/brain2sent/blob/master/results.md). They are average.
+
 # Pipeline
 A rough draft of what is needed to recreate the experiments. See the documentation in each file for details.
 
