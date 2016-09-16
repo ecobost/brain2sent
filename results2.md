@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample descriptions</title>
+</head>
+<body>
+
+	<h1> Sample descriptions for images in the test set </h1>
+	These descriptions were generated solely on the fMRI brain images from the subject.
+
+	 <table style="width:100%">
+<tr>
+	<td><img src="data/test_images/img_8.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_23.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_38.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_53.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_68.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_83.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person is holding a small bird in their hand</td>
+	<td>a man is holding a small bird in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cat in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_98.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_113.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_128.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_143.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_158.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_173.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cat in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_188.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_203.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_218.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_233.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_248.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_263.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person is standing in front of a window</td>
+	<td>a man is standing in front of a building</td>
+	<td>a man is standing in front of a window</td>
+	<td>a man in a suit and tie standing in front of a window</td>
+	<td>a man in a suit and tie standing in front of a window</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_278.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_293.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_308.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_323.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_338.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_353.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is taking a picture of himself in a mirror</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_368.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_383.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_398.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_413.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_428.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_443.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a person is taking a picture of themselves in a mirror</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_458.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_473.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_488.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_503.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_518.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_533.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is taking a picture of a mirror</td>
+	<td>a person is standing on a wall with a snowboard</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from a mountain range</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_548.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_563.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_578.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_593.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_608.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_623.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a large body of water with a mountain in the background</td>
+	<td>a large body of water with a mountain in the background</td>
+	<td>a large body of water with a mountain in the background</td>
+	<td>a view of a river with a mountain in the background</td>
+	<td>a person is on a bench in the woods</td>
+	<td>a person is standing on a rocky cliff</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_638.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_653.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_668.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_683.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_698.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_713.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person on a surfboard in the water</td>
+	<td>a view of a river with a mountain in the background</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a picture of a person in a black and white photo</td>
+	<td>a close up of a person holding a UNK</td>
+	<td>a close up of a person holding a blue and yellow kite</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_728.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_743.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_758.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_773.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_788.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_803.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a UNK</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_818.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_833.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_848.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_863.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_878.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_893.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man in a suit is holding a cell phone</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a person is standing in front of a building</td>
+	<td>a person is standing in front of a mirror</td>
+	<td>a close up of a person holding a cell phone</td>
+	<td>a close up of a person holding a cell phone</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_908.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_923.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_938.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_953.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_968.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_983.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a cell phone</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_998.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1013.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1028.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1043.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1058.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1073.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a cell phone</td>
+	<td>a close up of a person holding a cell phone</td>
+	<td>a person is taking a picture of themselves in a mirror</td>
+	<td>a person is taking a picture of a mirror</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a person is holding a small bird in a field</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1088.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1103.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1118.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1133.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1148.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1163.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a bird</td>
+	<td>a person is holding a small bird in a field</td>
+	<td>a person is holding a small bird in a field</td>
+	<td>a person is holding a pair of scissors</td>
+	<td>a person is holding a pair of scissors</td>
+	<td>a person is holding a pair of scissors</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1178.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1193.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1208.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1223.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1238.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1253.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a plane flying in the sky</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a man is flying a kite on the beach</td>
+	<td>a person is riding a horse in a field</td>
+	<td>a person is standing in the snow with a mountain in the background</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1268.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1283.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1298.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1313.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1328.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1343.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a picture of a person on a motorcycle</td>
+	<td>a picture of a person on a horse</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1358.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1373.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1388.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1403.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1418.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1433.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is standing in front of a window</td>
+	<td>a man is standing in front of a window</td>
+	<td>a man is standing in front of a window</td>
+	<td>a woman is standing in front of a window</td>
+	<td>a man in a suit and tie standing in front of a window</td>
+	<td>a person is taking a picture of a mirror</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1448.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1463.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1478.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1493.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1508.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1523.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a bird on a tree branch</td>
+	<td>a picture of a bird in a tree</td>
+	<td>a view of a tree in the distance</td>
+	<td>a picture of a bird in the sky</td>
+	<td>a view of a tree in the distance</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1538.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1553.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1568.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1583.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1598.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1613.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a picture of a man in a suit</td>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man holding a cat in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1628.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1643.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1658.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1673.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1688.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1703.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man holding a cat in his hand</td>
+	<td>a man holding a cat in his hand</td>
+	<td>a man is holding a cat in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a person is standing in front of a building</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1718.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1733.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1748.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1763.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1778.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1793.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is standing in front of a building</td>
+	<td>a man is standing in front of a building</td>
+	<td>a man is standing in front of a window</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person is holding a cell phone in their hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1808.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1823.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1838.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1853.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1868.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1883.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a picture of a person on a skateboard</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a person is flying a kite in the sky</td>
+	<td>a person is standing on a rock in the snow</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1898.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1913.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1928.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1943.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1958.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_1973.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is holding a pair of scissors</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person is holding a black and white cat</td>
+	<td>a close up of a person holding a cell phone</td>
+	<td>a close up of a person holding a pair of scissors</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_1988.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2003.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2018.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2033.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2048.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2063.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a pair of scissors</td>
+	<td>a close up of a person holding a pair of scissors</td>
+	<td>a close up of a bird flying in the sky</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from the ground</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2078.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2093.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2108.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2123.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2138.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2153.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range in the distance</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2168.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2183.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2198.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2213.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2228.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2243.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a person is taking a picture of themselves in a mirror</td>
+	<td>a person is taking a picture of themselves in a mirror</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2258.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2273.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2288.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2303.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2318.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2333.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is holding a black and white cat</td>
+	<td>a person is holding a black and white cat</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person is holding a black and white cat</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2348.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2363.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2378.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2393.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2408.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2423.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is taking a picture of himself</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2438.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2453.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2468.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2483.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2498.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2513.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a picture of a person in a black and white photo</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2528.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2543.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2558.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2573.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2588.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2603.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from the side of a mountain</td>
+	<td>a view of a mountain range from a mountain</td>
+	<td>a view of a mountain range from a mountain</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a large body of water with a mountain in the background</td>
+	<td>a man is flying a kite on the beach</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2618.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2633.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2648.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2663.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2678.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2693.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is flying a kite on the beach</td>
+	<td>a person on a surfboard in the water</td>
+	<td>a man is standing in front of a mirror</td>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a person holding a cell phone in their hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2708.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2723.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2738.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2753.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2768.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2783.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a bird on a tree branch</td>
+	<td>a close up of a bird on a tree branch</td>
+	<td>a close up of a bird on a tree branch</td>
+	<td>a close up of a bird on a tree branch</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2798.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2813.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2828.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2843.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2858.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2873.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a cat is sitting on the floor in front of a mirror</td>
+	<td>a person is sitting on a ledge with a kite</td>
+	<td>a person is taking a picture of a man on a cell phone</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2888.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2903.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2918.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2933.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2948.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2963.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a remote control in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cat in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_2978.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_2993.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3008.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3023.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3038.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3053.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cat in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3068.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3083.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3098.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3113.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3128.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3143.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a close up of a person holding a cell phone</td>
+	<td>a picture of a man in a suit and tie</td>
+	<td>a view of a building with a clock on it</td>
+	<td>a view of a city street at night</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3158.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3173.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3188.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3203.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3218.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3233.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a city street at night</td>
+	<td>a view of a city street at night time</td>
+	<td>a person is standing in front of a window</td>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3248.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3263.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3278.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3293.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3308.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3323.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a person is holding a black cat in a room</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person is taking a picture of themselves in a mirror</td>
+	<td>a person is taking a picture of a person in a mirror</td>
+	<td>a person is taking a picture of a man on a cell phone</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3338.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3353.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3368.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3383.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3398.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3413.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a plane</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3428.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3443.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3458.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3473.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3488.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3503.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range in the distance</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3518.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3533.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3548.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3563.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3578.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3593.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a person is taking a picture of a mirror</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a person holding a cell phone in their hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3608.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3623.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3638.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3653.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3668.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3683.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a cell phone</td>
+	<td>a picture of a bird in the sky</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from a plane</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3698.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3713.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3728.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3743.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3758.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3773.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a plane</td>
+	<td>a person is standing in the snow with a snowboard</td>
+	<td>a person is taking a picture of themselves in a mirror</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a man holding a small white teddy bear</td>
+	<td>a person is holding a baby and a toothbrush</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3788.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3803.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3818.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3833.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3848.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3863.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is holding a pair of scissors</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a bird on a tree branch</td>
+	<td>a person is holding a red and white kite</td>
+	<td>a close up of a bird on a tree branch</td>
+	<td>a person is standing in front of a mirror</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3878.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3893.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3908.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3923.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3938.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3953.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is standing in front of a mirror</td>
+	<td>a man in a suit and tie standing in front of a window</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_3968.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3983.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_3998.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4013.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4028.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4043.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is taking a picture of themselves in a mirror</td>
+	<td>a picture of a bird flying in the sky</td>
+	<td>a view of a plane flying in the sky</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from the sky</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4058.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4073.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4088.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4103.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4118.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4133.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a picture of a bird on a tree branch</td>
+	<td>a picture of a bird on a tree branch</td>
+	<td>a close up of a person holding a bird</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4148.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4163.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4178.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4193.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4208.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4223.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a bird</td>
+	<td>a person is holding a small bird in their hand</td>
+	<td>a person is holding a small bird in the grass</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4238.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4253.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4268.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4283.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4298.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4313.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a pair of scissors</td>
+	<td>a person is on a surfboard in the water</td>
+	<td>a person is riding a wave on a surfboard</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4328.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4343.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4358.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4373.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4388.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4403.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is riding a wave on a surfboard</td>
+	<td>a person is riding a wave on a surfboard</td>
+	<td>a man is riding a wave on a surfboard</td>
+	<td>a black and white photo of a person on a surfboard</td>
+	<td>a person is taking a picture of themselves in a mirror</td>
+	<td>a man is riding a wave on a surfboard</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4418.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4433.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4448.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4463.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4478.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4493.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a picture of a person on a surfboard</td>
+	<td>a person is standing in front of a mirror</td>
+	<td>a person is standing in front of a mirror</td>
+	<td>a picture of a person on a cell phone</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4508.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4523.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4538.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4553.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4568.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4583.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a picture of a person on a cell phone</td>
+	<td>a view of a mountain range from a window</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from the ground</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4598.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4613.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4628.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4643.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4658.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4673.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is standing in front of a mirror</td>
+	<td>a person is taking a picture of a man with a cell phone</td>
+	<td>a person is taking a picture of a person holding a cell phone</td>
+	<td>a man is taking a picture of himself in the mirror</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4688.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4703.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4718.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4733.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4748.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4763.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is standing in front of a mirror</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man in a suit and tie standing in front of a mirror</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4778.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4793.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4808.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4823.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4838.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4853.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man in a suit is holding a cell phone</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4868.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4883.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4898.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4913.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4928.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4943.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_4958.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4973.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_4988.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5003.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5018.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5033.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man in a suit and tie holding a cell phone</td>
+	<td>a man in a suit and tie standing in a room</td>
+	<td>a man is standing in front of a mirror</td>
+	<td>a person is taking a picture of themselves in a mirror</td>
+	<td>a picture of a person in a black and white photo</td>
+	<td>a person is standing in front of a mirror</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5048.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5063.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5078.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5093.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5108.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5123.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is taking a picture of himself</td>
+	<td>a man in a suit is taking a picture</td>
+	<td>a man is taking a picture of himself in the mirror</td>
+	<td>a picture of a person in a mirror</td>
+	<td>a picture of a bird in the sky</td>
+	<td>a view of a mountain range from a plane</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5138.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5153.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5168.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5183.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5198.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5213.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a plane</td>
+	<td>a picture of a large bird in the sky</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a picture of a person on a cell phone</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5228.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5243.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5258.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5273.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5288.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5303.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a UNK</td>
+	<td>a close up of a person holding a pair of scissors</td>
+	<td>a close up of a person holding a cat</td>
+	<td>a person is holding a cat in a room</td>
+	<td>a man is holding a baby in his hand</td>
+	<td>a man is holding a baby in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5318.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5333.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5348.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5363.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5378.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5393.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a baby in his hand</td>
+	<td>a man is holding a cat in his hand</td>
+	<td>a person is holding a black and white cat</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a person is holding a black and white cat</td>
+	<td>a person is holding a black and white cat</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5408.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5423.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5438.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5453.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5468.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5483.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person is sitting on the ground with a cell phone</td>
+	<td>a person is standing in front of a mirror</td>
+	<td>a person is standing in front of a mirror</td>
+	<td>a person is holding a pair of scissors</td>
+	<td>a close up of a person holding a pair of scissors</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5498.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5513.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5528.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5543.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5558.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5573.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a pair of scissors</td>
+	<td>a close up of a person holding a pair of scissors</td>
+	<td>a close up of a person holding a pair of scissors</td>
+	<td>a close up of a cat laying on a bed</td>
+	<td>a close up of a person holding a cat</td>
+	<td>a person is taking a picture of a man on a surfboard</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5588.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5603.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5618.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5633.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5648.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5663.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is flying a kite in the sky</td>
+	<td>a man is flying a kite on the beach</td>
+	<td>a large bird flying over a body of water</td>
+	<td>a bird is flying in the sky over the water</td>
+	<td>a person is standing in a field with a kite</td>
+	<td>a view of a mountain range from the ocean</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5678.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5693.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5708.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5723.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5738.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5753.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from a mountain range</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5768.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5783.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5798.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5813.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5828.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5843.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from the ground</td>
+	<td>a view of a mountain range from a mountain range</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5858.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5873.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5888.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5903.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5918.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5933.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a close up of a bird on a tree branch</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a picture of a bird in a tree</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_5948.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5963.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5978.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_5993.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6008.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6023.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a tree in the distance</td>
+	<td>a close up of a person on a cell phone</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a person is holding a pair of scissors</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person holding a cell phone in their hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6038.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6053.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6068.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6083.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6098.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6113.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is holding a black and white dog</td>
+	<td>a person is standing in the middle of a forest</td>
+	<td>a person is sitting on a bench in the woods</td>
+	<td>a black and white photo of a bird in the woods</td>
+	<td>a black and white photo of a bird in a tree</td>
+	<td>a person is sitting on a bench in the woods</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6128.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6143.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6158.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6173.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6188.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6203.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is standing in front of a tree</td>
+	<td>a person is standing in front of a tree</td>
+	<td>a person is holding a small bird in a tree</td>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a person is holding a cell phone in their hand</td>
+	<td>a person is taking a picture of a man in the air</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6218.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6233.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6248.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6263.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6278.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6293.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from the side of a mountain</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a person is taking a picture of themselves in a mirror</td>
+	<td>a person is taking a picture of a man on a cell phone</td>
+	<td>a person is standing in front of a window</td>
+	<td>a person is standing in front of a building</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6308.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6323.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6338.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6353.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6368.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6383.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is standing on a street corner</td>
+	<td>a person on a skateboard on a city street</td>
+	<td>a person on a bike in the street</td>
+	<td>a picture of a person on a cell phone</td>
+	<td>a close up of a person holding a red umbrella</td>
+	<td>a close up of a person holding a UNK</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6398.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6413.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6428.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6443.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6458.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6473.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a city street with a clock tower</td>
+	<td>a view of a city street with a clock tower</td>
+	<td>a view of a city with a clock tower in the background</td>
+	<td>a man standing in front of a building</td>
+	<td>a man is standing in front of a building</td>
+	<td>a man is standing in front of a building</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6488.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6503.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6518.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6533.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6548.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6563.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is standing in front of a building</td>
+	<td>a view of a mountain range from the distance</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range in the distance</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6578.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6593.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6608.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6623.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6638.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6653.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a man in a suit and tie standing in front of a building</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6668.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6683.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6698.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6713.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6728.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6743.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cat in his hand</td>
+	<td>a man holding a cell phone up to his ear</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6758.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6773.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6788.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6803.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6818.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6833.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6848.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6863.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6878.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6893.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6908.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6923.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is holding a camera in a room</td>
+	<td>a person is standing in front of a mirror</td>
+	<td>a person is standing in front of a mirror</td>
+	<td>a close up of a person holding a cell phone</td>
+	<td>a close up of a person holding a cell phone</td>
+	<td>a view of a mountain range from a plane</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_6938.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6953.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6968.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6983.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_6998.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7013.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from the sky</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a tree in the distance</td>
+	<td>a view of a tree in the distance</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7028.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7043.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7058.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7073.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7088.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7103.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a city street with a clock tower</td>
+	<td>a view of a mountain range from a mountain range</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a mountain range</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7118.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7133.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7148.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7163.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7178.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7193.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a picture of a bird in the air</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a person is holding a cell phone in their hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7208.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7223.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7238.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7253.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7268.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7283.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a close up of a person holding a UNK</td>
+	<td>a picture of a bird flying in the sky</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a plane</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7298.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7313.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7328.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7343.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7358.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7373.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a view of a mountain range from a plane</td>
+	<td>a picture of a bird in the air</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a person is holding a black and white cat</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7388.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7403.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7418.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7433.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7448.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7463.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a person is holding a black and white dog</td>
+	<td>a black and white photo of a person on a skateboard</td>
+	<td>a bird is flying in the sky over the snow</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7478.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7493.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7508.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7523.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7538.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7553.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person riding a surf board on a body of water</td>
+	<td>a man riding a snowboard down a snow covered slope</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a large body of water with a mountain in the background</td>
+	<td>a view of a mountain range in the distance</td>
+	<td>a view of a mountain range from the ocean</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7568.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7583.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7598.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7613.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7628.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7643.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a view of a mountain range from the ocean</td>
+	<td>a person is standing on the side of a mountain</td>
+	<td>a man is standing in front of a building</td>
+	<td>a man is standing in front of a building</td>
+	<td>a man is standing in front of a window</td>
+	<td>a man is holding a cell phone in his hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7658.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7673.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7688.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7703.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7718.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7733.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a woman is holding a cell phone in her hand</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7748.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7763.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7778.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7793.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7808.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7823.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a person holding a cell phone in their hand</td>
+	<td>a person is holding a small bird in their hand</td>
+	<td>a person is holding a small bird in their hand</td>
+	<td>a close up of a person holding a bird</td>
+	<td>a close up of a person holding a bird</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7838.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7853.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7868.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7883.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7898.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7913.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a cat is sitting on the ground in front of a mirror</td>
+	<td>a person is standing in front of a window</td>
+	<td>a person is standing in front of a building</td>
+	<td>a person is standing in front of a building</td>
+	<td>a person is standing in front of a building</td>
+	<td>a person is taking a picture of a man on a cell phone</td>
+</tr>
+<tr>
+	<td><img src="data/test_images/img_7928.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7943.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7958.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7973.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_7988.png" style="width:150px;height:150px;"></td>
+	<td><img src="data/test_images/img_8003.png" style="width:150px;height:150px;"></td>
+</tr>
+<tr>
+	<td>a person is taking a picture of a person in a mirror</td>
+	<td>a person is taking a picture of a man on a cell phone</td>
+	<td>a person is standing in front of a mountain</td>
+	<td>a man is holding a cell phone in his hand</td>
+	<td>a man is holding a frisbee in his hand</td>
+	<td>a man holding a cell phone in his hand</td>
+</tr>
+	</table> 
+</body>
+</html> 
+
