@@ -23,6 +23,6 @@ Done!
 
 # Possible improvements
 + Spatial and temporal smoothing of the BOLD signal will help with the noise. Probably use a 4-D Gaussian smoothing filter.
-+ Use attentional image caption models (Xu et al., 2016 for instance). Attentional models generate better captions, use lower-level CNN features which are probably easier to pick up from brain volumes and could learn to attend to features who are correctly predicted from brain volumes ignoring the hard ones.
-+ Use the studyforrest fMRI data set (studyforrest.org) which has natural images with better resolution and fMRI with whole-brain coverage.
++ Use attentional image caption models (such as Xu et al., 2016). Attentional models generate better captions, use lower-level CNN features which are probably easier to pick up from brain volumes and could learn to attend to features who are correctly predicted from brain volumes ignoring the hard ones.
++ Use the [studyforrest](studyforrest.org) fMRI data set, which has natural images with better resolution and fMRI with whole-brain coverage.
 
