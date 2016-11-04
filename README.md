@@ -1,5 +1,5 @@
 # brain2sent
-Mapping fMRI brain volumes to a joint low-dimensional space and using that to generate sentences describing what the subject is seeing.
+Mapping fMRI brain volumes to a joint low-dimensional space to generate descriptions of the images the subject is seeing.
 
 # Results
 You can see results [here](https://htmlpreview.github.io/?https://github.com/ecobost/brain2sent/blob/master/results.html) and check the numbers [here](https://github.com/ecobost/brain2sent/blob/master/results.md). They are average.
@@ -23,6 +23,7 @@ Done!
 
 # Possible improvements
 + Spatial and temporal smoothing of the BOLD signal will help with the noise. Probably use a 4-D Gaussian smoothing filter.
++ Estimate the HRF with flexible models (e.g., smooth FIR or logit) to account for different BOLD profiles across brain regions.
 + Use attentional image caption models (such as Xu et al., 2016). Attentional models generate better captions, use lower-level CNN features which are probably easier to pick up from brain volumes and could learn to attend to features who are correctly predicted from brain volumes ignoring the hard ones.
-+ Use the [studyforrest](studyforrest.org) fMRI data set, which has natural images with better resolution and fMRI with whole-brain coverage.
++ Use the [studyforrest](studyforrest.org) fMRI data set, which has natural images with better resolution, over twenty subjects and fMRI with whole-brain coverage.
 
